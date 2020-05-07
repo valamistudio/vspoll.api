@@ -33,9 +33,9 @@
 
 ## Entities
 - poll(id*, multi_vote, show_voters, allow_add, end_date, user_id?)
-- poll_block(id*, poll_id^, user_id)
+- poll_block(poll_id*^, user_id*)
 - poll_option(id*, poll_id^, description)
-- poll_vote(id*, option_id^, user_id)
+- poll_vote(option_id*^, user_id*)
 
 ---
 `*`: pk  
