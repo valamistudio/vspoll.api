@@ -15,6 +15,10 @@
   - Block users (and remove their votes if it's the case)
   - Unblock users (must vote again)
   - Delete options
+  
+# Hosting specs
+- Probably AWS Lightsail for starter
+- Docker alpine everything
 
 # Front-end specs
 - Minimalist design
@@ -24,6 +28,7 @@
 - Should work as an independent API
 
 # Database specs
+- PostgreSQL
 - Physical deletion
 
 ## Entities
