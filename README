@@ -20,10 +20,6 @@
 - Probably AWS Lightsail for starter
 - Docker alpine everything
 
-# Front-end specs
-- Minimalist design
-- Localization support
-
 # Back-end specs
 - Should work as an independent API
 
