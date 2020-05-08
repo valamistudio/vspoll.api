@@ -16,8 +16,6 @@ namespace VSPoll.API.Models
 
         public User? User { get; set; }
 
-        public UserType UserType { get; set; }
-
         public IEnumerable<PollOption> Options { get; set; } = Enumerable.Empty<PollOption>();
     }
 }

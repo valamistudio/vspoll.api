@@ -31,10 +31,7 @@ namespace VSPoll.API
 
         private void AddSingletons(IServiceCollection services)
         {
-            var mapping = new MapperConfiguration(x =>
-            {
-                x.AddProfile(new ConfigurationMapper());
-            });
+            var mapping = new MapperConfiguration(x => x.AddProfile(new ConfigurationMapper()));
             var mapper = mapping.CreateMapper();
             services.AddSingleton(mapper);
         }

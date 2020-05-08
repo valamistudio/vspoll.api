@@ -33,8 +33,6 @@ namespace VSPoll.API.Services
                     Votes = option.Votes.Count,
                 }),
                 ShowVoters = poll.ShowVoters,
-                User = mapper.Map<User>(poll.User),
-                UserType = UserType.Visitor, //ToDo
             };
         }
     }

@@ -15,10 +15,6 @@ namespace VSPoll.API.Persistence.Entity
 
         public DateTime EndDate { get; set; } = DateTime.Now.AddDays(7);
 
-        public string? UserId { get; set; }
-        public User? User { get; set; }
-
-        public List<PollBlock> Blocks { get; set; } = new List<PollBlock>();
         public List<PollOption> Options { get; set; } = new List<PollOption>();
     }
 }
