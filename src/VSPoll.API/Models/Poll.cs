@@ -14,7 +14,7 @@ namespace VSPoll.API.Models
 
         public DateTime EndDate { get; set; }
 
-        public string? User { get; set; }
+        public User? User { get; set; }
 
         public UserType UserType { get; set; }
 

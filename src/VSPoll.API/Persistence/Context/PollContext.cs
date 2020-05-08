@@ -9,6 +9,7 @@ namespace VSPoll.API.Persistence.Context
         public DbSet<PollBlock> PollBlocks { get; set; } = null!;
         public DbSet<PollOption> PollOptions { get; set; } = null!;
         public DbSet<PollVote> PollVotes { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
             => modelBuilder.UseIdentityAlwaysColumns();

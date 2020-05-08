@@ -1,4 +1,4 @@
-﻿namespace VSPoll.API.Models
+﻿namespace VSPoll.API.Persistence.Entity
 {
     public class User
     {

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using VSPoll.API.Models;
 using VSPoll.API.Persistence.Repository;
 
@@ -8,8 +9,12 @@ namespace VSPoll.API.Services
     public class PollService : IPollService
     {
         private readonly IPollRepository pollRepository;
-        public PollService(IPollRepository pollRepository)
-            => this.pollRepository = pollRepository;
+        private readonly IMapper mapper;
+        public PollService(IPollRepository pollRepository, IMapper mapper)
+        {
+            this.pollRepository = pollRepository;
+            this.mapper = mapper;
+        }
 
         public async Task<Poll> GetPollAsync(int id)
         {
@@ -24,14 +29,11 @@ namespace VSPoll.API.Services
                     Description = option.Description,
                     Id = option.Id,
                     Percentage = option.Votes.Count / poll.Options.Sum(opt => opt.Votes.Count),
-                    Voters = option.Votes.Select(vote => new User
-                    {
-                        Id = vote.User,
-                    }),
+                    Voters = option.Votes.Select(vote => mapper.Map<User>(vote.User)),
                     Votes = option.Votes.Count,
                 }),
                 ShowVoters = poll.ShowVoters,
-                User = poll.User,
+                User = mapper.Map<User>(poll.User),
                 UserType = UserType.Visitor, //ToDo
             };
         }

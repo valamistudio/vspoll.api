@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,17 @@ namespace VSPoll.API
             services.AddControllers();
             SetupDatabase(services);
             ConfigureSwagger(services);
+            AddSingletons(services);
+        }
+
+        private void AddSingletons(IServiceCollection services)
+        {
+            var mapping = new MapperConfiguration(x =>
+            {
+                x.AddProfile(new ConfigurationMapper());
+            });
+            var mapper = mapping.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         protected virtual void SetupDatabase(IServiceCollection services)
