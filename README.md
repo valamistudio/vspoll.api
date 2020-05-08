@@ -1,5 +1,5 @@
 # Features
-- Twitter authentication for voting ([docs1](https://developer.twitter.com/en/docs/basics/authentication/guides/log-in-with-twitter), [docs2](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/social/twitter-logins?view=aspnetcore-3.1))
+- Telegram authentication for voting ([docs](https://core.telegram.org/widgets/login))
   - You can create a poll without authenticating youself, but you won't be able to manage it later
   - You can see polls without authenticating youself, but you won't be able to vote
 - Sorting options (name/most voted)
