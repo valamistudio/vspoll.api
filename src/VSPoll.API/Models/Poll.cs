@@ -9,6 +9,8 @@ namespace VSPoll.API.Models
     {
         public Guid Id { get; set; }
 
+        public string Description { get; set; } = null!;
+
         public bool MultiVote { get; set; }
 
         public bool ShowVoters { get; set; }
@@ -24,6 +26,7 @@ namespace VSPoll.API.Models
         public Poll(Entity.Poll poll)
         {
             Id = poll.Id;
+            Description = poll.Description;
             MultiVote = poll.MultiVote;
             ShowVoters = poll.ShowVoters;
             AllowAdd = poll.AllowAdd;

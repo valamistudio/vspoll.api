@@ -1,0 +1,60 @@
+﻿using System;
+using System.Threading.Tasks;
+using VSPoll.API.Models;
+using VSPoll.API.Persistence.Repository;
+using Entity = VSPoll.API.Persistence.Entity;
+
+namespace VSPoll.API.Services
+{
+    public class OptionService : IOptionService
+    {
+        private readonly IOptionRepository optionRepository;
+        public OptionService(IOptionRepository optionRepository)
+            => this.optionRepository = optionRepository;
+
+        public async Task<PollOption> GetOptionAsync(Guid id)
+        {
+            var option = await optionRepository.GetByIdAsync(id);
+            return new PollOption(option);
+        }
+
+        public async Task<Poll> GetPollFromOptionAsync(Guid id)
+        {
+            var option = await optionRepository.GetByIdAsync(id);
+            return new Poll(option.Poll);
+        }
+
+        public Task<bool> GetVoteStatusAsync(Guid option, int user)
+            => optionRepository.GetVoteStatusAsync(option, user);
+
+        public Task ClearVoteAsync(Guid poll, int user)
+            => optionRepository.ClearVoteAsync(poll, user);
+
+        public Task VoteAsync(Guid option, int user)
+            => optionRepository.InsertVoteAsync(new Entity.PollVote
+            {
+                OptionId = option,
+                UserId = user,
+            });
+
+        public Task UnvoteAsync(Guid option, int user)
+            => optionRepository.DeleteVoteAsync(new Entity.PollVote
+            {
+                OptionId = option,
+                UserId = user,
+            });
+
+        public async Task<PollOption> InsertOptionAsync(PollOptionCreate optionCreate)
+        {
+            var option = new Entity.PollOption(optionCreate);
+            await optionRepository.InsertOptionAsync(option);
+            return new PollOption(option);
+        }
+
+        public async Task<bool> CheckDuplicateAsync(PollOptionCreate optionCreate)
+        {
+            var option = new Entity.PollOption(optionCreate);
+            return await optionRepository.CheckDuplicateAsync(option);
+        }
+    }
+}

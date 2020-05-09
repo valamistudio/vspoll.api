@@ -9,6 +9,8 @@ namespace VSPoll.API.Persistence.Entity
     {
         public Guid Id { get; set; }
 
+        public string Description { get; set; } = null!;
+
         public bool MultiVote { get; set; }
 
         public bool ShowVoters { get; set; } = true;
@@ -17,12 +19,13 @@ namespace VSPoll.API.Persistence.Entity
 
         public DateTime EndDate { get; set; } = DateTime.Now.AddDays(7);
 
-        public List<PollOption> Options { get; set; } = new List<PollOption>();
+        public virtual List<PollOption> Options { get; set; } = new List<PollOption>();
 
         public Poll() { }
 
         public Poll(PollCreate poll)
         {
+            Description = poll.Description;
             AllowAdd = poll.AllowAdd;
             EndDate = poll.EndDate;
             MultiVote = poll.MultiVote;

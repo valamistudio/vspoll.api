@@ -27,7 +27,8 @@ namespace VSPoll.API.Models
             //ToDo: normalize
             var totalVotes = option.Poll.Options.Sum(opt => opt.Votes.Count);
             Percentage = totalVotes == 0 ? 0 : option.Votes.Count / totalVotes;
-            Voters = option.Votes.Select(vote => new User(vote.User));
+            if (option.Poll.ShowVoters)
+                Voters = option.Votes.Select(vote => new User(vote.User));
         }
     }
 }

@@ -16,13 +16,10 @@ namespace VSPoll.API.Controllers
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Poll>> Get(Guid id)
-            => await pollService.GetPollAsync(id);
+            => Ok(await pollService.GetPollAsync(id));
 
         [HttpPost]
         public async Task<ActionResult<Poll>> Post(PollCreate poll)
-            => await pollService.InsertPollAsync(poll);
-
-        //POST poll/vote [bool, user, option]
-        //DELETE poll/option [option, user]
+            => Ok(await pollService.InsertPollAsync(poll));
     }
 }

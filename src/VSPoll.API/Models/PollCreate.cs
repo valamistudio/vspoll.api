@@ -6,6 +6,8 @@ namespace VSPoll.API.Models
 {
     public class PollCreate
     {
+        public string Description { get; set; } = null!;
+
         public bool MultiVote { get; set; }
 
         public bool ShowVoters { get; set; }

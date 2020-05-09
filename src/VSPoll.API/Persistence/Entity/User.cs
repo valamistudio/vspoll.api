@@ -1,8 +1,10 @@
-﻿namespace VSPoll.API.Persistence.Entity
+﻿using VSPoll.API.Models;
+
+namespace VSPoll.API.Persistence.Entity
 {
     public class User
     {
-        public string Id { get; set; } = null!;
+        public int Id { get; set; }
 
         public string FirstName { get; set; } = null!;
 
@@ -11,5 +13,16 @@
         public string Username { get; set; } = null!;
 
         public string PhotoUrl { get; set; } = null!;
+
+        public User() { }
+
+        public User(Authentication authentication)
+        {
+            Id = authentication.Id;
+            FirstName = authentication.FirstName;
+            LastName = authentication.LastName;
+            Username = authentication.Username;
+            PhotoUrl = authentication.PhotoUrl;
+        }
     }
 }

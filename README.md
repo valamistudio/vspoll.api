@@ -23,7 +23,7 @@
 
 ## Entities
 - user(id*, first_name, last_name, username, photo_url)
-- poll(id*, multi_vote, show_voters, allow_add, end_date)
+- poll(id*, description, multi_vote, show_voters, allow_add, end_date)
 - poll_option(id*, poll_id^, description)
 - poll_vote(option_id*^, user_id*^)
 

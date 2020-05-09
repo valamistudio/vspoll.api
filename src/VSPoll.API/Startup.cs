@@ -33,6 +33,7 @@ namespace VSPoll.API
             sqlConnection ??= new NpgsqlConnection(Configuration.GetConnectionString("DefaultConnection"));
             services.AddDbContext<PollContext>(options => options
                 .UseNpgsql(sqlConnection)
+                .UseLazyLoadingProxies()
                 .UseSnakeCaseNamingConvention());
         }
 

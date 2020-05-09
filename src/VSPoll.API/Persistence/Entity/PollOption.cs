@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using VSPoll.API.Models;
 
 namespace VSPoll.API.Persistence.Entity
 {
@@ -8,10 +9,18 @@ namespace VSPoll.API.Persistence.Entity
         public Guid Id { get; set; }
 
         public Guid PollId { get; set; }
-        public Poll Poll { get; set; } = null!;
+        public virtual Poll Poll { get; set; } = null!;
 
         public string Description { get; set; } = null!;
 
-        public List<PollVote> Votes { get; set; } = new List<PollVote>();
+        public virtual List<PollVote> Votes { get; set; } = new List<PollVote>();
+
+        public PollOption() { }
+
+        public PollOption(PollOptionCreate optionCreate)
+        {
+            PollId = optionCreate.Poll;
+            Description = optionCreate.Description;
+        }
     }
 }

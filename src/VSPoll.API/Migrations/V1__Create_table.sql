@@ -1,5 +1,5 @@
 create table users (
-    id text primary key,
+    id integer primary key,
     first_name text not null,
     last_name text not null,
     username text not null,
@@ -8,6 +8,7 @@ create table users (
 
 create table polls (
     id uuid primary key,
+    description text not null,
     multi_vote boolean not null default false,
     show_voters boolean not null default true,
     allow_add boolean not null default false,
@@ -23,6 +24,6 @@ create table poll_options (
 
 create table poll_votes (
     option_id uuid not null references poll_options on delete cascade on update cascade,
-    user_id text not null references users on delete cascade on update cascade,
+    user_id integer not null references users on delete cascade on update cascade,
     constraint pk_poll_vote primary key (option_id, user_id)
 );
