@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -7,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Npgsql;
+using VSPoll.API.Extensions;
 using VSPoll.API.Persistence.Context;
 
 namespace VSPoll.API
@@ -23,23 +23,17 @@ namespace VSPoll.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddServices().AddRepositories().AddControllers();
             SetupDatabase(services);
             ConfigureSwagger(services);
-            AddSingletons(services);
-        }
-
-        private void AddSingletons(IServiceCollection services)
-        {
-            var mapping = new MapperConfiguration(x => x.AddProfile(new ConfigurationMapper()));
-            var mapper = mapping.CreateMapper();
-            services.AddSingleton(mapper);
         }
 
         protected virtual void SetupDatabase(IServiceCollection services)
         {
             sqlConnection ??= new NpgsqlConnection(Configuration.GetConnectionString("DefaultConnection"));
-            services.AddDbContext<PollContext>(options => options.UseNpgsql(sqlConnection));
+            services.AddDbContext<PollContext>(options => options
+                .UseNpgsql(sqlConnection)
+                .UseSnakeCaseNamingConvention());
         }
 
         private void ConfigureSwagger(IServiceCollection services)

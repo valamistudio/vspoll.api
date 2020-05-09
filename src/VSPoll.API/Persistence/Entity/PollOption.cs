@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace VSPoll.API.Persistence.Entity
 {
     public class PollOption
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public int PollId { get; set; }
+        public Guid PollId { get; set; }
         public Poll Poll { get; set; } = null!;
 
         public string Description { get; set; } = null!;

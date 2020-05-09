@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VSPoll.API.Models;
 using VSPoll.API.Services;
@@ -14,15 +15,14 @@ namespace VSPoll.API.Controllers
             => this.pollService = pollService;
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Poll>> Get(int id)
-            //ToDo: use possible authenticated user as an argument
+        public async Task<ActionResult<Poll>> Get(Guid id)
             => await pollService.GetPollAsync(id);
 
-        //POST poll [poll data, user]
-        //DELETE poll [poll, user]
+        [HttpPost]
+        public async Task<ActionResult<Poll>> Post(PollCreate poll)
+            => await pollService.InsertPollAsync(poll);
+
         //POST poll/vote [bool, user, option]
-        //POST poll/block [bool, poll, user, user blocked]
-        //POST poll/end [poll, user]
         //DELETE poll/option [option, user]
     }
 }

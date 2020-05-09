@@ -11,7 +11,7 @@ namespace VSPoll.API.Persistence.Context
         public DbSet<User> Users { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-            => modelBuilder.UseIdentityAlwaysColumns();
+            => modelBuilder.Entity<PollVote>().HasKey(vote => new { vote.OptionId, vote.UserId });
 
         public PollContext(DbContextOptions<PollContext> contextOptions) : base(contextOptions) { }
     }
