@@ -25,6 +25,11 @@ namespace VSPoll.API.Controllers
 
         [HttpPost]
         public async Task<ActionResult<Poll>> Post(PollCreate poll)
-            => Ok(await pollService.InsertPollAsync(poll));
+        {
+            if (poll.Description.Length > 100)
+                return BadRequest("Description cannot be longer than 100 characters");
+
+            return Ok(await pollService.InsertPollAsync(poll));
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using VSPoll.API.Models;
 
@@ -9,6 +10,7 @@ namespace VSPoll.API.Persistence.Entity
     {
         public Guid Id { get; set; }
 
+        [MaxLength(100)]
         public string Description { get; set; } = null!;
 
         public bool MultiVote { get; set; }

@@ -8,7 +8,7 @@ create table users (
 
 create table polls (
     id uuid primary key,
-    description text not null,
+    description varchar(100) not null,
     multi_vote boolean not null default false,
     show_voters boolean not null default true,
     allow_add boolean not null default false,
@@ -18,7 +18,7 @@ create table polls (
 create table poll_options (
     id uuid primary key,
     poll_id uuid not null references polls on delete cascade on update cascade,
-    description text not null,
+    description varchar(100) not null,
     unique (poll_id, description)
 );
 

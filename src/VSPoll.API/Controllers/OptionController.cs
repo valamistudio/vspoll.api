@@ -23,6 +23,9 @@ namespace VSPoll.API.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(PollOptionCreate optionCreate)
         {
+            if (optionCreate.Description.Length > 100)
+                return BadRequest("Description cannot be longer than 100 characters");
+
             if (!await pollService.CheckIfPollExists(optionCreate.Poll))
                 return NotFound("Poll doesn't exist");
 
