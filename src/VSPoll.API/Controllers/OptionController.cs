@@ -20,6 +20,11 @@ namespace VSPoll.API.Controllers
             this.userService = userService;
         }
 
+        /// <summary>
+        /// Creates a new option on a poll that allows it
+        /// </summary>
+        /// <param name="optionCreate">The option data</param>
+        /// <returns>The option data</returns>
         [HttpPost]
         public async Task<ActionResult> Post(PollOptionCreate optionCreate)
         {
@@ -39,6 +44,10 @@ namespace VSPoll.API.Controllers
             return Ok(await optionService.InsertOptionAsync(optionCreate));
         }
 
+        /// <summary>
+        /// Cast a vote on an option
+        /// </summary>
+        /// <param name="vote">The vote data</param>
         [Route("vote")]
         [HttpPost]
         public async Task<ActionResult> Vote(Vote vote)
@@ -66,6 +75,10 @@ namespace VSPoll.API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Uncast a vote on an option
+        /// </summary>
+        /// <param name="vote">the vote data</param>
         [Route("vote")]
         [HttpDelete]
         public async Task<ActionResult> Unvote(Vote vote)

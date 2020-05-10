@@ -14,6 +14,11 @@ namespace VSPoll.API.Controllers
         public PollController(IPollService pollService)
             => this.pollService = pollService;
 
+        /// <summary>
+        /// Gets data from a poll
+        /// </summary>
+        /// <param name="id">The poll id</param>
+        /// <returns>The poll data</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Poll>> Get(Guid id)
         {
@@ -23,6 +28,11 @@ namespace VSPoll.API.Controllers
             return Ok(await pollService.GetPollAsync(id));
         }
 
+        /// <summary>
+        /// Creates a new poll
+        /// </summary>
+        /// <param name="poll">The poll data</param>
+        /// <returns>The poll data</returns>
         [HttpPost]
         public async Task<ActionResult<Poll>> Post(PollCreate poll)
         {
