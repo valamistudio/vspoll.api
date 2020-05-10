@@ -6,6 +6,7 @@ namespace VSPoll.API.Persistence.Repository
 {
     public interface IOptionRepository
     {
+        Task<bool> CheckIfOptionExists(Guid id);
         Task<PollOption> GetByIdAsync(Guid id);
         Task<bool> GetVoteStatusAsync(Guid option, int user);
         Task ClearVoteAsync(Guid poll, int user);

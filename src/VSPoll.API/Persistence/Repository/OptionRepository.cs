@@ -12,6 +12,9 @@ namespace VSPoll.API.Persistence.Repository
         private readonly PollContext context;
         public OptionRepository(PollContext context) => this.context = context;
 
+        public Task<bool> CheckIfOptionExists(Guid id)
+            => context.PollOptions.AnyAsync(option => option.Id == id);
+
         public Task<PollOption> GetByIdAsync(Guid id)
             => context.PollOptions.SingleAsync(option => option.Id == id);
 

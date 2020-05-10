@@ -16,7 +16,12 @@ namespace VSPoll.API.Controllers
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Poll>> Get(Guid id)
-            => Ok(await pollService.GetPollAsync(id));
+        {
+            if (!await pollService.CheckIfPollExists(id))
+                return NotFound("Poll doesn't exist");
+
+            return Ok(await pollService.GetPollAsync(id));
+        }
 
         [HttpPost]
         public async Task<ActionResult<Poll>> Post(PollCreate poll)

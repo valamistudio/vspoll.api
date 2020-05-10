@@ -23,6 +23,9 @@ namespace VSPoll.API.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(PollOptionCreate optionCreate)
         {
+            if (!await pollService.CheckIfPollExists(optionCreate.Poll))
+                return NotFound("Poll doesn't exist");
+
             var poll = await pollService.GetPollAsync(optionCreate.Poll);
             if (!poll.AllowAdd)
                 return Conflict("This poll doesn't allow creating new options");
@@ -39,6 +42,9 @@ namespace VSPoll.API.Controllers
         {
             if (!userService.Authenticate(vote.User, out var error))
                 return Unauthorized(error);
+
+            if (!await optionService.CheckIfOptionExists(vote.Option))
+                return NotFound("Option doesn't exist");
 
             var poll = await optionService.GetPollFromOptionAsync(vote.Option);
             if (poll.EndDate < DateTime.Now)
@@ -63,6 +69,9 @@ namespace VSPoll.API.Controllers
         {
             if (!userService.Authenticate(vote.User, out var error))
                 return Unauthorized(error);
+
+            if (!await optionService.CheckIfOptionExists(vote.Option))
+                return NotFound("Option doesn't exist");
 
             var status = await optionService.GetVoteStatusAsync(vote.Option, vote.User.Id);
             if (!status)

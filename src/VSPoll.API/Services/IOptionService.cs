@@ -6,6 +6,7 @@ namespace VSPoll.API.Services
 {
     public interface IOptionService
     {
+        Task<bool> CheckIfOptionExists(Guid id);
         Task<PollOption> GetOptionAsync(Guid id);
         Task<Poll> GetPollFromOptionAsync(Guid id);
         Task ClearVoteAsync(Guid poll, int user);

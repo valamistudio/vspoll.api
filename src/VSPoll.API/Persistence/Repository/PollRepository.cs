@@ -11,6 +11,9 @@ namespace VSPoll.API.Persistence.Repository
         private readonly PollContext context;
         public PollRepository(PollContext context) => this.context = context;
 
+        public Task<bool> CheckIfPollExists(Guid id)
+            => context.Polls.AnyAsync(poll => poll.Id == id);
+
         public Task<Poll> GetByIdAsync(Guid id)
             => context.Polls.SingleAsync(poll => poll.Id == id);
 
