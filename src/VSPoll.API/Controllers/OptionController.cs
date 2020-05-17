@@ -35,6 +35,21 @@ namespace VSPoll.API.Controllers
         }
 
         /// <summary>
+        /// Gets the voters of an option
+        /// </summary>
+        /// <param name="query">The query arguments</param>
+        /// <returns>The list of voters</returns>
+        [Route("voters")]
+        [HttpGet]
+        public async Task<ActionResult> GetVoters(VotersQuery query)
+        {
+            if (!await optionService.CheckIfOptionExists(query.Option))
+                return NotFound("Option doesn't exist");
+
+            return Ok(await optionService.GetVotersAsync(query));
+        }
+
+        /// <summary>
         /// Creates a new option on a poll that allows it
         /// </summary>
         /// <param name="optionCreate">The option data</param>

@@ -21,6 +21,12 @@ namespace VSPoll.API.Services
             return new PollOption(option);
         }
 
+        public async Task<Page<User>> GetVotersAsync(VotersQuery query)
+        {
+            var voters = await optionRepository.GetVotersAsync(query);
+            return voters.Map(voter => new User(voter));
+        }
+
         public async Task<Poll> GetPollFromOptionAsync(Guid id)
         {
             var option = await optionRepository.GetByIdAsync(id);

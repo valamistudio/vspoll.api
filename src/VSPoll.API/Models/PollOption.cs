@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Entity = VSPoll.API.Persistence.Entity;
 
@@ -15,8 +14,6 @@ namespace VSPoll.API.Models
 
         public decimal Percentage { get; set; }
 
-        public IEnumerable<User> Voters { get; set; } = Enumerable.Empty<User>();
-
         public PollOption() { }
 
         public PollOption(Entity.PollOption option)
@@ -27,8 +24,6 @@ namespace VSPoll.API.Models
             //ToDo: normalize
             var totalVotes = option.Poll.Options.Sum(opt => opt.Votes.Count);
             Percentage = totalVotes == 0 ? 0 : option.Votes.Count / totalVotes;
-            if (option.Poll.ShowVoters)
-                Voters = option.Votes.Select(vote => new User(vote.User));
         }
     }
 }

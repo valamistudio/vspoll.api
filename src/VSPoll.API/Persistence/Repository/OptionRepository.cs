@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using VSPoll.API.Persistence.Context;
 using VSPoll.API.Persistence.Entity;
@@ -20,6 +21,23 @@ namespace VSPoll.API.Persistence.Repository
 
         public Task<bool> GetVoteStatusAsync(Guid option, int user)
             => context.PollVotes.AnyAsync(vote => vote.OptionId == option && vote.UserId == user);
+
+        public async Task<Models.Page<User>> GetVotersAsync(Models.VotersQuery query)
+        {
+            var items = context.PollVotes.AsQueryable();
+            items = items.Where(item => item.OptionId == query.Option);
+            var totalItems = await items.CountAsync();
+            items = items.OrderBy(item => item.ReferenceDate)
+                         .Skip((query.Page - 1) * query.PageSize)
+                         .Take(query.PageSize);
+            return new Models.Page<User>
+            {
+                Items = await items.Select(item => item.User).ToListAsync(),
+                Number = query.Page,
+                Size = query.PageSize,
+                TotalItems = totalItems,
+            };
+        }
 
         public async Task ClearVoteAsync(Guid poll, int user)
         {
