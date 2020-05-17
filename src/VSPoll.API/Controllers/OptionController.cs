@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VSPoll.API.Models;
@@ -26,7 +27,8 @@ namespace VSPoll.API.Controllers
         /// <param name="id">The option id</param>
         /// <returns>The option data</returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult> Get(Guid id)
+        [ProducesResponseType(typeof(PollOption), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<PollOption>> Get(Guid id)
         {
             if (!await optionService.CheckIfOptionExists(id))
                 return NotFound("Option doesn't exist");
@@ -41,7 +43,8 @@ namespace VSPoll.API.Controllers
         /// <returns>The list of voters</returns>
         [Route("voters")]
         [HttpGet]
-        public async Task<ActionResult> GetVoters(VotersQuery query)
+        [ProducesResponseType(typeof(Page<User>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<Page<User>>> GetVoters(VotersQuery query)
         {
             if (!await optionService.CheckIfOptionExists(query.Option))
                 return NotFound("Option doesn't exist");
@@ -55,7 +58,8 @@ namespace VSPoll.API.Controllers
         /// <param name="optionCreate">The option data</param>
         /// <returns>The option data</returns>
         [HttpPost]
-        public async Task<ActionResult> Post(PollOptionCreate optionCreate)
+        [ProducesResponseType(typeof(PollOption), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<PollOption>> Post(PollOptionCreate optionCreate)
         {
             if (optionCreate.Description.Length > 100)
                 return BadRequest("Description cannot be longer than 100 characters");

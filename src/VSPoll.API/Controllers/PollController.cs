@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VSPoll.API.Models;
@@ -20,6 +21,7 @@ namespace VSPoll.API.Controllers
         /// <param name="id">The poll id</param>
         /// <returns>The poll data</returns>
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(Poll), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Poll>> Get(Guid id)
         {
             if (!await pollService.CheckIfPollExists(id))
@@ -34,6 +36,7 @@ namespace VSPoll.API.Controllers
         /// <param name="poll">The poll data</param>
         /// <returns>The poll data</returns>
         [HttpPost]
+        [ProducesResponseType(typeof(Poll), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Poll>> Post(PollCreate poll)
         {
             if (poll.Description.Length > 100)
