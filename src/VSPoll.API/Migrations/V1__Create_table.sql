@@ -25,5 +25,6 @@ create table poll_options (
 create table poll_votes (
     option_id uuid not null references poll_options on delete cascade on update cascade,
     user_id integer not null references users on delete cascade on update cascade,
+    reference_date timestamp without time zone not null default now(),
     constraint pk_poll_vote primary key (option_id, user_id)
 );

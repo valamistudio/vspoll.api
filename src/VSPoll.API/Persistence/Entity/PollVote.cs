@@ -9,5 +9,7 @@ namespace VSPoll.API.Persistence.Entity
 
         public int UserId { get; set; }
         public virtual User User { get; set; } = null!;
+
+        public DateTime ReferenceDate { get; set; } = DateTime.Now;
     }
 }
