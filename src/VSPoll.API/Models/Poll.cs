@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using VSPoll.API.Utils;
 using Entity = VSPoll.API.Persistence.Entity;
 
 namespace VSPoll.API.Models
@@ -31,7 +32,12 @@ namespace VSPoll.API.Models
             ShowVoters = poll.ShowVoters;
             AllowAdd = poll.AllowAdd;
             EndDate = poll.EndDate;
-            Options = poll.Options.Select(option => new PollOption(option));
+            Options = poll.Options.Select(option => new PollOption(option)).ToList();
+            var totalVotes = Options.Sum(opt => opt.Votes);
+            foreach (var option in Options)
+                option.Percentage = totalVotes == 0 ? 0 : option.Votes / totalVotes;
+
+            MathUtils.NormalizePercentages(Options);
         }
     }
 }

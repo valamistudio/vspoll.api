@@ -22,21 +22,6 @@ namespace VSPoll.API.Controllers
         }
 
         /// <summary>
-        /// Gets data from an option
-        /// </summary>
-        /// <param name="id">The option id</param>
-        /// <returns>The option data</returns>
-        [HttpGet("{id}")]
-        [ProducesResponseType(typeof(PollOption), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<PollOption>> Get(Guid id)
-        {
-            if (!await optionService.CheckIfOptionExists(id))
-                return NotFound("Option doesn't exist");
-
-            return Ok(await optionService.GetOptionAsync(id));
-        }
-
-        /// <summary>
         /// Gets the voters of an option
         /// </summary>
         /// <param name="query">The query arguments</param>

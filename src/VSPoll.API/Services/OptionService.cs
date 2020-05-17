@@ -15,12 +15,6 @@ namespace VSPoll.API.Services
         public Task<bool> CheckIfOptionExists(Guid id)
             => optionRepository.CheckIfOptionExists(id);
 
-        public async Task<PollOption> GetOptionAsync(Guid id)
-        {
-            var option = await optionRepository.GetByIdAsync(id);
-            return new PollOption(option);
-        }
-
         public async Task<Page<User>> GetVotersAsync(VotersQuery query)
         {
             var voters = await optionRepository.GetVotersAsync(query);
