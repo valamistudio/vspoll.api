@@ -21,6 +21,20 @@ namespace VSPoll.API.Controllers
         }
 
         /// <summary>
+        /// Gets data from an option
+        /// </summary>
+        /// <param name="id">The option id</param>
+        /// <returns>The option data</returns>
+        [HttpGet("{id}")]
+        public async Task<ActionResult> Get(Guid id)
+        {
+            if (!await optionService.CheckIfOptionExists(id))
+                return NotFound("Option doesn't exist");
+
+            return Ok(await optionService.GetOptionAsync(id));
+        }
+
+        /// <summary>
         /// Creates a new option on a poll that allows it
         /// </summary>
         /// <param name="optionCreate">The option data</param>
