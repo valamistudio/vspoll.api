@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSPoll.API", "VSPoll.API\VSPoll.API.csproj", "{E78620F1-F9A1-423D-B094-461FC3C5DA2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VSPoll.API", "VSPoll.API\VSPoll.API.csproj", "{E78620F1-F9A1-423D-B094-461FC3C5DA2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSPoll.API.UnitTest", "VSPoll.API.UnitTest\VSPoll.API.UnitTest.csproj", "{69654462-5BF7-49CC-8C0F-0AA3EAE35FC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{E78620F1-F9A1-423D-B094-461FC3C5DA2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E78620F1-F9A1-423D-B094-461FC3C5DA2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E78620F1-F9A1-423D-B094-461FC3C5DA2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69654462-5BF7-49CC-8C0F-0AA3EAE35FC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69654462-5BF7-49CC-8C0F-0AA3EAE35FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69654462-5BF7-49CC-8C0F-0AA3EAE35FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69654462-5BF7-49CC-8C0F-0AA3EAE35FC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

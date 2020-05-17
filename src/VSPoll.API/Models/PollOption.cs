@@ -22,7 +22,7 @@ namespace VSPoll.API.Models
             Description = option.Description;
             Votes = option.Votes.Count;
             //ToDo: normalize
-            var totalVotes = option.Poll.Options.Sum(opt => opt.Votes.Count);
+            var totalVotes = option.Poll?.Options.Sum(opt => opt.Votes.Count) ?? 0;
             Percentage = totalVotes == 0 ? 0 : option.Votes.Count / totalVotes;
         }
     }
