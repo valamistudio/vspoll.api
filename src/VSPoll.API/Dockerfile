@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["VSPoll.API/VSPoll.API.csproj", "VSPoll.API/"]
+COPY ["VSPoll.API.csproj", "VSPoll.API/"]
 RUN dotnet restore "VSPoll.API/VSPoll.API.csproj"
 COPY . .
 WORKDIR "/src/VSPoll.API"
