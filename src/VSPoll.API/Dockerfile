@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["VSPoll.API.csproj", "VSPoll.API/"]
 RUN dotnet restore "VSPoll.API/VSPoll.API.csproj"
-COPY . .
+COPY . VSPoll.API/
 WORKDIR "/src/VSPoll.API"
 RUN dotnet build "VSPoll.API.csproj" -c Release -o /app/build
 
