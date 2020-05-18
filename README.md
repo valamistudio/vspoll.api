@@ -1,3 +1,6 @@
+![Build & Test](https://github.com/valamistudio/vspoll.api/workflows/Build%20&%20Test/badge.svg)
+![Docker Build](https://github.com/valamistudio/vspoll.api/workflows/Docker%20build/badge.svg)
+
 # Features
 - Telegram authentication for voting
   - You can create a poll without authenticating youself
