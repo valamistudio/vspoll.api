@@ -4,7 +4,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: VSPoll.API/Dockerfile
+      dockerfile: src/VSPoll.API/Dockerfile
     ports:
       - 5000:80
     env_file: .env
