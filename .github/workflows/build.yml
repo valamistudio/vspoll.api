@@ -1,0 +1,17 @@
+name: Build & Test
+on: [push, pull_request]
+
+jobs:
+  build:
+    run-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v1.4.0
+        with:
+          dotnet-version: '3.1.100'
+      - name: Build
+        run: dotnet build src/VSPoll.API.sln
+      - name: Test
+        run: dotnet test src/VSPoll.API.UnitTest/VSPoll.API.UnitTest.csproj
