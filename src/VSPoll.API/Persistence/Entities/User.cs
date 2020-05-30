@@ -1,6 +1,6 @@
 ﻿using VSPoll.API.Models;
 
-namespace VSPoll.API.Persistence.Entity
+namespace VSPoll.API.Persistence.Entities
 {
     public class User
     {

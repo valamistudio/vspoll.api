@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using VSPoll.API.Persistence.Context;
-using VSPoll.API.Persistence.Entity;
+using VSPoll.API.Persistence.Contexts;
+using VSPoll.API.Persistence.Entities;
 
-namespace VSPoll.API.Persistence.Repository
+namespace VSPoll.API.Persistence.Repositories
 {
     public class OptionRepository : IOptionRepository
     {
@@ -30,12 +30,12 @@ namespace VSPoll.API.Persistence.Repository
                          .Skip((query.Page - 1) * query.PageSize)
                          .Take(query.PageSize);
             return new Models.Page<User>
-            {
-                Items = await items.Select(item => item.User).ToListAsync(),
-                Number = query.Page,
-                Size = query.PageSize,
-                TotalItems = totalItems,
-            };
+            (
+                items: await items.Select(item => item.User).ToListAsync(),
+                number: query.Page,
+                size: query.PageSize,
+                totalItems: totalItems
+            );
         }
 
         public async Task ClearVoteAsync(Guid poll, int user)

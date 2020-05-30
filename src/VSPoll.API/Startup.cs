@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Npgsql;
 using VSPoll.API.Extensions;
-using VSPoll.API.Persistence.Context;
+using VSPoll.API.Persistence.Contexts;
 
 namespace VSPoll.API
 {

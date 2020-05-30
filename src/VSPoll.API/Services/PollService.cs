@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using VSPoll.API.Models;
-using VSPoll.API.Persistence.Repository;
-using Entity = VSPoll.API.Persistence.Entity;
+using VSPoll.API.Persistence.Repositories;
+using Entity = VSPoll.API.Persistence.Entities;
 
 namespace VSPoll.API.Services
 {

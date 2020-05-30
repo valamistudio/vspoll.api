@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using VSPoll.API.Persistence.Entity;
+using VSPoll.API.Persistence.Entities;
 
-namespace VSPoll.API.Persistence.Repository
+namespace VSPoll.API.Persistence.Repositories
 {
     public interface IPollRepository
     {

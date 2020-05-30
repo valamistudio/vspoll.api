@@ -2,7 +2,7 @@
 using FluentAssertions;
 using VSPoll.API.Models;
 using Xunit;
-using Entity = VSPoll.API.Persistence.Entity;
+using Entity = VSPoll.API.Persistence.Entities;
 
 namespace VSPoll.API.UnitTest.Models
 {

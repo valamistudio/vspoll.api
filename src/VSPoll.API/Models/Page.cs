@@ -6,22 +6,25 @@ namespace VSPoll.API.Models
 {
     public class Page<TItem>
     {
-        public int Size { get; set; }
+        public int Size { get; }
 
-        public int Number { get; set; }
+        public int Number { get; }
 
-        public int TotalItems { get; set; }
+        public int TotalItems { get; }
 
-        public IEnumerable<TItem> Items { get; set; } = null!;
+        public IEnumerable<TItem> Items { get; }
 
         public int TotalPages => Size > 0 ? (int)Math.Ceiling((decimal)TotalItems / Size) : 0;
 
-        public Page<TDestination> Map<TDestination>(Func<TItem, TDestination> mapFunction) => new Page<TDestination>
+        public Page(int size, int number, int totalItems, IEnumerable<TItem> items)
         {
-            Items = Items.Select(mapFunction),
-            Number = Number,
-            Size = Size,
-            TotalItems = TotalItems,
-        };
+            Size = size;
+            Number = number;
+            TotalItems = totalItems;
+            Items = items;
+        }
+
+        public Page<TDestination> Map<TDestination>(Func<TItem, TDestination> mapFunction)
+            => new Page<TDestination>(Size, Number, TotalItems, Items.Select(mapFunction));
     }
 }

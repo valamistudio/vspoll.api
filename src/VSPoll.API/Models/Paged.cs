@@ -1,24 +1,25 @@
 ﻿namespace VSPoll.API.Models
 {
-    public class Paged
+    public abstract class Paged
     {
         private const int DEFAULT_SIZE = 3;
+        private const int DEFAULT_PAGE = 1;
         private const int MAX_SIZE = 50;
 
-        private int page;
+        private int page = DEFAULT_PAGE;
         public int Page
         {
             get => page;
             set
             {
-                if (value < 1)
-                    page = 1;
+                if (value < DEFAULT_PAGE)
+                    page = DEFAULT_PAGE;
                 else
                     page = value;
             }
         }
 
-        private int pageSize;
+        private int pageSize = DEFAULT_SIZE;
         public int PageSize
         {
             get => pageSize;

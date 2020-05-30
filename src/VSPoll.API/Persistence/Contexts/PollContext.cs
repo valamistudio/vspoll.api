@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using VSPoll.API.Persistence.Entity;
+using VSPoll.API.Persistence.Entities;
 
-namespace VSPoll.API.Persistence.Context
+namespace VSPoll.API.Persistence.Contexts
 {
     public class PollContext : DbContext
     {

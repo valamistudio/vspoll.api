@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using VSPoll.API.Persistence.Repository;
+using VSPoll.API.Persistence.Repositories;
 using VSPoll.API.Services;
 
 namespace VSPoll.API.Extensions

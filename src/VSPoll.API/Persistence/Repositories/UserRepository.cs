@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using VSPoll.API.Persistence.Context;
-using VSPoll.API.Persistence.Entity;
+using VSPoll.API.Persistence.Contexts;
+using VSPoll.API.Persistence.Entities;
 
-namespace VSPoll.API.Persistence.Repository
+namespace VSPoll.API.Persistence.Repositories
 {
     public class UserRepository : IUserRepository
     {

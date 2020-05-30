@@ -1,4 +1,4 @@
-﻿using Entity = VSPoll.API.Persistence.Entity;
+﻿using Entity = VSPoll.API.Persistence.Entities;
 
 namespace VSPoll.API.Models
 {

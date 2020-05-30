@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VSPoll.API.Persistence.Entity
+namespace VSPoll.API.Persistence.Entities
 {
     public class PollVote
     {
