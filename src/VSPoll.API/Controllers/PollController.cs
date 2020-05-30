@@ -2,6 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using VSPoll.API.Extensions;
 using VSPoll.API.Models;
 using VSPoll.API.Services;
 
@@ -41,6 +42,9 @@ namespace VSPoll.API.Controllers
         {
             if (poll.Description.Length > 100)
                 return BadRequest("Description cannot be longer than 100 characters");
+
+            if (!poll.Options.AtLeast(2))
+                return BadRequest("A poll requires at least two options");
 
             return Ok(await pollService.InsertPollAsync(poll));
         }
