@@ -25,13 +25,13 @@ namespace VSPoll.API.UnitTest.Utils
 
             options.Count.Should().Be(3);
 
-            options.Contains(optionA).Should().BeTrue();
+            options.Should().Contain(optionA);
             optionA.Percentage.Should().Be(percentageA);
 
-            options.Contains(optionB).Should().BeTrue();
+            options.Should().Contain(optionB);
             optionB.Percentage.Should().Be(percentageB);
 
-            options.Contains(optionC).Should().BeTrue();
+            options.Should().Contain(optionC);
             optionC.Percentage.Should().Be(percentageC);
         }
 
