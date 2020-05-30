@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using FluentAssertions;
 using VSPoll.API.Extensions;
@@ -51,5 +51,19 @@ namespace VSPoll.API.UnitTest.Extensions
         [Fact]
         public void Count_Two_ShouldReturnFalseForOne()
             => new[] { new object() }.Count(2).Should().BeFalse();
+
+        [Fact]
+        public void AppendAll_Empty_ShouldReturnEmptyString()
+            => new char[0].AppendAll().Should().BeEmpty();
+
+        [Fact]
+        public void AppendAll_TestScenario1()
+        {
+            var chars = new[] { 'f', 'o', 'o' };
+            var ret = chars.AppendAll();
+            ret.Should().HaveLength(chars.Length);
+            for (var i = 0; i < chars.Length; i++)
+                ret[i].Should().Be(chars[i]);
+        }
     }
 }

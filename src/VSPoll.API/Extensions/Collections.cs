@@ -1,6 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Linq;
+using System.Text;
 
 namespace VSPoll.API.Extensions
 {
@@ -44,6 +46,33 @@ namespace VSPoll.API.Extensions
                     return false;
 
             return stop || !e.MoveNext();
+        }
+
+        /// <summary>
+        /// Repeats a <typeparamref name="T"/> for the number of times specified in <paramref name="count"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements to be returned.</typeparam>
+        /// <param name="source">The source item to be repeated.</param>
+        /// <param name="count">The number of times the repetition should occur.</param>
+        /// <returns>An <see cref="IEnumerable{T}"/> with the specified number of the same <paramref name="source"/> element.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="count"/> is negative.</exception>
+        [Pure]
+        public static IEnumerable<T> Repeat<T>(this T source, int count)
+            => Enumerable.Repeat(source, count);
+
+        /// <summary>
+        /// Append all characters from a collection to a <see cref="string"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="char"/> collection.</param>
+        /// <returns>The <see cref="string"/> containing all characters from the <paramref name="source"/> collection.</returns>
+        [Pure]
+        public static string AppendAll(this IEnumerable<char> source)
+        {
+            var sb = new StringBuilder();
+            foreach (var item in source)
+                sb.Append(item);
+
+            return sb.ToString();
         }
     }
 }
