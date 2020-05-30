@@ -131,6 +131,10 @@ namespace VSPoll.API.Controllers
             if (!await optionService.CheckIfOptionExistsAsync(vote.Option))
                 return NotFound("Option doesn't exist");
 
+            var poll = await optionService.GetPollFromOptionAsync(vote.Option);
+            if (poll.EndDate < DateTime.Now)
+                return Conflict("This poll has expired");
+
             var status = await optionService.GetVoteStatusAsync(vote.Option, vote.User.Id);
             if (!status)
                 return NotFound("User hasn't voted this option");
