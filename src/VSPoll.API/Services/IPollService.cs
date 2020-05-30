@@ -6,7 +6,7 @@ namespace VSPoll.API.Services
 {
     public interface IPollService
     {
-        Task<bool> CheckIfPollExists(Guid id);
+        Task<bool> CheckIfPollExistsAsync(Guid id);
         Task<Poll> GetPollAsync(Guid id);
         Task<Poll> InsertPollAsync(PollCreate pollCreate);
     }

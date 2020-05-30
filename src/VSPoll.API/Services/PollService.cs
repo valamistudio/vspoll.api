@@ -12,7 +12,7 @@ namespace VSPoll.API.Services
         public PollService(IPollRepository pollRepository)
             => this.pollRepository = pollRepository;
 
-        public Task<bool> CheckIfPollExists(Guid id)
+        public Task<bool> CheckIfPollExistsAsync(Guid id)
             => pollRepository.CheckIfPollExists(id);
 
         public async Task<Poll> GetPollAsync(Guid id)

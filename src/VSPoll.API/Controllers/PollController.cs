@@ -25,7 +25,7 @@ namespace VSPoll.API.Controllers
         [ProducesResponseType(typeof(Poll), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Poll>> Get(Guid id)
         {
-            if (!await pollService.CheckIfPollExists(id))
+            if (!await pollService.CheckIfPollExistsAsync(id))
                 return NotFound("Poll doesn't exist");
 
             return Ok(await pollService.GetPollAsync(id));

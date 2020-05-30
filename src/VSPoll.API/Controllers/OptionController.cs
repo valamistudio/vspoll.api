@@ -49,7 +49,7 @@ namespace VSPoll.API.Controllers
             if (optionCreate.Description.Length > 100)
                 return BadRequest("Description cannot be longer than 100 characters");
 
-            if (!await pollService.CheckIfPollExists(optionCreate.Poll))
+            if (!await pollService.CheckIfPollExistsAsync(optionCreate.Poll))
                 return NotFound("Poll doesn't exist");
 
             var poll = await pollService.GetPollAsync(optionCreate.Poll);
