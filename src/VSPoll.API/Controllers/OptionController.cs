@@ -34,7 +34,7 @@ namespace VSPoll.API.Controllers
             if (query is null)
                 return BadRequest("Missing payload");
 
-            if (!await optionService.CheckIfOptionExists(query.Option))
+            if (!await optionService.CheckIfOptionExistsAsync(query.Option))
                 return NotFound("Option doesn't exist");
 
             return Ok(await optionService.GetVotersAsync(query));
@@ -91,7 +91,7 @@ namespace VSPoll.API.Controllers
             if (!userService.Authenticate(vote.User, out var error))
                 return Unauthorized(error);
 
-            if (!await optionService.CheckIfOptionExists(vote.Option))
+            if (!await optionService.CheckIfOptionExistsAsync(vote.Option))
                 return NotFound("Option doesn't exist");
 
             var poll = await optionService.GetPollFromOptionAsync(vote.Option);
@@ -128,7 +128,7 @@ namespace VSPoll.API.Controllers
             if (!userService.Authenticate(vote.User, out var error))
                 return Unauthorized(error);
 
-            if (!await optionService.CheckIfOptionExists(vote.Option))
+            if (!await optionService.CheckIfOptionExistsAsync(vote.Option))
                 return NotFound("Option doesn't exist");
 
             var status = await optionService.GetVoteStatusAsync(vote.Option, vote.User.Id);

@@ -12,7 +12,7 @@ namespace VSPoll.API.Services
         public OptionService(IOptionRepository optionRepository)
             => this.optionRepository = optionRepository;
 
-        public Task<bool> CheckIfOptionExists(Guid id)
+        public Task<bool> CheckIfOptionExistsAsync(Guid id)
             => optionRepository.CheckIfOptionExists(id);
 
         public async Task<Page<User>> GetVotersAsync(VotersQuery query)
