@@ -137,7 +137,7 @@ namespace VSPoll.API.Controllers
 
             var status = await optionService.GetVoteStatusAsync(vote.Option, vote.User.Id);
             if (!status)
-                return NotFound("User hasn't voted this option");
+                return Ok();
 
             await optionService.UnvoteAsync(vote.Option, vote.User.Id);
             return Ok();
