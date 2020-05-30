@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using FluentAssertions;
 using VSPoll.API.Extensions;
@@ -14,7 +14,7 @@ namespace VSPoll.API.UnitTest.Extensions
 
         [Fact]
         public void AtLeast_Negative_ShouldThrowArgumentException()
-            => new Action(() => Enumerable.Empty<object>().AtLeast(-1)).Should().Throw<ArgumentException>();
+            => new Action(() => Enumerable.Empty<object>().AtLeast(-1)).Should().Throw<ArgumentOutOfRangeException>();
 
         [Fact]
         public void AtLeast_One_ShouldReturnFalseForEmpty()
@@ -34,7 +34,7 @@ namespace VSPoll.API.UnitTest.Extensions
 
         [Fact]
         public void Count_Negative_ShouldThrowArgumentException()
-            => new Action(() => Enumerable.Empty<object>().Count(-1)).Should().Throw<ArgumentException>();
+            => new Action(() => Enumerable.Empty<object>().Count(-1)).Should().Throw<ArgumentOutOfRangeException>();
 
         [Fact]
         public void Count_One_ShouldReturnFalseForEmpty()

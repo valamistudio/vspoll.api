@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 
@@ -13,7 +13,7 @@ namespace VSPoll.API.Extensions
         /// <param name="source">An <see cref="IEnumerable{T}"/> to count.</param>
         /// <param name="count">The expected number of items in <paramref name="source"/>.</param>
         /// <returns><see langword="true"/> if the <paramref name="source"/> count is equal to <paramref name="count"/>. Otherwise, <see langword="false"/>.</returns>
-        /// <exception cref="ArgumentException"><paramref name="count"/> is negative.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="count"/> is negative.</exception>
         [Pure]
         public static bool AtLeast<T>(this IEnumerable<T> source, int count)
             => source.count(count, true);
@@ -25,7 +25,7 @@ namespace VSPoll.API.Extensions
         /// <param name="source">An <see cref="IEnumerable{T}"/> to count.</param>
         /// <param name="count">The expected number of items in <paramref name="source"/>.</param>
         /// <returns><see langword="true"/> if the <paramref name="source"/> count is equal to <paramref name="count"/>. Otherwise, <see langword="false"/>.</returns>
-        /// <exception cref="ArgumentException"><paramref name="count"/> is negative.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="count"/> is negative.</exception>
         [Pure]
         public static bool Count<T>(this IEnumerable<T> source, int count)
             => source.count(count, false);
@@ -33,7 +33,7 @@ namespace VSPoll.API.Extensions
         private static bool count<T>(this IEnumerable<T> source, int count, bool stop)
         {
             if (count < 0)
-                throw new ArgumentException($"{nameof(count)} cannot be negative");
+                throw new ArgumentOutOfRangeException($"{nameof(count)} cannot be negative");
 
             if (count == 0)
                 return true;
