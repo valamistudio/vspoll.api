@@ -31,6 +31,9 @@ namespace VSPoll.API.Controllers
         [ProducesResponseType(typeof(Page<User>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Page<User>>> GetVoters(VotersQuery query)
         {
+            if (query is null)
+                return BadRequest("Missing payload");
+
             if (!await optionService.CheckIfOptionExists(query.Option))
                 return NotFound("Option doesn't exist");
 
@@ -46,6 +49,15 @@ namespace VSPoll.API.Controllers
         [ProducesResponseType(typeof(PollOption), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<PollOption>> Post(PollOptionCreate optionCreate)
         {
+            if (optionCreate is null)
+                return BadRequest("Missing payload");
+
+            if (optionCreate.Poll == default)
+                return BadRequest("An option requires a poll");
+
+            if (optionCreate.Description is null)
+                return BadRequest("An option requires a description");
+
             if (optionCreate.Description.Length > 100)
                 return BadRequest("Description cannot be longer than 100 characters");
 
@@ -70,6 +82,12 @@ namespace VSPoll.API.Controllers
         [HttpPost]
         public async Task<ActionResult> Vote(Vote vote)
         {
+            if (vote is null)
+                return BadRequest("Missing payload");
+
+            if (vote.User is null)
+                return BadRequest("Missing authentication data");
+
             if (!userService.Authenticate(vote.User, out var error))
                 return Unauthorized(error);
 
@@ -101,6 +119,12 @@ namespace VSPoll.API.Controllers
         [HttpDelete]
         public async Task<ActionResult> Unvote(Vote vote)
         {
+            if (vote is null)
+                return BadRequest("Missing payload");
+
+            if (vote.User is null)
+                return BadRequest("Missing authentication data");
+
             if (!userService.Authenticate(vote.User, out var error))
                 return Unauthorized(error);
 

@@ -40,10 +40,19 @@ namespace VSPoll.API.Controllers
         [ProducesResponseType(typeof(Poll), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Poll>> Post(PollCreate poll)
         {
+            if (poll is null)
+                return BadRequest("Missing payload");
+
+            if (poll.Description is null)
+                return BadRequest("A poll requires a description");
+
+            if (poll.EndDate == default)
+                return BadRequest("A poll required an ending date");
+
             if (poll.Description.Length > 100)
                 return BadRequest("Description cannot be longer than 100 characters");
 
-            if (!poll.Options.AtLeast(2))
+            if (poll.Options is null || !poll.Options.AtLeast(2))
                 return BadRequest("A poll requires at least two options");
 
             return Ok(await pollService.InsertPollAsync(poll));
