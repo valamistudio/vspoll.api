@@ -1,6 +1,4 @@
-﻿using VSPoll.API.Models;
-
-namespace VSPoll.API.Utils
+﻿namespace VSPoll.API.Utils
 {
     public class NormalizationWrapper<T>
     where T : IPercentage
