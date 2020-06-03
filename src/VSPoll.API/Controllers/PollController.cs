@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -13,8 +14,12 @@ namespace VSPoll.API.Controllers
     public class PollController : Controller
     {
         private readonly IPollService pollService;
-        public PollController(IPollService pollService)
-            => this.pollService = pollService;
+        private readonly IUserService userService;
+        public PollController(IPollService pollService, IUserService userService)
+        {
+            this.pollService = pollService;
+            this.userService = userService;
+        }
 
         /// <summary>
         /// Gets data from a poll
@@ -29,6 +34,31 @@ namespace VSPoll.API.Controllers
                 return NotFound("Poll doesn't exist");
 
             return Ok(await pollService.GetPollAsync(id));
+        }
+
+        /// <summary>
+        /// Gets the vote(s) of the authenticated user
+        /// </summary>
+        /// <param name="input">The input arguments</param>
+        /// <returns>A collection of option ids</returns>
+        [Route("votes")]
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<Guid>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Guid>>> GetVotes(UserVotes input)
+        {
+            if (input is null)
+                return BadRequest("Missing payload");
+
+            if (input.User is null)
+                return BadRequest("Missing authentication data");
+
+            if (!userService.Authenticate(input.User, out var error))
+                return Unauthorized(error);
+
+            if (!await pollService.CheckIfPollExistsAsync(input.Poll))
+                return NotFound("Poll doesn't exist");
+
+            return Ok(pollService.GetVotes(input.Poll, input.User.Id));
         }
 
         /// <summary>

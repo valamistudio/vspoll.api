@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using VSPoll.API.Persistence.Contexts;
@@ -16,6 +18,10 @@ namespace VSPoll.API.Persistence.Repositories
 
         public Task<Poll> GetByIdAsync(Guid id)
             => context.Polls.SingleAsync(poll => poll.Id == id);
+
+        public IEnumerable<Guid> GetVotes(Guid poll, int user)
+            => context.PollVotes.Where(vote => vote.Option.PollId == poll && vote.UserId == user)
+                                .Select(vote => vote.OptionId);
 
         public async Task InsertPollAsync(Poll poll)
         {

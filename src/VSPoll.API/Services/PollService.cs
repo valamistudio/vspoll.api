@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using VSPoll.API.Models;
 using VSPoll.API.Persistence.Repositories;
@@ -20,6 +21,9 @@ namespace VSPoll.API.Services
             var poll = await pollRepository.GetByIdAsync(id);
             return new Poll(poll);
         }
+
+        public IEnumerable<Guid> GetVotes(Guid poll, int user)
+            => pollRepository.GetVotes(poll, user);
 
         public async Task<Poll> InsertPollAsync(PollCreate pollCreate)
         {
