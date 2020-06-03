@@ -23,7 +23,16 @@ namespace VSPoll.API.Services
 
         public bool Authenticate(Authentication authentication, [NotNullWhen(false)] out string? error)
         {
-            var dataCheck = $"auth_date={authentication.AuthDate}\nfirst_name={authentication.FirstName}\nid={authentication.Id}\nlast_name={authentication.LastName}\nphoto_url={authentication.PhotoUrl}\nusername={authentication.Username}";
+            var dataCheck = $"auth_date={authentication.AuthDate}\nfirst_name={authentication.FirstName}\nid={authentication.Id}";
+            if (authentication.LastName != null)
+                dataCheck += $"\nlast_name={authentication.LastName}";
+
+            if (authentication.PhotoUrl != null)
+                dataCheck += $"\nphoto_url={authentication.PhotoUrl}";
+
+            if (authentication.Username != null)
+                dataCheck += $"\nusername={authentication.Username}";
+
             var token = configuration.GetSection("Secrets").GetValue<string>("BotToken");
             using var sha256 = new SHA256Managed();
             var secretKey = sha256.ComputeHash(Encoding.UTF8.GetBytes(token));
