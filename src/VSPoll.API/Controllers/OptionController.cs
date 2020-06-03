@@ -37,6 +37,10 @@ namespace VSPoll.API.Controllers
             if (!await optionService.CheckIfOptionExistsAsync(query.Option))
                 return NotFound("Option doesn't exist");
 
+            var poll = await optionService.GetPollFromOptionAsync(query.Option);
+            if (!poll.ShowVoters)
+                return Forbid("Poll is anonymous");
+
             return Ok(await optionService.GetVotersAsync(query));
         }
 

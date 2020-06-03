@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
@@ -35,12 +36,28 @@ namespace VSPoll.API.UnitTest.Controllers
         }
 
         [Fact]
-        public async Task GetVoters_KnownOption_ShouldReturnOk()
+        public async Task GetVoters_AnonymousPoll_ShouldReturnForbidden()
         {
             var query = new VotersQuery();
 
             var optionService = new Mock<IOptionService>();
             optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll());
+
+            var controller = new OptionController(null, optionService.Object, null);
+            var ret = await controller.GetVoters(query);
+            ret.Result.Should().BeOfType<ForbidResult>();
+        }
+
+        [Fact]
+        public async Task GetVoters_ValidInput_ShouldReturnOk()
+        {
+            var query = new VotersQuery();
+
+            var optionService = new Mock<IOptionService>();
+            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { ShowVoters = true });
+            optionService.Setup(x => x.GetVotersAsync(It.IsAny<VotersQuery>())).ReturnsAsync(new Page<User>(1, 1, 0, Enumerable.Empty<User>()));
 
             var controller = new OptionController(null, optionService.Object, null);
             var ret = await controller.GetVoters(query);
