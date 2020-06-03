@@ -223,7 +223,7 @@ namespace VSPoll.API.UnitTest.Controllers
 
             var optionService = new Mock<IOptionService>();
             optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.Now.AddDays(7) });
+            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.UtcNow.AddDays(7) });
             optionService.Setup(x => x.GetVoteStatusAsync(It.IsAny<Guid>(), It.IsAny<int>())).ReturnsAsync(true);
 
             var userService = new Mock<IUserService>();
@@ -241,7 +241,7 @@ namespace VSPoll.API.UnitTest.Controllers
 
             var optionService = new Mock<IOptionService>();
             optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.Now.AddDays(7) });
+            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.UtcNow.AddDays(7) });
             optionService.Setup(x => x.GetVoteStatusAsync(It.IsAny<Guid>(), It.IsAny<int>())).ReturnsAsync(false);
             optionService.Setup(x => x.ClearVoteAsync(It.IsAny<Guid>(), It.IsAny<int>())).Returns(Task.CompletedTask);
             optionService.Setup(x => x.VoteAsync(It.IsAny<Guid>(), It.IsAny<int>())).Returns(Task.CompletedTask);
@@ -327,7 +327,7 @@ namespace VSPoll.API.UnitTest.Controllers
 
             var optionService = new Mock<IOptionService>();
             optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.Now.AddDays(7) });
+            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.UtcNow.AddDays(7) });
             optionService.Setup(x => x.GetVoteStatusAsync(It.IsAny<Guid>(), It.IsAny<int>())).ReturnsAsync(false);
 
             var userService = new Mock<IUserService>();
@@ -345,7 +345,7 @@ namespace VSPoll.API.UnitTest.Controllers
 
             var optionService = new Mock<IOptionService>();
             optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.Now.AddDays(7) });
+            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.UtcNow.AddDays(7) });
             optionService.Setup(x => x.GetVoteStatusAsync(It.IsAny<Guid>(), It.IsAny<int>())).ReturnsAsync(true);
             optionService.Setup(x => x.UnvoteAsync(It.IsAny<Guid>(), It.IsAny<int>())).Returns(Task.CompletedTask);
 

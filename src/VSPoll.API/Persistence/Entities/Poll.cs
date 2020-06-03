@@ -19,7 +19,7 @@ namespace VSPoll.API.Persistence.Entities
 
         public bool AllowAdd { get; set; }
 
-        public DateTime EndDate { get; set; } = DateTime.Now.AddDays(7);
+        public DateTime EndDate { get; set; } = DateTime.UtcNow.AddDays(7);
 
         public virtual List<PollOption> Options { get; set; } = new List<PollOption>();
 

@@ -43,7 +43,7 @@ namespace VSPoll.API.Services
                 error = "Data is not from Telegram";
                 return false;
             }
-            if ((DateTime.Now - DateTimeOffset.FromUnixTimeSeconds(authentication.AuthDate).LocalDateTime).Days > 6)
+            if ((DateTime.UtcNow - DateTimeOffset.FromUnixTimeSeconds(authentication.AuthDate).LocalDateTime).Days > 6)
             {
                 error = "Data is outdated";
                 return false;

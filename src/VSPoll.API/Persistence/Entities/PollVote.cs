@@ -10,6 +10,6 @@ namespace VSPoll.API.Persistence.Entities
         public int UserId { get; set; }
         public virtual User User { get; set; } = null!;
 
-        public DateTime ReferenceDate { get; set; } = DateTime.Now;
+        public DateTime ReferenceDate { get; set; } = DateTime.UtcNow;
     }
 }

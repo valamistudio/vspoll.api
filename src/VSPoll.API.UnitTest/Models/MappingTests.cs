@@ -14,7 +14,7 @@ namespace VSPoll.API.UnitTest.Models
             var entity = new Entity.Poll
             {
                 Description = "Description",
-                EndDate = DateTime.Now,
+                EndDate = DateTime.UtcNow,
                 Id = Guid.NewGuid(),
             };
             var model = new Poll(entity);

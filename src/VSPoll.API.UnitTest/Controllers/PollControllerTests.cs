@@ -39,7 +39,7 @@ namespace VSPoll.API.UnitTest.Controllers
         private static PollCreate NewValidPollCreate() => new PollCreate
         {
             Description = "foo",
-            EndDate = DateTime.Now.AddDays(7),
+            EndDate = DateTime.UtcNow.AddDays(7),
             Options = new[] { "a", "b", "c" },
         };
 
