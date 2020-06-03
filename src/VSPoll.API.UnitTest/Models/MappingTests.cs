@@ -52,7 +52,6 @@ namespace VSPoll.API.UnitTest.Models
             };
             var model = new User(entity);
             model.FirstName.Should().Be(entity.FirstName);
-            model.Id.Should().Be(entity.Id);
             model.LastName.Should().Be(entity.LastName);
             model.PhotoUrl.Should().Be(entity.PhotoUrl);
             model.Username.Should().Be(entity.Username);
