@@ -2,7 +2,8 @@
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using VSPoll.API.Models;
+using VSPoll.API.Models.Input;
+using VSPoll.API.Models.Output;
 using VSPoll.API.Services;
 
 namespace VSPoll.API.Controllers

@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace VSPoll.API.Models
+namespace VSPoll.API.Models.Input
 {
     public class PollCreate
     {

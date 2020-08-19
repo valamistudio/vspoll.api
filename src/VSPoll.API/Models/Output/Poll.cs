@@ -4,7 +4,7 @@ using System.Linq;
 using VSPoll.API.Utils;
 using Entity = VSPoll.API.Persistence.Entities;
 
-namespace VSPoll.API.Models
+namespace VSPoll.API.Models.Output
 {
     public class Poll
     {

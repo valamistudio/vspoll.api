@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
-using VSPoll.API.Models;
+using VSPoll.API.Models.Input;
 
 namespace VSPoll.API.Services
 {

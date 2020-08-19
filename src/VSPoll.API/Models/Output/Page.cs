@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VSPoll.API.Models
+namespace VSPoll.API.Models.Output
 {
     public class Page<TItem>
     {

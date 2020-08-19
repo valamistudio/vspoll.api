@@ -1,6 +1,6 @@
 ﻿using System;
 using FluentAssertions;
-using VSPoll.API.Models;
+using VSPoll.API.Models.Output;
 using Xunit;
 using Entity = VSPoll.API.Persistence.Entities;
 

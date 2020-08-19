@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using VSPoll.API.Models;
+using VSPoll.API.Models.Input;
+using VSPoll.API.Models.Output;
 using VSPoll.API.Persistence.Repositories;
 using Entity = VSPoll.API.Persistence.Entities;
 

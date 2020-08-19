@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using VSPoll.API.Models;
+using VSPoll.API.Models.Input;
 using VSPoll.API.Persistence.Repositories;
 using Entity = VSPoll.API.Persistence.Entities;
 

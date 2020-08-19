@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VSPoll.API.Models
+namespace VSPoll.API.Models.Input
 {
     public abstract class Paged
     {

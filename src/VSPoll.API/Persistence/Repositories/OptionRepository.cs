@@ -21,7 +21,7 @@ namespace VSPoll.API.Persistence.Repositories
         public Task<bool> GetVoteStatusAsync(Guid option, int user)
             => context.PollVotes.AnyAsync(vote => vote.OptionId == option && vote.UserId == user);
 
-        public async Task<Models.Page<User>> GetVotersAsync(Models.VotersQuery query)
+        public async Task<Models.Output.Page<User>> GetVotersAsync(Models.Input.VotersQuery query)
         {
             var items = context.PollVotes.AsQueryable();
             items = items.Where(item => item.OptionId == query.Option);
@@ -29,7 +29,7 @@ namespace VSPoll.API.Persistence.Repositories
             items = items.OrderBy(item => item.ReferenceDate)
                          .Skip((query.Page - 1) * query.PageSize)
                          .Take(query.PageSize);
-            return new Models.Page<User>
+            return new Models.Output.Page<User>
             (
                 items: await items.Select(item => item.User).ToListAsync(),
                 number: query.Page,

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using FluentAssertions;
-using VSPoll.API.Models;
+using VSPoll.API.Models.Output;
 using VSPoll.API.Utils;
 using Xunit;
 

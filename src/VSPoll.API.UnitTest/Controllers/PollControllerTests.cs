@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using VSPoll.API.Controllers;
 using VSPoll.API.Extensions;
-using VSPoll.API.Models;
+using VSPoll.API.Models.Input;
+using VSPoll.API.Models.Output;
 using VSPoll.API.Services;
 using Xunit;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using VSPoll.API.Models;
+using VSPoll.API.Models.Input;
 
 namespace VSPoll.API.Persistence.Entities
 {

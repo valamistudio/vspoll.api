@@ -1,14 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace VSPoll.API.Models
+namespace VSPoll.API.Models.Input
 {
-    public class UserVotes
+    public class PollOptionCreate
     {
         [Required]
         public Guid Poll { get; set; }
 
         [Required]
-        public Authentication User { get; set; } = null!;
+        public string Description { get; set; } = null!;
     }
 }

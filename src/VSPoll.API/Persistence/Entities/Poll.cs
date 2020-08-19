@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using VSPoll.API.Models;
+using VSPoll.API.Models.Input;
 
 namespace VSPoll.API.Persistence.Entities
 {
