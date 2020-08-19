@@ -30,6 +30,9 @@ namespace VSPoll.API.Controllers
         [ProducesResponseType(typeof(Poll), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Poll>> Get(Guid id)
         {
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid payload");
+
             if (!await pollService.CheckIfPollExistsAsync(id))
                 return NotFound("Poll doesn't exist");
 
@@ -48,6 +51,9 @@ namespace VSPoll.API.Controllers
         {
             if (input is null)
                 return BadRequest("Missing payload");
+
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid payload");
 
             if (input.User is null)
                 return BadRequest("Missing authentication data");
@@ -72,6 +78,9 @@ namespace VSPoll.API.Controllers
         {
             if (poll is null)
                 return BadRequest("Missing payload");
+
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid payload");
 
             if (poll.Description is null)
                 return BadRequest("A poll requires a description");

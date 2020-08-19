@@ -34,6 +34,9 @@ namespace VSPoll.API.Controllers
             if (query is null)
                 return BadRequest("Missing payload");
 
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid payload");
+
             if (!await optionService.CheckIfOptionExistsAsync(query.Option))
                 return NotFound("Option doesn't exist");
 
@@ -55,6 +58,9 @@ namespace VSPoll.API.Controllers
         {
             if (optionCreate is null)
                 return BadRequest("Missing payload");
+
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid payload");
 
             if (optionCreate.Poll == default)
                 return BadRequest("An option requires a poll");
@@ -88,6 +94,9 @@ namespace VSPoll.API.Controllers
         {
             if (vote is null)
                 return BadRequest("Missing payload");
+
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid payload");
 
             if (vote.User is null)
                 return BadRequest("Missing authentication data");
@@ -125,6 +134,9 @@ namespace VSPoll.API.Controllers
         {
             if (vote is null)
                 return BadRequest("Missing payload");
+
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid payload");
 
             if (vote.User is null)
                 return BadRequest("Missing authentication data");
