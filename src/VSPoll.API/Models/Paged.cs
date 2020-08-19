@@ -1,4 +1,6 @@
-﻿namespace VSPoll.API.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VSPoll.API.Models
 {
     public abstract class Paged
     {
@@ -7,6 +9,7 @@
         private const int MAX_SIZE = 50;
 
         private int page = DEFAULT_PAGE;
+        [Required]
         public int Page
         {
             get => page;
@@ -20,6 +23,7 @@
         }
 
         private int pageSize = DEFAULT_SIZE;
+        [Required]
         public int PageSize
         {
             get => pageSize;
