@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -52,7 +52,6 @@ namespace VSPoll.API
 
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseAuthorization();
             app.UseEndpoints(endpoints => endpoints.MapControllers());
             ConfigureSwaggerEndpoint(app);
             ApplyMigrations(app);
