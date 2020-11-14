@@ -4,6 +4,7 @@ using FluentAssertions;
 using VSPoll.API.Extensions;
 using Xunit;
 
+#pragma warning disable CA1806 // Do not ignore method results
 namespace VSPoll.API.UnitTest.Extensions
 {
     public class CollectionsTests
@@ -54,7 +55,7 @@ namespace VSPoll.API.UnitTest.Extensions
 
         [Fact]
         public void AppendAll_Empty_ShouldReturnEmptyString()
-            => new char[0].AppendAll().Should().BeEmpty();
+            => Array.Empty<char>().AppendAll().Should().BeEmpty();
 
         [Fact]
         public void AppendAll_TestScenario1()

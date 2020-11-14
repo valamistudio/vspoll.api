@@ -37,7 +37,7 @@ namespace VSPoll.API
                 .UseSnakeCaseNamingConvention());
         }
 
-        private void ConfigureSwagger(IServiceCollection services)
+        private static void ConfigureSwagger(IServiceCollection services)
             => services.AddSwaggerGen(x => x.SwaggerDoc("v1", new OpenApiInfo
             {
                 Title = "VSPoll API",
