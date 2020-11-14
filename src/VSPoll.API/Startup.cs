@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,7 +38,7 @@ namespace VSPoll.API
         }
 
         private static void ConfigureSwagger(IServiceCollection services)
-            => services.AddSwaggerGen(x => x.SwaggerDoc("v1", new OpenApiInfo
+            => services.AddSwaggerGen(x => x.SwaggerDoc("v1", new()
             {
                 Title = "VSPoll API",
                 Version = "v1"

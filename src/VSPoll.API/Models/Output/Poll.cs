@@ -8,19 +8,19 @@ namespace VSPoll.API.Models.Output
 {
     public class Poll
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; init; }
 
-        public string Description { get; set; } = null!;
+        public string Description { get; init; } = null!;
 
-        public bool MultiVote { get; set; }
+        public bool MultiVote { get; init; }
 
-        public bool ShowVoters { get; set; }
+        public bool ShowVoters { get; init; }
 
-        public bool AllowAdd { get; set; }
+        public bool AllowAdd { get; init; }
 
-        public DateTime EndDate { get; set; }
+        public DateTime EndDate { get; init; }
 
-        public IEnumerable<PollOption> Options { get; set; } = Enumerable.Empty<PollOption>();
+        public IEnumerable<PollOption> Options { get; init; } = Enumerable.Empty<PollOption>();
 
         public Poll() { }
 

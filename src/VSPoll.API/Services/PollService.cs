@@ -20,7 +20,7 @@ namespace VSPoll.API.Services
         public async Task<Poll> GetPollAsync(Guid id)
         {
             var poll = await pollRepository.GetByIdAsync(id);
-            return new Poll(poll);
+            return new(poll);
         }
 
         public IEnumerable<Guid> GetVotes(Guid poll, int user)
@@ -28,9 +28,9 @@ namespace VSPoll.API.Services
 
         public async Task<Poll> InsertPollAsync(PollCreate pollCreate)
         {
-            var poll = new Entity.Poll(pollCreate);
+            Entity.Poll poll = new(pollCreate);
             await pollRepository.InsertPollAsync(poll);
-            return new Poll(poll);
+            return new(poll);
         }
     }
 }

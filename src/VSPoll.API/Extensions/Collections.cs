@@ -68,7 +68,7 @@ namespace VSPoll.API.Extensions
         [Pure]
         public static string AppendAll(this IEnumerable<char> source)
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new();
             foreach (var item in source)
                 sb.Append(item);
 

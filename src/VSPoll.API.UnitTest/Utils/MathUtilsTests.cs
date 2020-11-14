@@ -12,13 +12,13 @@ namespace VSPoll.API.UnitTest.Utils
         public void NormalizePercentages_NoChanges()
         {
             var percentageA = 20;
-            var optionA = new PollOption { Percentage = percentageA };
+            PollOption optionA = new() { Percentage = percentageA };
 
             var percentageB = 30;
-            var optionB = new PollOption { Percentage = percentageB };
+            PollOption optionB = new() { Percentage = percentageB };
 
             var percentageC = 50;
-            var optionC = new PollOption { Percentage = percentageC };
+            PollOption optionC = new() { Percentage = percentageC };
 
             var options = new[] { optionA, optionB, optionC }.ToList();
             MathUtils.NormalizePercentages(options);

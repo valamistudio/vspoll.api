@@ -25,7 +25,7 @@ namespace VSPoll.API.Services
         public async Task<Poll> GetPollFromOptionAsync(Guid id)
         {
             var option = await optionRepository.GetByIdAsync(id);
-            return new Poll(option.Poll);
+            return new(option.Poll);
         }
 
         public Task<bool> GetVoteStatusAsync(Guid option, int user)
@@ -35,14 +35,14 @@ namespace VSPoll.API.Services
             => optionRepository.ClearVoteAsync(poll, user);
 
         public Task VoteAsync(Guid option, int user)
-            => optionRepository.InsertVoteAsync(new Entity.PollVote
+            => optionRepository.InsertVoteAsync(new()
             {
                 OptionId = option,
                 UserId = user,
             });
 
         public Task UnvoteAsync(Guid option, int user)
-            => optionRepository.DeleteVoteAsync(new Entity.PollVote
+            => optionRepository.DeleteVoteAsync(new()
             {
                 OptionId = option,
                 UserId = user,
@@ -50,14 +50,14 @@ namespace VSPoll.API.Services
 
         public async Task<PollOption> InsertOptionAsync(PollOptionCreate optionCreate)
         {
-            var option = new Entity.PollOption(optionCreate);
+            Entity.PollOption option = new(optionCreate);
             await optionRepository.InsertOptionAsync(option);
-            return new PollOption(option);
+            return new(option);
         }
 
         public async Task<bool> CheckDuplicateAsync(PollOptionCreate optionCreate)
         {
-            var option = new Entity.PollOption(optionCreate);
+            Entity.PollOption option = new(optionCreate);
             return await optionRepository.CheckDuplicateAsync(option);
         }
     }

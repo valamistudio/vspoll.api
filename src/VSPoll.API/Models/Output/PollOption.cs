@@ -6,11 +6,11 @@ namespace VSPoll.API.Models.Output
 {
     public class PollOption : IPercentage
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; init; }
 
-        public string Description { get; set; } = null!;
+        public string Description { get; init; } = null!;
 
-        public int Votes { get; set; }
+        public int Votes { get; init; }
 
         public decimal Percentage { get; set; }
 

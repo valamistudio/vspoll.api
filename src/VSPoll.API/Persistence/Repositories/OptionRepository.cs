@@ -29,12 +29,12 @@ namespace VSPoll.API.Persistence.Repositories
             items = items.OrderBy(item => item.ReferenceDate)
                          .Skip((query.Page - 1) * query.PageSize)
                          .Take(query.PageSize);
-            return new Models.Output.Page<User>
+            return new
             (
-                items: await items.Select(item => item.User).ToListAsync(),
-                number: query.Page,
-                size: query.PageSize,
-                totalItems: totalItems
+                query.PageSize,
+                query.Page,
+                totalItems,
+                await items.Select(item => item.User).ToListAsync()
             );
         }
 

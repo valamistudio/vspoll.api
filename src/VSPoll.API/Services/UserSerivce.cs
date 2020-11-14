@@ -24,19 +24,19 @@ namespace VSPoll.API.Services
         public bool Authenticate(Authentication authentication, [NotNullWhen(false)] out string? error)
         {
             var dataCheck = $"auth_date={authentication.AuthDate}\nfirst_name={authentication.FirstName}\nid={authentication.Id}";
-            if (authentication.LastName != null)
+            if (authentication.LastName is not null)
                 dataCheck += $"\nlast_name={authentication.LastName}";
 
-            if (authentication.PhotoUrl != null)
+            if (authentication.PhotoUrl is not null)
                 dataCheck += $"\nphoto_url={authentication.PhotoUrl}";
 
-            if (authentication.Username != null)
+            if (authentication.Username is not null)
                 dataCheck += $"\nusername={authentication.Username}";
 
             var token = configuration.GetSection("Secrets").GetValue<string>("BotToken");
-            using var sha256 = new SHA256Managed();
+            using SHA256Managed sha256 = new();
             var secretKey = sha256.ComputeHash(Encoding.UTF8.GetBytes(token));
-            using var hmac = new HMACSHA256(secretKey);
+            using HMACSHA256 hmac = new(secretKey);
             var testHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(dataCheck));
             if (string.Join("", testHash.Select(b => b.ToString("x2"))) != authentication.Hash)
             {
@@ -53,6 +53,6 @@ namespace VSPoll.API.Services
         }
 
         public Task AddOrUpdateUserAsync(Authentication authentication)
-            => userRepository.AddOrUpdateUserAsync(new Entity.User(authentication));
+            => userRepository.AddOrUpdateUserAsync(new(authentication));
     }
 }

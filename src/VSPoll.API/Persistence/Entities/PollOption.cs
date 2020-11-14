@@ -15,7 +15,7 @@ namespace VSPoll.API.Persistence.Entities
         [MaxLength(100)]
         public string Description { get; set; } = null!;
 
-        public virtual List<PollVote> Votes { get; set; } = new List<PollVote>();
+        public virtual List<PollVote> Votes { get; set; } = new();
 
         public PollOption() { }
 

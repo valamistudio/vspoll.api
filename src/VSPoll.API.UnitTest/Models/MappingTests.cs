@@ -11,13 +11,13 @@ namespace VSPoll.API.UnitTest.Models
         [Fact]
         public void Poll_Mapping()
         {
-            var entity = new Entity.Poll
+            Entity.Poll entity = new()
             {
                 Description = "Description",
                 EndDate = DateTime.UtcNow,
                 Id = Guid.NewGuid(),
             };
-            var model = new Poll(entity);
+            Poll model = new(entity);
             model.AllowAdd.Should().Be(entity.AllowAdd);
             model.Description.Should().Be(entity.Description);
             model.EndDate.Should().Be(entity.EndDate);
@@ -29,12 +29,12 @@ namespace VSPoll.API.UnitTest.Models
         [Fact]
         public void PollOption_Mapping()
         {
-            var entity = new Entity.PollOption
+            Entity.PollOption entity = new()
             {
                 Description = "Description",
                 Id = Guid.NewGuid(),
             };
-            var model = new PollOption(entity);
+            PollOption model = new(entity);
             model.Description.Should().Be(entity.Description);
             model.Id.Should().Be(entity.Id);
         }
@@ -42,7 +42,7 @@ namespace VSPoll.API.UnitTest.Models
         [Fact]
         public void User_Mapping()
         {
-            var entity = new Entity.User
+            Entity.User entity = new()
             {
                 FirstName = "First",
                 Id = new Random().Next(),
@@ -50,7 +50,7 @@ namespace VSPoll.API.UnitTest.Models
                 PhotoUrl = "Url",
                 Username = "Username",
             };
-            var model = new User(entity);
+            User model = new(entity);
             model.FirstName.Should().Be(entity.FirstName);
             model.LastName.Should().Be(entity.LastName);
             model.PhotoUrl.Should().Be(entity.PhotoUrl);

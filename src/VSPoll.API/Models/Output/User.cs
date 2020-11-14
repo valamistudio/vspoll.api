@@ -4,13 +4,13 @@ namespace VSPoll.API.Models.Output
 {
     public class User
     {
-        public string FirstName { get; set; } = null!;
+        public string FirstName { get; init; } = null!;
 
-        public string? LastName { get; set; }
+        public string? LastName { get; init; }
 
-        public string? Username { get; set; }
+        public string? Username { get; init; }
 
-        public string? PhotoUrl { get; set; }
+        public string? PhotoUrl { get; init; }
 
         public User() { }
 

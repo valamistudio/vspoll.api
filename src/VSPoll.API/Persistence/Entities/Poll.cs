@@ -21,7 +21,7 @@ namespace VSPoll.API.Persistence.Entities
 
         public DateTime EndDate { get; set; } = DateTime.UtcNow.AddDays(7);
 
-        public virtual List<PollOption> Options { get; set; } = new List<PollOption>();
+        public virtual List<PollOption> Options { get; set; } = new();
 
         public Poll() { }
 
