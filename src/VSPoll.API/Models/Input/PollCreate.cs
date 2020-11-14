@@ -9,6 +9,7 @@ namespace VSPoll.API.Models.Input
     public class PollCreate
     {
         [Required]
+        [MaxLength(100)]
         public string Description { get; set; } = null!;
 
         [DefaultValue(false)]

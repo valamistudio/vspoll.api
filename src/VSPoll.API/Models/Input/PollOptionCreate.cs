@@ -9,6 +9,7 @@ namespace VSPoll.API.Models.Input
         public Guid Poll { get; set; }
 
         [Required]
+        [MaxLength(100)]
         public string Description { get; set; } = null!;
     }
 }
