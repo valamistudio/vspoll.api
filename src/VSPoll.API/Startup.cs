@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,8 +13,6 @@ namespace VSPoll.API
 {
     public class Startup
     {
-        private NpgsqlConnection sqlConnection = null!;
-
         public Startup(IConfiguration configuration)
             => Configuration = configuration;
 
@@ -29,13 +27,10 @@ namespace VSPoll.API
         }
 
         protected virtual void SetupDatabase(IServiceCollection services)
-        {
-            sqlConnection ??= new NpgsqlConnection(Configuration.GetConnectionString("DefaultConnection"));
-            services.AddDbContext<PollContext>(options => options
-                .UseNpgsql(sqlConnection)
-                .UseLazyLoadingProxies()
-                .UseSnakeCaseNamingConvention());
-        }
+            => services.AddDbContext<PollContext>(options => options
+                       .UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
+                       .UseLazyLoadingProxies()
+                       .UseSnakeCaseNamingConvention());
 
         private static void ConfigureSwagger(IServiceCollection services)
             => services.AddSwaggerGen(x => x.SwaggerDoc("v1", new()
@@ -70,7 +65,8 @@ namespace VSPoll.API
 
         protected virtual void ApplyMigrations(IApplicationBuilder app)
         {
-            var evolve = new Evolve.Evolve(sqlConnection)
+            using NpgsqlConnection sqlConnection = new(Configuration.GetConnectionString("DefaultConnection"));
+            Evolve.Evolve evolve = new(sqlConnection)
             {
                 IsEraseDisabled = true,
                 Locations = new[] { "Migrations" },
