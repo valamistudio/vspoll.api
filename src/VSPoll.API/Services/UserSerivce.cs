@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using VSPoll.API.Models.Input;
 using VSPoll.API.Persistence.Repositories;
-using Entity = VSPoll.API.Persistence.Entities;
 
 namespace VSPoll.API.Services
 {
