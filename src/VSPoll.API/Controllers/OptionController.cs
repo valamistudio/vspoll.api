@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VSPoll.API.Models.Input;
 using VSPoll.API.Models.Output;
@@ -29,7 +29,10 @@ namespace VSPoll.API.Controllers
         /// <returns>The list of voters</returns>
         [Route("voters")]
         [HttpGet]
-        [ProducesResponseType(typeof(Page<User>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Page<User>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Page<User>>> GetVoters(VotersQuery query)
         {
             if (query is null)
@@ -54,7 +57,10 @@ namespace VSPoll.API.Controllers
         /// <param name="optionCreate">The option data</param>
         /// <returns>The option data</returns>
         [HttpPost]
-        [ProducesResponseType(typeof(PollOption), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(PollOption), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status409Conflict)]
         public async Task<ActionResult<PollOption>> Post(PollOptionCreate optionCreate)
         {
             if (optionCreate is null)
@@ -91,6 +97,11 @@ namespace VSPoll.API.Controllers
         /// <param name="vote">The vote data</param>
         [Route("vote")]
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status409Conflict)]
         public async Task<ActionResult> Vote(Vote vote)
         {
             if (vote is null)
@@ -131,6 +142,11 @@ namespace VSPoll.API.Controllers
         /// <param name="vote">the vote data</param>
         [Route("vote")]
         [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status409Conflict)]
         public async Task<ActionResult> Unvote(Vote vote)
         {
             if (vote is null)

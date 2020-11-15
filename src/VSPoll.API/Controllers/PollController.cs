@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VSPoll.API.Extensions;
 using VSPoll.API.Models.Input;
@@ -28,7 +28,9 @@ namespace VSPoll.API.Controllers
         /// <param name="id">The poll id</param>
         /// <returns>The poll data</returns>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Poll), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Poll), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Poll>> Get(Guid id)
         {
             if (!ModelState.IsValid)
@@ -47,7 +49,10 @@ namespace VSPoll.API.Controllers
         /// <returns>A collection of option ids</returns>
         [Route("votes")]
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Guid>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IEnumerable<Guid>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<Guid>>> GetVotes(UserVotes input)
         {
             if (input is null)
@@ -74,7 +79,8 @@ namespace VSPoll.API.Controllers
         /// <param name="poll">The poll data</param>
         /// <returns>The poll data</returns>
         [HttpPost]
-        [ProducesResponseType(typeof(Poll), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Poll), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Poll>> Post(PollCreate poll)
         {
             if (poll is null)
