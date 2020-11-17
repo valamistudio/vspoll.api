@@ -13,7 +13,7 @@ jobs:
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v1.4.0
         with:
-          dotnet-version: '5.1'
+          dotnet-version: '5.0'
       - name: Build
         run: dotnet build src/VSPoll.API.sln
       - name: Test
