@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -46,32 +46,29 @@ namespace VSPoll.API.Controllers
         /// <summary>
         /// Gets the vote(s) of the authenticated user
         /// </summary>
-        /// <param name="input">The input arguments</param>
+        /// <param name="id">The poll id</param>
+        /// <param name="authentication">The authentication data</param>
         /// <returns>A collection of option ids</returns>
-        [Route("votes")]
-        [HttpGet]
+        [HttpGet("{id}/votes")]
         [ProducesResponseType(typeof(IEnumerable<Guid>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IEnumerable<Guid>>> GetVotes(UserVotes input)
+        public async Task<ActionResult<IEnumerable<Guid>>> GetVotes(Guid id, [FromBody] Authentication authentication)
         {
-            if (input is null)
-                return BadRequest("Missing payload");
+            if (authentication is null)
+                return BadRequest("Missing authentication payload");
 
             if (!ModelState.IsValid)
                 return BadRequest("Invalid payload");
 
-            if (input.User is null)
-                return BadRequest("Missing authentication data");
-
-            if (!userService.Authenticate(input.User, out var error))
+            if (!userService.Authenticate(authentication, out var error))
                 return Unauthorized(error);
 
-            if (!await pollService.CheckIfPollExistsAsync(input.Poll))
+            if (!await pollService.CheckIfPollExistsAsync(id))
                 return NotFound("Poll doesn't exist");
 
-            return Ok(pollService.GetVotes(input.Poll, input.User.Id));
+            return Ok(pollService.GetVotes(id, authentication.Id));
         }
 
         /// <summary>
@@ -82,7 +79,7 @@ namespace VSPoll.API.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(Poll), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Poll>> Post(PollCreate poll)
+        public async Task<ActionResult<Poll>> Post([FromBody] PollCreate poll)
         {
             if (poll is null)
                 return BadRequest("Missing payload");

@@ -38,49 +38,28 @@ namespace VSPoll.API.UnitTest.Controllers
             ret.Result.Should().BeOfType<OkObjectResult>();
         }
 
-        private static UserVotes NewValidUserVotes() => new UserVotes
-        {
-            Poll = Guid.NewGuid(),
-            User = new Authentication(),
-        };
-
-        [Fact]
-        public async Task GetVotes_MissingPayload_ShouldReturnBadRequest()
-        {
-            PollController controller = new(null, null);
-            var ret = await controller.GetVotes(null);
-            ret.Result.Should().BeOfType<BadRequestObjectResult>();
-        }
-
         [Fact]
         public async Task GetVotes_MissingAuthentication_ShouldReturnBadRequest()
         {
-            var input = NewValidUserVotes();
-            input.User = null;
-
             PollController controller = new(null, null);
-            var ret = await controller.GetVotes(input);
+            var ret = await controller.GetVotes(Guid.NewGuid(), null);
             ret.Result.Should().BeOfType<BadRequestObjectResult>();
         }
 
         [Fact]
         public async Task GetVotes_FailedAuthentication_ShouldReturnUnauthorized()
         {
-            var input = NewValidUserVotes();
-
             Mock<IUserService> userService = new();
             userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(false);
 
             PollController controller = new(null, userService.Object);
-            var ret = await controller.GetVotes(input);
+            var ret = await controller.GetVotes(Guid.NewGuid(), new());
             ret.Result.Should().BeOfType<UnauthorizedObjectResult>();
         }
 
         [Fact]
         public async Task GetVotes_UnknownPoll_ShouldReturnNotFound()
         {
-            var input = NewValidUserVotes();
-
             Mock<IPollService> pollService = new();
             pollService.Setup(x => x.CheckIfPollExistsAsync(It.IsAny<Guid>())).ReturnsAsync(false);
 
@@ -88,15 +67,13 @@ namespace VSPoll.API.UnitTest.Controllers
             userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
 
             PollController controller = new(pollService.Object, userService.Object);
-            var ret = await controller.GetVotes(input);
+            var ret = await controller.GetVotes(Guid.NewGuid(), new());
             ret.Result.Should().BeOfType<NotFoundObjectResult>();
         }
 
         [Fact]
         public async Task GetVotes_ValidInput_ShouldReturnOk()
         {
-            var input = NewValidUserVotes();
-
             Mock<IPollService> pollService = new();
             pollService.Setup(x => x.CheckIfPollExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
             pollService.Setup(x => x.GetVotes(It.IsAny<Guid>(), It.IsAny<int>())).Returns(Enumerable.Empty<Guid>());
@@ -105,7 +82,7 @@ namespace VSPoll.API.UnitTest.Controllers
             userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
 
             PollController controller = new(pollService.Object, userService.Object);
-            var ret = await controller.GetVotes(input);
+            var ret = await controller.GetVotes(Guid.NewGuid(), new());
             ret.Result.Should().BeOfType<OkObjectResult>();
         }
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,8 +27,7 @@ namespace VSPoll.API.Controllers
         /// </summary>
         /// <param name="query">The query arguments</param>
         /// <returns>The list of voters</returns>
-        [Route("voters")]
-        [HttpGet]
+        [HttpGet("voters")]
         [ProducesResponseType(typeof(Page<User>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status403Forbidden)]
@@ -61,7 +60,7 @@ namespace VSPoll.API.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(string), StatusCodes.Status409Conflict)]
-        public async Task<ActionResult<PollOption>> Post(PollOptionCreate optionCreate)
+        public async Task<ActionResult<PollOption>> Post([FromBody] PollOptionCreate optionCreate)
         {
             if (optionCreate is null)
                 return BadRequest("Missing payload");
@@ -94,85 +93,79 @@ namespace VSPoll.API.Controllers
         /// <summary>
         /// Cast a vote on an option
         /// </summary>
-        /// <param name="vote">The vote data</param>
-        [Route("vote")]
-        [HttpPost]
+        /// <param name="id">The option id</param>
+        /// <param name="authentication">The authentication data</param>
+        [HttpPost("{id}/vote")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(string), StatusCodes.Status409Conflict)]
-        public async Task<ActionResult> Vote(Vote vote)
+        public async Task<ActionResult> Vote(Guid id, [FromBody] Authentication authentication)
         {
-            if (vote is null)
-                return BadRequest("Missing payload");
+            if (authentication is null)
+                return BadRequest("Missing authentication payload");
 
             if (!ModelState.IsValid)
                 return BadRequest("Invalid payload");
 
-            if (vote.User is null)
-                return BadRequest("Missing authentication data");
-
-            if (!userService.Authenticate(vote.User, out var error))
+            if (!userService.Authenticate(authentication, out var error))
                 return Unauthorized(error);
 
-            if (!await optionService.CheckIfOptionExistsAsync(vote.Option))
+            if (!await optionService.CheckIfOptionExistsAsync(id))
                 return NotFound("Option doesn't exist");
 
-            var poll = await optionService.GetPollFromOptionAsync(vote.Option);
+            var poll = await optionService.GetPollFromOptionAsync(id);
             if (poll.EndDate < DateTime.UtcNow)
                 return Conflict("This poll has expired");
 
-            var status = await optionService.GetVoteStatusAsync(vote.Option, vote.User.Id);
+            var status = await optionService.GetVoteStatusAsync(id, authentication.Id);
             if (status)
                 return Ok();
 
-            await userService.AddOrUpdateUserAsync(vote.User);
+            await userService.AddOrUpdateUserAsync(authentication);
 
             if (!poll.MultiVote)
-                await optionService.ClearVoteAsync(poll.Id, vote.User.Id);
+                await optionService.ClearVoteAsync(poll.Id, authentication.Id);
 
-            await optionService.VoteAsync(vote.Option, vote.User.Id);
+            await optionService.VoteAsync(id, authentication.Id);
             return Ok();
         }
 
         /// <summary>
         /// Uncast a vote on an option
         /// </summary>
-        /// <param name="vote">the vote data</param>
-        [Route("vote")]
-        [HttpDelete]
+        /// <param name="id">The option id</param>
+        /// <param name="authentication">The authentication data</param>
+        [HttpDelete("{id}/vote")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(string), StatusCodes.Status409Conflict)]
-        public async Task<ActionResult> Unvote(Vote vote)
+        public async Task<ActionResult> Unvote(Guid id, [FromBody] Authentication authentication)
         {
-            if (vote is null)
-                return BadRequest("Missing payload");
+            if (authentication is null)
+                return BadRequest("Missing authentication payload");
 
             if (!ModelState.IsValid)
                 return BadRequest("Invalid payload");
 
-            if (vote.User is null)
-                return BadRequest("Missing authentication data");
-
-            if (!userService.Authenticate(vote.User, out var error))
+            if (!userService.Authenticate(authentication, out var error))
                 return Unauthorized(error);
 
-            if (!await optionService.CheckIfOptionExistsAsync(vote.Option))
+            if (!await optionService.CheckIfOptionExistsAsync(id))
                 return NotFound("Option doesn't exist");
 
-            var poll = await optionService.GetPollFromOptionAsync(vote.Option);
+            var poll = await optionService.GetPollFromOptionAsync(id);
             if (poll.EndDate < DateTime.UtcNow)
                 return Conflict("This poll has expired");
 
-            var status = await optionService.GetVoteStatusAsync(vote.Option, vote.User.Id);
+            var status = await optionService.GetVoteStatusAsync(id, authentication.Id);
             if (!status)
                 return Ok();
 
-            await optionService.UnvoteAsync(vote.Option, vote.User.Id);
+            await optionService.UnvoteAsync(id, authentication.Id);
             return Ok();
         }
     }
