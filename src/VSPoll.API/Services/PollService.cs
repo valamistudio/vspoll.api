@@ -17,10 +17,10 @@ namespace VSPoll.API.Services
         public Task<bool> CheckIfPollExistsAsync(Guid id)
             => pollRepository.CheckIfPollExists(id);
 
-        public async Task<Poll> GetPollAsync(Guid id)
+        public async Task<Poll> GetPollAsync(Guid id, OptionSorting sort = OptionSorting.Votes)
         {
             var poll = await pollRepository.GetByIdAsync(id);
-            return new(poll);
+            return new(poll, sort);
         }
 
         public IEnumerable<Guid> GetVotes(Guid poll, int user)

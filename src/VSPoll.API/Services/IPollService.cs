@@ -9,7 +9,7 @@ namespace VSPoll.API.Services
     public interface IPollService
     {
         Task<bool> CheckIfPollExistsAsync(Guid id);
-        Task<Poll> GetPollAsync(Guid id);
+        Task<Poll> GetPollAsync(Guid id, OptionSorting sort = OptionSorting.Votes);
         IEnumerable<Guid> GetVotes(Guid poll, int user);
         Task<Poll> InsertPollAsync(PollCreate pollCreate);
     }

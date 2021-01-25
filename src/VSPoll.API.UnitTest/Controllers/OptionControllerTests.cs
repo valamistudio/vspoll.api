@@ -121,7 +121,7 @@ namespace VSPoll.API.UnitTest.Controllers
 
             Mock<IPollService> pollService = new();
             pollService.Setup(x => x.CheckIfPollExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll());
+            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>(), It.IsAny<OptionSorting>())).ReturnsAsync(new Poll());
 
             OptionController controller = new(pollService.Object, null, null);
             var ret = await controller.Post(option);
@@ -135,7 +135,7 @@ namespace VSPoll.API.UnitTest.Controllers
 
             Mock<IPollService> pollService = new();
             pollService.Setup(x => x.CheckIfPollExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { AllowAdd = true });
+            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>(), It.IsAny<OptionSorting>())).ReturnsAsync(new Poll { AllowAdd = true });
 
             Mock<IOptionService> optionService = new();
             optionService.Setup(x => x.CheckDuplicateAsync(It.IsAny<PollOptionCreate>())).ReturnsAsync(true);
@@ -152,7 +152,7 @@ namespace VSPoll.API.UnitTest.Controllers
 
             Mock<IPollService> pollService = new();
             pollService.Setup(x => x.CheckIfPollExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { AllowAdd = true });
+            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>(), It.IsAny<OptionSorting>())).ReturnsAsync(new Poll { AllowAdd = true });
             pollService.Setup(x => x.InsertPollAsync(It.IsAny<PollCreate>())).ReturnsAsync(new Poll());
 
             Mock<IOptionService> optionService = new();

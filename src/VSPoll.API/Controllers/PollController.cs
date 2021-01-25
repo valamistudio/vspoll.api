@@ -26,12 +26,13 @@ namespace VSPoll.API.Controllers
         /// Gets data from a poll
         /// </summary>
         /// <param name="id">The poll id</param>
+        /// <param name="sort">The sorting algorithm: name, votes (default)</param>
         /// <returns>The poll data</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Poll), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Poll>> Get(Guid id)
+        public async Task<ActionResult<Poll>> Get(Guid id, OptionSorting sort = OptionSorting.Votes)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Invalid payload");
@@ -39,7 +40,7 @@ namespace VSPoll.API.Controllers
             if (!await pollService.CheckIfPollExistsAsync(id))
                 return NotFound("Poll doesn't exist");
 
-            return Ok(await pollService.GetPollAsync(id));
+            return Ok(await pollService.GetPollAsync(id, sort));
         }
 
         /// <summary>

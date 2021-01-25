@@ -31,7 +31,7 @@ namespace VSPoll.API.UnitTest.Controllers
         {
             Mock<IPollService> service = new();
             service.Setup(x => x.CheckIfPollExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            service.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll());
+            service.Setup(x => x.GetPollAsync(It.IsAny<Guid>(), It.IsAny<OptionSorting>())).ReturnsAsync(new Poll());
 
             PollController controller = new(service.Object, null);
             var ret = await controller.Get(Guid.NewGuid());
