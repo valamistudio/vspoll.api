@@ -3,9 +3,9 @@
 
 # Features
 - Telegram authentication for voting
-  - You can create a poll without authenticating youself
-  - You can see polls without authenticating youself, but you won't be able to vote
-- Sorting options (name/most voted)
+  - You can create a poll without authenticating yourself
+  - You can see polls without authenticating yourself, but you won't be able to vote
+- Sorting options (name/votes)
 - Poll shareable via id (random hash)
 - Customization on creation page
   - Single/multi-vote
