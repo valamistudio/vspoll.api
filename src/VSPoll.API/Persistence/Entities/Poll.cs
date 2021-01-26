@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using VSPoll.API.Models;
 using VSPoll.API.Models.Input;
 
 namespace VSPoll.API.Persistence.Entities
@@ -13,7 +14,7 @@ namespace VSPoll.API.Persistence.Entities
         [MaxLength(100)]
         public string Description { get; set; } = null!;
 
-        public bool MultiVote { get; set; }
+        public VotingSystem VotingSystem { get; set; } = VotingSystem.SingleOption;
 
         public bool ShowVoters { get; set; } = true;
 
@@ -30,7 +31,7 @@ namespace VSPoll.API.Persistence.Entities
             Description = poll.Description;
             AllowAdd = poll.AllowAdd;
             EndDate = poll.EndDate;
-            MultiVote = poll.MultiVote;
+            VotingSystem = poll.VotingSystem;
             Options = poll.Options.Select(option => new PollOption
             {
                 Description = option,

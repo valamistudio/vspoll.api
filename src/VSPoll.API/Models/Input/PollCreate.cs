@@ -14,8 +14,8 @@ namespace VSPoll.API.Models.Input
         [Trim]
         public string Description { get; set; } = null!;
 
-        [DefaultValue(false)]
-        public bool MultiVote { get; set; }
+        [DefaultValue(VotingSystem.SingleOption)]
+        public VotingSystem VotingSystem { get; set; } = VotingSystem.SingleOption;
 
         [DefaultValue(false)]
         public bool ShowVoters { get; set; }

@@ -1,7 +1,8 @@
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using VSPoll.API.Models;
 using VSPoll.API.Models.Input;
 using VSPoll.API.Models.Output;
 using VSPoll.API.Services;
@@ -44,7 +45,7 @@ namespace VSPoll.API.Controllers
                 return NotFound("Option doesn't exist");
 
             var poll = await optionService.GetPollFromOptionAsync(query.Option);
-            if (!poll.ShowVoters)
+            if (!poll!.ShowVoters)
                 return Forbid("Poll is anonymous");
 
             return Ok(await optionService.GetVotersAsync(query));
@@ -77,10 +78,10 @@ namespace VSPoll.API.Controllers
             if (optionCreate.Description.Length > 100)
                 return BadRequest("Description cannot be longer than 100 characters");
 
-            if (!await pollService.CheckIfPollExistsAsync(optionCreate.Poll))
+            var poll = await pollService.GetPollAsync(optionCreate.Poll);
+            if (poll is null)
                 return NotFound("Poll doesn't exist");
 
-            var poll = await pollService.GetPollAsync(optionCreate.Poll);
             if (!poll.AllowAdd)
                 return Conflict("This poll doesn't allow creating new options");
 
@@ -116,8 +117,11 @@ namespace VSPoll.API.Controllers
                 return NotFound("Option doesn't exist");
 
             var poll = await optionService.GetPollFromOptionAsync(id);
-            if (poll.EndDate < DateTime.UtcNow)
+            if (poll!.EndDate < DateTime.UtcNow)
                 return Conflict("This poll has expired");
+
+            if (poll.VotingSystem == VotingSystem.Ranked)
+                return BadRequest("This poll uses a ranked voting system, call POST poll/{id}/vote");
 
             var status = await optionService.GetVoteStatusAsync(id, authentication.Id);
             if (status)
@@ -125,7 +129,7 @@ namespace VSPoll.API.Controllers
 
             await userService.AddOrUpdateUserAsync(authentication);
 
-            if (!poll.MultiVote)
+            if (poll.VotingSystem == VotingSystem.SingleOption)
                 await optionService.ClearVoteAsync(poll.Id, authentication.Id);
 
             await optionService.VoteAsync(id, authentication.Id);
@@ -158,8 +162,11 @@ namespace VSPoll.API.Controllers
                 return NotFound("Option doesn't exist");
 
             var poll = await optionService.GetPollFromOptionAsync(id);
-            if (poll.EndDate < DateTime.UtcNow)
+            if (poll!.EndDate < DateTime.UtcNow)
                 return Conflict("This poll has expired");
+
+            if (poll.VotingSystem == VotingSystem.Ranked)
+                return BadRequest("This poll uses a ranked voting system, call POST poll/{id}/unvote");
 
             var status = await optionService.GetVoteStatusAsync(id, authentication.Id);
             if (!status)

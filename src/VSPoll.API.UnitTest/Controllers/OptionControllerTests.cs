@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using VSPoll.API.Controllers;
 using VSPoll.API.Extensions;
+using VSPoll.API.Models;
 using VSPoll.API.Models.Input;
 using VSPoll.API.Models.Output;
 using VSPoll.API.Services;
@@ -105,11 +106,7 @@ namespace VSPoll.API.UnitTest.Controllers
         public async Task Post_UnknownPoll_ShouldReturnNotFound()
         {
             var option = NewValidPollOptionCreate();
-
-            Mock<IPollService> pollService = new();
-            pollService.Setup(x => x.CheckIfPollExistsAsync(It.IsAny<Guid>())).ReturnsAsync(false);
-
-            OptionController controller = new(pollService.Object, null, null);
+            OptionController controller = new(Mock.Of<IPollService>(), null, null);
             var ret = await controller.Post(option);
             ret.Result.Should().BeOfType<NotFoundObjectResult>();
         }
@@ -120,8 +117,7 @@ namespace VSPoll.API.UnitTest.Controllers
             var option = NewValidPollOptionCreate();
 
             Mock<IPollService> pollService = new();
-            pollService.Setup(x => x.CheckIfPollExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>(), It.IsAny<OptionSorting>())).ReturnsAsync(new Poll());
+            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll());
 
             OptionController controller = new(pollService.Object, null, null);
             var ret = await controller.Post(option);
@@ -134,8 +130,7 @@ namespace VSPoll.API.UnitTest.Controllers
             var option = NewValidPollOptionCreate();
 
             Mock<IPollService> pollService = new();
-            pollService.Setup(x => x.CheckIfPollExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>(), It.IsAny<OptionSorting>())).ReturnsAsync(new Poll { AllowAdd = true });
+            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { AllowAdd = true });
 
             Mock<IOptionService> optionService = new();
             optionService.Setup(x => x.CheckDuplicateAsync(It.IsAny<PollOptionCreate>())).ReturnsAsync(true);
@@ -151,8 +146,7 @@ namespace VSPoll.API.UnitTest.Controllers
             var option = NewValidPollOptionCreate();
 
             Mock<IPollService> pollService = new();
-            pollService.Setup(x => x.CheckIfPollExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>(), It.IsAny<OptionSorting>())).ReturnsAsync(new Poll { AllowAdd = true });
+            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { AllowAdd = true });
             pollService.Setup(x => x.InsertPollAsync(It.IsAny<PollCreate>())).ReturnsAsync(new Poll());
 
             Mock<IOptionService> optionService = new();
@@ -209,6 +203,25 @@ namespace VSPoll.API.UnitTest.Controllers
             OptionController controller = new(null, optionService.Object, userService.Object);
             var ret = await controller.Vote(Guid.NewGuid(), new());
             ret.Should().BeOfType<ConflictObjectResult>();
+        }
+
+        [Fact]
+        public async Task Vote_RankedPoll_ShouldReturnBadRequest()
+        {
+            Mock<IOptionService> optionService = new();
+            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll
+            {
+                EndDate = DateTime.UtcNow.AddDays(7),
+                VotingSystem = VotingSystem.Ranked,
+            });
+
+            Mock<IUserService> userService = new();
+            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
+
+            OptionController controller = new(null, optionService.Object, userService.Object);
+            var ret = await controller.Vote(Guid.NewGuid(), new());
+            ret.Should().BeOfType<BadRequestObjectResult>();
         }
 
         [Fact]
@@ -292,6 +305,25 @@ namespace VSPoll.API.UnitTest.Controllers
             OptionController controller = new(null, optionService.Object, userService.Object);
             var ret = await controller.Unvote(Guid.NewGuid(), new());
             ret.Should().BeOfType<ConflictObjectResult>();
+        }
+
+        [Fact]
+        public async Task Unvote_RankedPoll_ShouldReturnBadRequest()
+        {
+            Mock<IOptionService> optionService = new();
+            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll
+            {
+                EndDate = DateTime.UtcNow.AddDays(7),
+                VotingSystem = VotingSystem.Ranked,
+            });
+
+            Mock<IUserService> userService = new();
+            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
+
+            OptionController controller = new(null, optionService.Object, userService.Object);
+            var ret = await controller.Unvote(Guid.NewGuid(), new());
+            ret.Should().BeOfType<BadRequestObjectResult>();
         }
 
         [Fact]

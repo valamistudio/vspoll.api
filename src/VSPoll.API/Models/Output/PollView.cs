@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Entity = VSPoll.API.Persistence.Entities;
 
 namespace VSPoll.API.Models.Output
 {
-    public class Poll
+    public class PollView
     {
         public Guid Id { get; init; }
 
         public string Description { get; init; } = null!;
 
-        public VotingSystem VotingSystem { get; init; } = VotingSystem.SingleOption;
+        public VotingSystem VotingSystem { get; init; }
 
         public bool ShowVoters { get; init; }
 
@@ -20,15 +19,17 @@ namespace VSPoll.API.Models.Output
 
         public DateTime EndDate { get; init; }
 
+        public int Voters { get; set; }
+
         public IEnumerable<PollOption> Options { get; set; } = Enumerable.Empty<PollOption>();
 
         [return: NotNullIfNotNull("poll")]
-        public static Poll? Of(Entity.Poll? poll)
+        public static PollView? Of(Poll? poll)
         {
             if (poll is null)
                 return null;
 
-            Poll model = new()
+            PollView model = new()
             {
                 Id = poll.Id,
                 Description = poll.Description,
@@ -37,13 +38,7 @@ namespace VSPoll.API.Models.Output
                 AllowAdd = poll.AllowAdd,
                 EndDate = poll.EndDate,
             };
-            //NRT bug when referencing method group
-            model.Options = poll.Options.Select(option => PollOption.Of(option));
-            model.Options = model.Options.ToList();
-            var totalVotes = model.Options.Sum(option => option.Votes);
-            foreach (var option in model.Options)
-                option.Percentage = totalVotes == 0 ? 0 : option.Votes / totalVotes;
-
+            model.Options = poll.Options;
             return model;
         }
     }

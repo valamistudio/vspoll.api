@@ -17,12 +17,12 @@ namespace VSPoll.API.UnitTest.Models
                 EndDate = DateTime.UtcNow,
                 Id = Guid.NewGuid(),
             };
-            Poll model = new(entity);
+            var model = Poll.Of(entity);
             model.AllowAdd.Should().Be(entity.AllowAdd);
             model.Description.Should().Be(entity.Description);
             model.EndDate.Should().Be(entity.EndDate);
             model.Id.Should().Be(entity.Id);
-            model.MultiVote.Should().Be(entity.MultiVote);
+            model.VotingSystem.Should().Be(entity.VotingSystem);
             model.ShowVoters.Should().Be(entity.ShowVoters);
         }
 
@@ -34,7 +34,7 @@ namespace VSPoll.API.UnitTest.Models
                 Description = "Description",
                 Id = Guid.NewGuid(),
             };
-            PollOption model = new(entity);
+            var model = PollOption.Of(entity);
             model.Description.Should().Be(entity.Description);
             model.Id.Should().Be(entity.Id);
         }

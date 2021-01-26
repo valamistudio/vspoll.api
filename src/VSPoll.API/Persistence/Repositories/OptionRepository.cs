@@ -15,8 +15,9 @@ namespace VSPoll.API.Persistence.Repositories
         public Task<bool> CheckIfOptionExists(Guid id)
             => context.PollOptions.AnyAsync(option => option.Id == id);
 
-        public Task<PollOption> GetByIdAsync(Guid id)
-            => context.PollOptions.SingleAsync(option => option.Id == id);
+        //throws warning when omitting async/await, don't know why
+        public async Task<PollOption?> GetByIdAsync(Guid id)
+            => await context.PollOptions.SingleOrDefaultAsync(option => option.Id == id);
 
         public Task<bool> GetVoteStatusAsync(Guid option, int user)
             => context.PollVotes.AnyAsync(vote => vote.OptionId == option && vote.UserId == user);
@@ -44,9 +45,9 @@ namespace VSPoll.API.Persistence.Repositories
             await context.SaveChangesAsync();
         }
 
-        public async Task InsertVoteAsync(PollVote vote)
+        public async Task InsertVotesAsync(params PollVote[] votes)
         {
-            context.PollVotes.Add(vote);
+            context.PollVotes.AddRange(votes);
             await context.SaveChangesAsync();
         }
 

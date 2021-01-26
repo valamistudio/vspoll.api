@@ -22,10 +22,10 @@ namespace VSPoll.API.Services
             return voters.Map(voter => new User(voter));
         }
 
-        public async Task<Poll> GetPollFromOptionAsync(Guid id)
+        public async Task<Poll?> GetPollFromOptionAsync(Guid id)
         {
             var option = await optionRepository.GetByIdAsync(id);
-            return new(option.Poll);
+            return Poll.Of(option?.Poll);
         }
 
         public Task<bool> GetVoteStatusAsync(Guid option, int user)
@@ -35,7 +35,7 @@ namespace VSPoll.API.Services
             => optionRepository.ClearVoteAsync(poll, user);
 
         public Task VoteAsync(Guid option, int user)
-            => optionRepository.InsertVoteAsync(new()
+            => optionRepository.InsertVotesAsync(new Entity.PollVote
             {
                 OptionId = option,
                 UserId = user,
@@ -52,13 +52,19 @@ namespace VSPoll.API.Services
         {
             Entity.PollOption option = new(optionCreate);
             await optionRepository.InsertOptionAsync(option);
-            return new(option);
+            return PollOption.Of(option);
         }
 
         public async Task<bool> CheckDuplicateAsync(PollOptionCreate optionCreate)
         {
             Entity.PollOption option = new(optionCreate);
             return await optionRepository.CheckDuplicateAsync(option);
+        }
+
+        public async Task<PollOption?> GetOptionAsync(Guid id)
+        {
+            var option = await optionRepository.GetByIdAsync(id);
+            return PollOption.Of(option);
         }
     }
 }
