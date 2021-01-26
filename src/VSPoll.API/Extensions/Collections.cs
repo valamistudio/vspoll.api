@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
+using VSPoll.API.Models.Input;
 
 namespace VSPoll.API.Extensions
 {
     public static class Collections
     {
+        [Pure]
+        public static IQueryable<T> Page<T>(this IQueryable<T> source, Paged query)
+            => source.Skip((query.Page - 1) * query.PageSize).Take(query.PageSize);
+
         /// <summary>
         /// Checks if the number of elements in a collection is equal or greater than the expected value.
         /// </summary>

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using VSPoll.API.Extensions;
 using VSPoll.API.Persistence.Contexts;
 using VSPoll.API.Persistence.Entities;
 
@@ -28,7 +29,7 @@ namespace VSPoll.API.Persistence.Repositories
             items = items.Where(item => item.OptionId == query.Option);
             var totalItems = await items.CountAsync();
             items = items.OrderBy(item => item.ReferenceDate)
-                         .Skip((query.Page - 1) * query.PageSize)
+                         .Page(query)
                          .Take(query.PageSize);
             return new
             (
