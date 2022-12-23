@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using EvolveDb;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -10,73 +11,72 @@ using Npgsql;
 using VSPoll.API.Extensions;
 using VSPoll.API.Persistence.Contexts;
 
-namespace VSPoll.API
+namespace VSPoll.API;
+
+[ExcludeFromCodeCoverage]
+public class Startup
 {
-    [ExcludeFromCodeCoverage]
-    public class Startup
+    public Startup(IConfiguration configuration)
+        => Configuration = configuration;
+
+    public IConfiguration Configuration { get; }
+
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
     {
-        public Startup(IConfiguration configuration)
-            => Configuration = configuration;
-
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        services.AddServices().AddRepositories().AddControllers().AddJsonOptions(options =>
         {
-            services.AddServices().AddRepositories().AddControllers().AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-            });
-            SetupDatabase(services);
-            ConfigureSwagger(services);
-        }
+            options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        });
+        SetupDatabase(services);
+        ConfigureSwagger(services);
+    }
 
-        protected virtual void SetupDatabase(IServiceCollection services)
-            => services.AddDbContext<PollContext>(options => options
-                       .UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
-                       .UseLazyLoadingProxies()
-                       .UseSnakeCaseNamingConvention());
+    protected virtual void SetupDatabase(IServiceCollection services)
+        => services.AddDbContext<PollContext>(options => options
+            .UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
+            .UseLazyLoadingProxies()
+            .UseSnakeCaseNamingConvention());
 
-        private static void ConfigureSwagger(IServiceCollection services)
-            => services.AddSwaggerGen(x => x.SwaggerDoc("v1", new()
-            {
-                Title = "VSPoll API",
-                Version = "v1"
-            }));
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    private static void ConfigureSwagger(IServiceCollection services)
+        => services.AddSwaggerGen(x => x.SwaggerDoc("v1", new()
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                ConfigureSwaggerEndpoint(app);
-            }
-            app.UseHttpsRedirection();
-            app.UseRouting();
-            app.UseEndpoints(endpoints => endpoints.MapControllers());
-            ApplyMigrations(app);
-        }
+            Title = "VSPoll API",
+            Version = "v1",
+        }));
 
-        private static void ConfigureSwaggerEndpoint(IApplicationBuilder app)
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
         {
-            app.UseSwagger();
-            app.UseSwaggerUI(x =>
-            {
-                x.SwaggerEndpoint("/Swagger/v1/swagger.json", "VSPoll API");
-                x.RoutePrefix = string.Empty;
-            });
+            app.UseDeveloperExceptionPage();
+            ConfigureSwaggerEndpoint(app);
         }
+        app.UseHttpsRedirection();
+        app.UseRouting();
+        app.UseEndpoints(endpoints => endpoints.MapControllers());
+        ApplyMigrations(app);
+    }
 
-        protected virtual void ApplyMigrations(IApplicationBuilder app)
+    private static void ConfigureSwaggerEndpoint(IApplicationBuilder app)
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI(x =>
         {
-            using NpgsqlConnection sqlConnection = new(Configuration.GetConnectionString("DefaultConnection"));
-            Evolve.Evolve evolve = new(sqlConnection)
-            {
-                IsEraseDisabled = true,
-                Locations = new[] { "Migrations" },
-            };
-            evolve.Migrate();
-        }
+            x.SwaggerEndpoint("/Swagger/v1/swagger.json", "VSPoll API");
+            x.RoutePrefix = string.Empty;
+        });
+    }
+
+    protected virtual void ApplyMigrations(IApplicationBuilder app)
+    {
+        using NpgsqlConnection sqlConnection = new(Configuration.GetConnectionString("DefaultConnection"));
+        Evolve evolve = new(sqlConnection)
+        {
+            IsEraseDisabled = true,
+            Locations = new[] { "Migrations" },
+        };
+        evolve.Migrate();
     }
 }

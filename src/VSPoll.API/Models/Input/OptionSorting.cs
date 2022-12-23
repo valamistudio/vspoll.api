@@ -1,8 +1,7 @@
-﻿namespace VSPoll.API.Models.Input
+﻿namespace VSPoll.API.Models.Input;
+
+public enum OptionSorting
 {
-    public enum OptionSorting
-    {
-        Name,
-        Votes,
-    }
+    Name,
+    Votes,
 }

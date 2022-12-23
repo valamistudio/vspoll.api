@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -12,351 +13,351 @@ using VSPoll.API.Models.Output;
 using VSPoll.API.Services;
 using Xunit;
 
-namespace VSPoll.API.UnitTest.Controllers
+namespace VSPoll.API.UnitTest.Controllers;
+
+[SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
+public class OptionControllerTests
 {
-    public class OptionControllerTests
+    [Fact]
+    public async Task GetVoters_MissingPayload_ShouldReturnBadRequest()
     {
-        [Fact]
-        public async Task GetVoters_MissingPayload_ShouldReturnBadRequest()
+        OptionController controller = new(null, null, null);
+        var ret = await controller.GetVoters(null);
+        ret.Result.Should().BeOfType<BadRequestObjectResult>();
+    }
+
+    [Fact]
+    public async Task GetVoters_UnknownOption_ShouldReturnNotFound()
+    {
+        VotersQuery query = new();
+
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(false);
+
+        OptionController controller = new(null, optionService.Object, null);
+        var ret = await controller.GetVoters(query);
+        ret.Result.Should().BeOfType<NotFoundObjectResult>();
+    }
+
+    [Fact]
+    public async Task GetVoters_AnonymousPoll_ShouldReturnForbidden()
+    {
+        VotersQuery query = new();
+
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+        optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll());
+
+        OptionController controller = new(null, optionService.Object, null);
+        var ret = await controller.GetVoters(query);
+        ret.Result.Should().BeOfType<ForbidResult>();
+    }
+
+    [Fact]
+    public async Task GetVoters_ValidInput_ShouldReturnOk()
+    {
+        VotersQuery query = new();
+
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+        optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { ShowVoters = true });
+        optionService.Setup(x => x.GetVotersAsync(It.IsAny<VotersQuery>())).ReturnsAsync(new Page<User>(1, 1, 0, Enumerable.Empty<User>()));
+
+        OptionController controller = new(null, optionService.Object, null);
+        var ret = await controller.GetVoters(query);
+        ret.Result.Should().BeOfType<OkObjectResult>();
+    }
+
+    private static PollOptionCreate NewValidPollOptionCreate() => new()
+    {
+        Description = "foo",
+        Poll = Guid.NewGuid(),
+    };
+
+    [Fact]
+    public async Task Post_MissingPayload_ShouldReturnBadRequest()
+    {
+        OptionController controller = new(null, null, null);
+        var ret = await controller.Post(null);
+        ret.Result.Should().BeOfType<BadRequestObjectResult>();
+    }
+
+    [Fact]
+    public async Task Post_MissingDescription_ShouldReturnBadRequest()
+    {
+        var option = NewValidPollOptionCreate();
+        option.Description = null;
+
+        OptionController controller = new(null, null, null);
+        var ret = await controller.Post(option);
+        ret.Result.Should().BeOfType<BadRequestObjectResult>();
+    }
+
+    [Fact]
+    public async Task Post_LongDescription_ShouldReturnBadRequest()
+    {
+        var option = NewValidPollOptionCreate();
+        option.Description = 'a'.Repeat(101).AppendAll();
+
+        OptionController controller = new(null, null, null);
+        var ret = await controller.Post(option);
+        ret.Result.Should().BeOfType<BadRequestObjectResult>();
+    }
+
+    [Fact]
+    public async Task Post_UnknownPoll_ShouldReturnNotFound()
+    {
+        var option = NewValidPollOptionCreate();
+        OptionController controller = new(Mock.Of<IPollService>(), null, null);
+        var ret = await controller.Post(option);
+        ret.Result.Should().BeOfType<NotFoundObjectResult>();
+    }
+
+    [Fact]
+    public async Task Post_PollDoesntAllowNewOptions_ShouldReturnConflict()
+    {
+        var option = NewValidPollOptionCreate();
+
+        Mock<IPollService> pollService = new();
+        pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll());
+
+        OptionController controller = new(pollService.Object, null, null);
+        var ret = await controller.Post(option);
+        ret.Result.Should().BeOfType<ConflictObjectResult>();
+    }
+
+    [Fact]
+    public async Task Post_DuplicateOption_ShouldReturnConflict()
+    {
+        var option = NewValidPollOptionCreate();
+
+        Mock<IPollService> pollService = new();
+        pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { AllowAdd = true });
+
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckDuplicateAsync(It.IsAny<PollOptionCreate>())).ReturnsAsync(true);
+
+        OptionController controller = new(pollService.Object, optionService.Object, null);
+        var ret = await controller.Post(option);
+        ret.Result.Should().BeOfType<ConflictObjectResult>();
+    }
+
+    [Fact]
+    public async Task Post_ValidOption_ShouldReturnOk()
+    {
+        var option = NewValidPollOptionCreate();
+
+        Mock<IPollService> pollService = new();
+        pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { AllowAdd = true });
+        pollService.Setup(x => x.InsertPollAsync(It.IsAny<PollCreate>())).ReturnsAsync(new Poll());
+
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckDuplicateAsync(It.IsAny<PollOptionCreate>())).ReturnsAsync(false);
+
+        OptionController controller = new(pollService.Object, optionService.Object, null);
+        var ret = await controller.Post(option);
+        ret.Result.Should().BeOfType<OkObjectResult>();
+    }
+
+    [Fact]
+    public async Task Vote_MissingAuthentication_ShouldReturnBadRequest()
+    {
+        OptionController controller = new(null, null, null);
+        var ret = await controller.Vote(Guid.NewGuid(), null);
+        ret.Should().BeOfType<BadRequestObjectResult>();
+    }
+
+    [Fact]
+    public async Task Vote_FailedAuthentication_ShouldReturnUnauthorized()
+    {
+        Mock<IUserService> userService = new();
+        userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(false);
+
+        OptionController controller = new(null, null, userService.Object);
+        var ret = await controller.Vote(Guid.NewGuid(), new());
+        ret.Should().BeOfType<UnauthorizedObjectResult>();
+    }
+
+    [Fact]
+    public async Task Vote_UnknownOption_ShouldReturnNotFound()
+    {
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(false);
+
+        Mock<IUserService> userService = new();
+        userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
+
+        OptionController controller = new(null, optionService.Object, userService.Object);
+        var ret = await controller.Vote(Guid.NewGuid(), new());
+        ret.Should().BeOfType<NotFoundObjectResult>();
+    }
+
+    [Fact]
+    public async Task Vote_PollExpired_ShouldReturnConflict()
+    {
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+        optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll());
+
+        Mock<IUserService> userService = new();
+        userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
+
+        OptionController controller = new(null, optionService.Object, userService.Object);
+        var ret = await controller.Vote(Guid.NewGuid(), new());
+        ret.Should().BeOfType<ConflictObjectResult>();
+    }
+
+    [Fact]
+    public async Task Vote_RankedPoll_ShouldReturnBadRequest()
+    {
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+        optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll
         {
-            OptionController controller = new(null, null, null);
-            var ret = await controller.GetVoters(null);
-            ret.Result.Should().BeOfType<BadRequestObjectResult>();
-        }
+            EndDate = DateTime.UtcNow.AddDays(7),
+            VotingSystem = VotingSystem.Ranked,
+        });
 
-        [Fact]
-        public async Task GetVoters_UnknownOption_ShouldReturnNotFound()
+        Mock<IUserService> userService = new();
+        userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
+
+        OptionController controller = new(null, optionService.Object, userService.Object);
+        var ret = await controller.Vote(Guid.NewGuid(), new());
+        ret.Should().BeOfType<BadRequestObjectResult>();
+    }
+
+    [Fact]
+    public async Task Vote_AlreadyVoted_ShouldReturnOk()
+    {
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+        optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.UtcNow.AddDays(7) });
+        optionService.Setup(x => x.GetVoteStatusAsync(It.IsAny<Guid>(), It.IsAny<int>())).ReturnsAsync(true);
+
+        Mock<IUserService> userService = new();
+        userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
+
+        OptionController controller = new(null, optionService.Object, userService.Object);
+        var ret = await controller.Vote(Guid.NewGuid(), new());
+        ret.Should().BeOfType<OkResult>();
+    }
+
+    [Fact]
+    public async Task Vote_NotVoted_ShouldReturnOk()
+    {
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+        optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.UtcNow.AddDays(7) });
+        optionService.Setup(x => x.GetVoteStatusAsync(It.IsAny<Guid>(), It.IsAny<int>())).ReturnsAsync(false);
+        optionService.Setup(x => x.ClearVoteAsync(It.IsAny<Guid>(), It.IsAny<int>())).Returns(Task.CompletedTask);
+        optionService.Setup(x => x.VoteAsync(It.IsAny<Guid>(), It.IsAny<int>())).Returns(Task.CompletedTask);
+
+        Mock<IUserService> userService = new();
+        userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
+        userService.Setup(x => x.AddOrUpdateUserAsync(It.IsAny<Authentication>())).Returns(Task.CompletedTask);
+
+        OptionController controller = new(null, optionService.Object, userService.Object);
+        var ret = await controller.Vote(Guid.NewGuid(), new());
+        ret.Should().BeOfType<OkResult>();
+    }
+
+    [Fact]
+    public async Task Unvote_MissingAuthentication_ShouldReturnBadRequest()
+    {
+        OptionController controller = new(null, null, null);
+        var ret = await controller.Unvote(Guid.NewGuid(), null);
+        ret.Should().BeOfType<BadRequestObjectResult>();
+    }
+
+    [Fact]
+    public async Task Unvote_FailedAuthentication_ShouldReturnUnauthorized()
+    {
+        Mock<IUserService> userService = new();
+        userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(false);
+
+        OptionController controller = new(null, null, userService.Object);
+        var ret = await controller.Unvote(Guid.NewGuid(), new());
+        ret.Should().BeOfType<UnauthorizedObjectResult>();
+    }
+
+    [Fact]
+    public async Task Unvote_UnknownOption_ShouldReturnNotFound()
+    {
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(false);
+
+        Mock<IUserService> userService = new();
+        userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
+
+        OptionController controller = new(null, optionService.Object, userService.Object);
+        var ret = await controller.Unvote(Guid.NewGuid(), new());
+        ret.Should().BeOfType<NotFoundObjectResult>();
+    }
+
+    [Fact]
+    public async Task Unvote_PollExpired_ShouldReturnConflict()
+    {
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+        optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll());
+
+        Mock<IUserService> userService = new();
+        userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
+
+        OptionController controller = new(null, optionService.Object, userService.Object);
+        var ret = await controller.Unvote(Guid.NewGuid(), new());
+        ret.Should().BeOfType<ConflictObjectResult>();
+    }
+
+    [Fact]
+    public async Task Unvote_RankedPoll_ShouldReturnBadRequest()
+    {
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+        optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll
         {
-            VotersQuery query = new();
+            EndDate = DateTime.UtcNow.AddDays(7),
+            VotingSystem = VotingSystem.Ranked,
+        });
 
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(false);
+        Mock<IUserService> userService = new();
+        userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
 
-            OptionController controller = new(null, optionService.Object, null);
-            var ret = await controller.GetVoters(query);
-            ret.Result.Should().BeOfType<NotFoundObjectResult>();
-        }
+        OptionController controller = new(null, optionService.Object, userService.Object);
+        var ret = await controller.Unvote(Guid.NewGuid(), new());
+        ret.Should().BeOfType<BadRequestObjectResult>();
+    }
 
-        [Fact]
-        public async Task GetVoters_AnonymousPoll_ShouldReturnForbidden()
-        {
-            VotersQuery query = new();
+    [Fact]
+    public async Task Unvote_NotVoted_ShouldReturnOk()
+    {
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+        optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.UtcNow.AddDays(7) });
+        optionService.Setup(x => x.GetVoteStatusAsync(It.IsAny<Guid>(), It.IsAny<int>())).ReturnsAsync(false);
 
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll());
+        Mock<IUserService> userService = new();
+        userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
 
-            OptionController controller = new(null, optionService.Object, null);
-            var ret = await controller.GetVoters(query);
-            ret.Result.Should().BeOfType<ForbidResult>();
-        }
+        OptionController controller = new(null, optionService.Object, userService.Object);
+        var ret = await controller.Unvote(Guid.NewGuid(), new());
+        ret.Should().BeOfType<OkResult>();
+    }
 
-        [Fact]
-        public async Task GetVoters_ValidInput_ShouldReturnOk()
-        {
-            VotersQuery query = new();
+    [Fact]
+    public async Task Unvote_Voted_ShouldReturnOk()
+    {
+        Mock<IOptionService> optionService = new();
+        optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
+        optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.UtcNow.AddDays(7) });
+        optionService.Setup(x => x.GetVoteStatusAsync(It.IsAny<Guid>(), It.IsAny<int>())).ReturnsAsync(true);
+        optionService.Setup(x => x.UnvoteAsync(It.IsAny<Guid>(), It.IsAny<int>())).Returns(Task.CompletedTask);
 
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { ShowVoters = true });
-            optionService.Setup(x => x.GetVotersAsync(It.IsAny<VotersQuery>())).ReturnsAsync(new Page<User>(1, 1, 0, Enumerable.Empty<User>()));
+        Mock<IUserService> userService = new();
+        userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
 
-            OptionController controller = new(null, optionService.Object, null);
-            var ret = await controller.GetVoters(query);
-            ret.Result.Should().BeOfType<OkObjectResult>();
-        }
-
-        private static PollOptionCreate NewValidPollOptionCreate() => new PollOptionCreate
-        {
-            Description = "foo",
-            Poll = Guid.NewGuid(),
-        };
-
-        [Fact]
-        public async Task Post_MissingPayload_ShouldReturnBadRequest()
-        {
-            OptionController controller = new(null, null, null);
-            var ret = await controller.Post(null);
-            ret.Result.Should().BeOfType<BadRequestObjectResult>();
-        }
-
-        [Fact]
-        public async Task Post_MissingDescription_ShouldReturnBadRequest()
-        {
-            var option = NewValidPollOptionCreate();
-            option.Description = null;
-
-            OptionController controller = new(null, null, null);
-            var ret = await controller.Post(option);
-            ret.Result.Should().BeOfType<BadRequestObjectResult>();
-        }
-
-        [Fact]
-        public async Task Post_LongDescription_ShouldReturnBadRequest()
-        {
-            var option = NewValidPollOptionCreate();
-            option.Description = 'a'.Repeat(101).AppendAll();
-
-            OptionController controller = new(null, null, null);
-            var ret = await controller.Post(option);
-            ret.Result.Should().BeOfType<BadRequestObjectResult>();
-        }
-
-        [Fact]
-        public async Task Post_UnknownPoll_ShouldReturnNotFound()
-        {
-            var option = NewValidPollOptionCreate();
-            OptionController controller = new(Mock.Of<IPollService>(), null, null);
-            var ret = await controller.Post(option);
-            ret.Result.Should().BeOfType<NotFoundObjectResult>();
-        }
-
-        [Fact]
-        public async Task Post_PollDoesntAllowNewOptions_ShouldReturnConflict()
-        {
-            var option = NewValidPollOptionCreate();
-
-            Mock<IPollService> pollService = new();
-            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll());
-
-            OptionController controller = new(pollService.Object, null, null);
-            var ret = await controller.Post(option);
-            ret.Result.Should().BeOfType<ConflictObjectResult>();
-        }
-
-        [Fact]
-        public async Task Post_DuplicateOption_ShouldReturnConflict()
-        {
-            var option = NewValidPollOptionCreate();
-
-            Mock<IPollService> pollService = new();
-            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { AllowAdd = true });
-
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckDuplicateAsync(It.IsAny<PollOptionCreate>())).ReturnsAsync(true);
-
-            OptionController controller = new(pollService.Object, optionService.Object, null);
-            var ret = await controller.Post(option);
-            ret.Result.Should().BeOfType<ConflictObjectResult>();
-        }
-
-        [Fact]
-        public async Task Post_ValidOption_ShouldReturnOk()
-        {
-            var option = NewValidPollOptionCreate();
-
-            Mock<IPollService> pollService = new();
-            pollService.Setup(x => x.GetPollAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { AllowAdd = true });
-            pollService.Setup(x => x.InsertPollAsync(It.IsAny<PollCreate>())).ReturnsAsync(new Poll());
-
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckDuplicateAsync(It.IsAny<PollOptionCreate>())).ReturnsAsync(false);
-
-            OptionController controller = new(pollService.Object, optionService.Object, null);
-            var ret = await controller.Post(option);
-            ret.Result.Should().BeOfType<OkObjectResult>();
-        }
-
-        [Fact]
-        public async Task Vote_MissingAuthentication_ShouldReturnBadRequest()
-        {
-            OptionController controller = new(null, null, null);
-            var ret = await controller.Vote(Guid.NewGuid(), null);
-            ret.Should().BeOfType<BadRequestObjectResult>();
-        }
-
-        [Fact]
-        public async Task Vote_FailedAuthentication_ShouldReturnUnauthorized()
-        {
-            Mock<IUserService> userService = new();
-            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(false);
-
-            OptionController controller = new(null, null, userService.Object);
-            var ret = await controller.Vote(Guid.NewGuid(), new());
-            ret.Should().BeOfType<UnauthorizedObjectResult>();
-        }
-
-        [Fact]
-        public async Task Vote_UnknownOption_ShouldReturnNotFound()
-        {
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(false);
-
-            Mock<IUserService> userService = new();
-            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
-
-            OptionController controller = new(null, optionService.Object, userService.Object);
-            var ret = await controller.Vote(Guid.NewGuid(), new());
-            ret.Should().BeOfType<NotFoundObjectResult>();
-        }
-
-        [Fact]
-        public async Task Vote_PollExpired_ShouldReturnConflict()
-        {
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll());
-
-            Mock<IUserService> userService = new();
-            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
-
-            OptionController controller = new(null, optionService.Object, userService.Object);
-            var ret = await controller.Vote(Guid.NewGuid(), new());
-            ret.Should().BeOfType<ConflictObjectResult>();
-        }
-
-        [Fact]
-        public async Task Vote_RankedPoll_ShouldReturnBadRequest()
-        {
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll
-            {
-                EndDate = DateTime.UtcNow.AddDays(7),
-                VotingSystem = VotingSystem.Ranked,
-            });
-
-            Mock<IUserService> userService = new();
-            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
-
-            OptionController controller = new(null, optionService.Object, userService.Object);
-            var ret = await controller.Vote(Guid.NewGuid(), new());
-            ret.Should().BeOfType<BadRequestObjectResult>();
-        }
-
-        [Fact]
-        public async Task Vote_AlreadyVoted_ShouldReturnOk()
-        {
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.UtcNow.AddDays(7) });
-            optionService.Setup(x => x.GetVoteStatusAsync(It.IsAny<Guid>(), It.IsAny<int>())).ReturnsAsync(true);
-
-            Mock<IUserService> userService = new();
-            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
-
-            OptionController controller = new(null, optionService.Object, userService.Object);
-            var ret = await controller.Vote(Guid.NewGuid(), new());
-            ret.Should().BeOfType<OkResult>();
-        }
-
-        [Fact]
-        public async Task Vote_NotVoted_ShouldReturnOk()
-        {
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.UtcNow.AddDays(7) });
-            optionService.Setup(x => x.GetVoteStatusAsync(It.IsAny<Guid>(), It.IsAny<int>())).ReturnsAsync(false);
-            optionService.Setup(x => x.ClearVoteAsync(It.IsAny<Guid>(), It.IsAny<int>())).Returns(Task.CompletedTask);
-            optionService.Setup(x => x.VoteAsync(It.IsAny<Guid>(), It.IsAny<int>())).Returns(Task.CompletedTask);
-
-            Mock<IUserService> userService = new();
-            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
-            userService.Setup(x => x.AddOrUpdateUserAsync(It.IsAny<Authentication>())).Returns(Task.CompletedTask);
-
-            OptionController controller = new(null, optionService.Object, userService.Object);
-            var ret = await controller.Vote(Guid.NewGuid(), new());
-            ret.Should().BeOfType<OkResult>();
-        }
-
-        [Fact]
-        public async Task Unvote_MissingAuthentication_ShouldReturnBadRequest()
-        {
-            OptionController controller = new(null, null, null);
-            var ret = await controller.Unvote(Guid.NewGuid(), null);
-            ret.Should().BeOfType<BadRequestObjectResult>();
-        }
-
-        [Fact]
-        public async Task Unvote_FailedAuthentication_ShouldReturnUnauthorized()
-        {
-            Mock<IUserService> userService = new();
-            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(false);
-
-            OptionController controller = new(null, null, userService.Object);
-            var ret = await controller.Unvote(Guid.NewGuid(), new());
-            ret.Should().BeOfType<UnauthorizedObjectResult>();
-        }
-
-        [Fact]
-        public async Task Unvote_UnknownOption_ShouldReturnNotFound()
-        {
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(false);
-
-            Mock<IUserService> userService = new();
-            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
-
-            OptionController controller = new(null, optionService.Object, userService.Object);
-            var ret = await controller.Unvote(Guid.NewGuid(), new());
-            ret.Should().BeOfType<NotFoundObjectResult>();
-        }
-
-        [Fact]
-        public async Task Unvote_PollExpired_ShouldReturnConflict()
-        {
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll());
-
-            Mock<IUserService> userService = new();
-            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
-
-            OptionController controller = new(null, optionService.Object, userService.Object);
-            var ret = await controller.Unvote(Guid.NewGuid(), new());
-            ret.Should().BeOfType<ConflictObjectResult>();
-        }
-
-        [Fact]
-        public async Task Unvote_RankedPoll_ShouldReturnBadRequest()
-        {
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll
-            {
-                EndDate = DateTime.UtcNow.AddDays(7),
-                VotingSystem = VotingSystem.Ranked,
-            });
-
-            Mock<IUserService> userService = new();
-            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
-
-            OptionController controller = new(null, optionService.Object, userService.Object);
-            var ret = await controller.Unvote(Guid.NewGuid(), new());
-            ret.Should().BeOfType<BadRequestObjectResult>();
-        }
-
-        [Fact]
-        public async Task Unvote_NotVoted_ShouldReturnOk()
-        {
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.UtcNow.AddDays(7) });
-            optionService.Setup(x => x.GetVoteStatusAsync(It.IsAny<Guid>(), It.IsAny<int>())).ReturnsAsync(false);
-
-            Mock<IUserService> userService = new();
-            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
-
-            OptionController controller = new(null, optionService.Object, userService.Object);
-            var ret = await controller.Unvote(Guid.NewGuid(), new());
-            ret.Should().BeOfType<OkResult>();
-        }
-
-        [Fact]
-        public async Task Unvote_Voted_ShouldReturnOk()
-        {
-            Mock<IOptionService> optionService = new();
-            optionService.Setup(x => x.CheckIfOptionExistsAsync(It.IsAny<Guid>())).ReturnsAsync(true);
-            optionService.Setup(x => x.GetPollFromOptionAsync(It.IsAny<Guid>())).ReturnsAsync(new Poll { EndDate = DateTime.UtcNow.AddDays(7) });
-            optionService.Setup(x => x.GetVoteStatusAsync(It.IsAny<Guid>(), It.IsAny<int>())).ReturnsAsync(true);
-            optionService.Setup(x => x.UnvoteAsync(It.IsAny<Guid>(), It.IsAny<int>())).Returns(Task.CompletedTask);
-
-            Mock<IUserService> userService = new();
-            userService.Setup(x => x.Authenticate(It.IsAny<Authentication>(), out It.Ref<string>.IsAny)).Returns(true);
-
-            OptionController controller = new(null, optionService.Object, userService.Object);
-            var ret = await controller.Unvote(Guid.NewGuid(), new());
-            ret.Should().BeOfType<OkResult>();
-        }
+        OptionController controller = new(null, optionService.Object, userService.Object);
+        var ret = await controller.Unvote(Guid.NewGuid(), new());
+        ret.Should().BeOfType<OkResult>();
     }
 }

@@ -1,9 +1,8 @@
-﻿namespace VSPoll.API.Models
+﻿namespace VSPoll.API.Models;
+
+public enum VotingSystem
 {
-    public enum VotingSystem
-    {
-        SingleOption,
-        MultiOption,
-        Ranked,
-    }
+    SingleOption,
+    MultiOption,
+    Ranked,
 }

@@ -1,18 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VSPoll.API.Persistence.Entities;
 
-namespace VSPoll.API.Persistence.Contexts
+namespace VSPoll.API.Persistence.Contexts;
+
+public class PollContext : DbContext
 {
-    public class PollContext : DbContext
-    {
-        public DbSet<Poll> Polls { get; set; } = null!;
-        public DbSet<PollOption> PollOptions { get; set; } = null!;
-        public DbSet<PollVote> PollVotes { get; set; } = null!;
-        public DbSet<User> Users { get; set; } = null!;
+    public DbSet<Poll> Polls { get; set; } = null!;
+    public DbSet<PollOption> PollOptions { get; set; } = null!;
+    public DbSet<PollVote> PollVotes { get; set; } = null!;
+    public DbSet<User> Users { get; set; } = null!;
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-            => modelBuilder.Entity<PollVote>().HasKey(vote => new { vote.OptionId, vote.UserId });
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        => modelBuilder.Entity<PollVote>().HasKey(vote => new { vote.OptionId, vote.UserId });
 
-        public PollContext(DbContextOptions<PollContext> contextOptions) : base(contextOptions) { }
-    }
+    public PollContext(DbContextOptions<PollContext> contextOptions) : base(contextOptions) { }
 }

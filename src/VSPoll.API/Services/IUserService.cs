@@ -2,11 +2,10 @@
 using System.Threading.Tasks;
 using VSPoll.API.Models.Input;
 
-namespace VSPoll.API.Services
+namespace VSPoll.API.Services;
+
+public interface IUserService
 {
-    public interface IUserService
-    {
-        bool Authenticate(Authentication authentication, [NotNullWhen(false)] out string? error);
-        Task AddOrUpdateUserAsync(Authentication authentication);
-    }
+    bool Authenticate(Authentication authentication, [NotNullWhen(false)] out string? error);
+    Task AddOrUpdateUserAsync(Authentication authentication);
 }

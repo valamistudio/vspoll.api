@@ -1,7 +1,6 @@
-﻿namespace VSPoll.API.Utils
+﻿namespace VSPoll.API.Utils;
+
+public interface IPercentage
 {
-    public interface IPercentage
-    {
-        decimal Percentage { get; set; }
-    }
+    decimal Percentage { get; set; }
 }

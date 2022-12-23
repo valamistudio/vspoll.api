@@ -1,41 +1,35 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VSPoll.API.Models.Input
+namespace VSPoll.API.Models.Input;
+
+public abstract class Paged
 {
-    public abstract class Paged
+    private const int DEFAULT_SIZE = 3;
+    private const int DEFAULT_PAGE = 1;
+    private const int MAX_SIZE = 50;
+
+    private int page = DEFAULT_PAGE;
+    [Required]
+    public int Page
     {
-        private const int DEFAULT_SIZE = 3;
-        private const int DEFAULT_PAGE = 1;
-        private const int MAX_SIZE = 50;
-
-        private int page = DEFAULT_PAGE;
-        [Required]
-        public int Page
+        get => page;
+        set => page = value switch
         {
-            get => page;
-            set
-            {
-                if (value < DEFAULT_PAGE)
-                    page = DEFAULT_PAGE;
-                else
-                    page = value;
-            }
-        }
+            < DEFAULT_PAGE => DEFAULT_PAGE,
+            _ => value,
+        };
+    }
 
-        private int pageSize = DEFAULT_SIZE;
-        [Required]
-        public int PageSize
+    private int pageSize = DEFAULT_SIZE;
+    [Required]
+    public int PageSize
+    {
+        get => pageSize;
+        set => pageSize = value switch
         {
-            get => pageSize;
-            set
-            {
-                if (value < 0)
-                    pageSize = DEFAULT_SIZE;
-                else if (value > MAX_SIZE)
-                    pageSize = MAX_SIZE;
-                else
-                    pageSize = value;
-            }
-        }
+            < 0 => DEFAULT_SIZE,
+            > MAX_SIZE => MAX_SIZE,
+            _ => value,
+        };
     }
 }
