@@ -19,7 +19,7 @@ jobs:
       - name: Test
         run: dotnet test /p:CollectCoverage=true /p:ExcludeByAttribute="GeneratedCodeAttribute" /p:CoverletOutput=BuildReports/Coverage/ /p:CoverletOutputFormat=cobertura --collect:"XPlat Code Coverage" src/VSPoll.API.UnitTest/VSPoll.API.UnitTest.csproj
       - name: Install DocFX
-        run: dotnet install -g docfx
+        run: dotnet tool update -g docfx
       - name: Run DocFX
         run: docfx src/docfx_project/docfx.json
       - name: Deploy DocFX
