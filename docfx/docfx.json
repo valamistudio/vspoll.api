@@ -6,7 +6,11 @@
         {
           "files": [
             "src/**.csproj"
-          ]
+          ],
+          "exclude": [
+            "**/*Test.csproj"
+          ],
+          "src": ".."
         }
       ],
       "dest": "api",
