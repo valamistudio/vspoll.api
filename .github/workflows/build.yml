@@ -21,7 +21,7 @@ jobs:
       - name: Install DocFX
         run: dotnet tool update -g docfx
       - name: Run DocFX
-        run: docfx src/docfx_project/docfx.json
+        run: docfx docfx_project/docfx.json
       - name: Deploy DocFX
         uses: peaceiris/actions-gh-pages@v3
         with:
