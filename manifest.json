@@ -1,0 +1,752 @@
+{
+  "homepages": [],
+  "source_base_path": "/home/runner/work/vspoll.api/vspoll.api/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Controllers.OptionController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Controllers.OptionController.html",
+          "hash": "YY/yeW2MuP3B/fghr5Ubvwk/OpJiDFnNDT+kkAsiWvM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Controllers.PollController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Controllers.PollController.html",
+          "hash": "WeOpLlydQIJZ0MGRL0tTa8WpQKfatAWrtl4nlaKa5L8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Controllers.html",
+          "hash": "EmrazbzYtEcSPxgpSuljnIaHqzsdGUGNhr/1lqXXj5M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Extensions.Collections.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Extensions.Collections.html",
+          "hash": "juQ3D2OjU7WgCxhiCqh7SfEm32eWAuyWpIYBXSewnjw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Extensions.ServiceCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Extensions.ServiceCollection.html",
+          "hash": "dvxS/b63FNdbzAf1GwnHIXIYB370Mjv9kT+Ql4VU2Dk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Extensions.html",
+          "hash": "Fze7cn0T8CR7lJ634qy+WYG5sxKGrMS4+Ju+IVo9B9g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Input.Authentication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Input.Authentication.html",
+          "hash": "ET/Sfr+kBUO2Pcu3EgXGLyGqtJ1WAh+ywa3u+HGBZSY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Input.OptionSorting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Input.OptionSorting.html",
+          "hash": "RgE7qYxtF3lm68vtIGmPquu9/sGivS3hhZ8q9JV+3QE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Input.Paged.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Input.Paged.html",
+          "hash": "gXOk8Be+h+kxJbwSJoyS/HSAI/hY4VV2ZdPySut9elA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Input.PollCreate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Input.PollCreate.html",
+          "hash": "xPqPxZaISXsoM7S6lEWwnF/5N4xmYPwfBRHi2/2H/zI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Input.PollOptionCreate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Input.PollOptionCreate.html",
+          "hash": "x9XDm/c0SaO8G30Km9xesL4D8ebgD3QprnBAIqPL1yA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Input.RankedVote.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Input.RankedVote.html",
+          "hash": "Et13cGx4+L031Mt6kOQGWLZEQiuulprXuQVRUejjRvc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Input.VotersQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Input.VotersQuery.html",
+          "hash": "UBe38t8bO+xS6k3iCASYJpuKW4mB2/h2SdtnNChBetw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Input.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Input.html",
+          "hash": "W9fLiOJHipR/6N+HmoU0csmdIhoCg5nJpGtqy54QapM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Output.Page-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Output.Page-1.html",
+          "hash": "i8fBXAp+9kO++zPV9B98BZQCiO+6TXSbLsrK7T1E/Cw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Output.Poll.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Output.Poll.html",
+          "hash": "WAdBIe+3COnKv5/PKiUFxlcvQP3mL5o8nR8NIn3qDH4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Output.PollOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Output.PollOption.html",
+          "hash": "cYL7C8zYBWCUdX83FTGLzsCuJ+TZ7F1j12fC5Zm/y5E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Output.PollView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Output.PollView.html",
+          "hash": "qo/kNHYEiu1rbZYRX96V1aQ1TYgcggpjBVVNzbReN1M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Output.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Output.User.html",
+          "hash": "0MG4hWe7Qg0FsmBUaaO3kWqweFyqf0YWle+mWWBacO4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.Output.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.Output.html",
+          "hash": "CoN0H0feCnWoX2xt7chDdg35VBF8L8xee+trNucYTF0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.VotingSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.VotingSystem.html",
+          "hash": "VF0v/ySg9WGCz24um0OvmsSyZO7/cQU9uIWjqLHCBNA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Models.html",
+          "hash": "klKObtUu5iuVX9XC8pyU5RETriFSbNxKYS9aohlZpNk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Contexts.PollContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Contexts.PollContext.html",
+          "hash": "uY7EbZFzLv6rcnPSWpjnFqWip+7cmxCHGy61GR2Wnnc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Contexts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Contexts.html",
+          "hash": "QQE2CLy1UnpxWbLJOW9Qm/3v+vDw6RdKUF4pmaRsdlY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Entities.Poll.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Entities.Poll.html",
+          "hash": "/CMmFjhMYCvlzpTE92yANiLqwxCol3ozPFs/ZgRPTcA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Entities.PollOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Entities.PollOption.html",
+          "hash": "EiAkPZ9uvF58gbzndF96B0J4J8kMbta9pBDBaVbP/W4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Entities.PollVote.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Entities.PollVote.html",
+          "hash": "6NNEHtXx9eFRf3Wyk1NNv41QHhJbRArChBUkm8qAybo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Entities.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Entities.User.html",
+          "hash": "/cWtvKTxFB9LWt9PLgvhtG0sCbpDy4IIrzsPuxUMqVY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Entities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Entities.html",
+          "hash": "dGp7Ko32YlFNIsY8vhs/0hZzWC6zzSGKMiL/TVIb5+I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Repositories.IOptionRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Repositories.IOptionRepository.html",
+          "hash": "dtisadTtHFGi/X61lSo9BmBUMCf9jfetm5dKBZvyc6E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Repositories.IPollRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Repositories.IPollRepository.html",
+          "hash": "RVhv3T7aWwmOAi6ULOHr/H7PKGV5FTVvuL6jo2N9y3k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Repositories.IUserRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Repositories.IUserRepository.html",
+          "hash": "6vkb56vsFxkQ/qEiPwr0MaUQuJZORrk8VKD4hY2lbDM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Repositories.OptionRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Repositories.OptionRepository.html",
+          "hash": "kCGOU5/6dkqcGeKZclKtlSMWp9WauhszslQomi5fKCQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Repositories.PollRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Repositories.PollRepository.html",
+          "hash": "Sxxd+TOzU3p99xhqrEeAnR9IOL4bdORhZAfYlSMFGLY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Repositories.UserRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Repositories.UserRepository.html",
+          "hash": "Mm/CdyLGnt7Sdoko3XV2VyApjnFR98cqyqwEfZBt6ms="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Persistence.Repositories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Persistence.Repositories.html",
+          "hash": "FjIv1GnasdBtbhZD1rYmTAZYMmzD7msLxezEbleW85A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Program.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Program.html",
+          "hash": "uTMlNBWsDI2Lgo22dH+/0RrfoND6lLeflSKAMWHFJtM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Services.IOptionService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Services.IOptionService.html",
+          "hash": "opQRSEEW/of2BDP2ZLcn+QJx+kSWTunub2FJUnCfdcs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Services.IPollService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Services.IPollService.html",
+          "hash": "IicYfxmu0L9NkvVLiaj32PC/y1RMCzEaglBBxnXjuNs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Services.IUserService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Services.IUserService.html",
+          "hash": "d23BJippJYZREZQ8ZWzy/DGoWcaK/dURf+rnJ3Q9uvM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Services.OptionService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Services.OptionService.html",
+          "hash": "F9NJlv1t3XLWlfRi/a+p8cyer38Os61waJ+O3HNsqUU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Services.PollService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Services.PollService.html",
+          "hash": "al2zJfUpPgzdISESL+jfqbPeOkISJbpqbQgtBsegBXw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Services.UserService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Services.UserService.html",
+          "hash": "uoxg4jVaSZ81gpDePrR4cfIbfiBwQDmhAzDNC3eG5rw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Services.html",
+          "hash": "A8thDnRrkHSIUZ/6RQRbivvG2oW2tHuQTMKJAekyNF8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Startup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Startup.html",
+          "hash": "3FANg49LuuSWVAIUZcKSiXpBlYpnH8FYal6/KM3iUts="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Utils.IPercentage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Utils.IPercentage.html",
+          "hash": "vMdVA5aSAx750yubu5sPNTtJfhL/gc83YeZTIhRcXW0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Utils.MathUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Utils.MathUtils.html",
+          "hash": "Beq+VohCH6av4v+HI2QjxjTnlxVyYz3g1fLE9aM0tqM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Utils.NormalizationWrapper-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Utils.NormalizationWrapper-1.html",
+          "hash": "WRavhbo+H5sdkImkyYP4eIgbupEmvgLnTLwDkP18N64="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Utils.html",
+          "hash": "VNznmiWhtmcFfaKvZp22Jq6swNbL380/0vFOvJ2aawM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Validations.TrimAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Validations.TrimAttribute.html",
+          "hash": "00sU25huIRLh7TuydKSPoEwYq/hUMplI0mYV0CnVrK8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.Validations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.Validations.html",
+          "hash": "h8YJhlVnS4/S7l9AObxK8wKvAwcbg0podDn4fYrB2zA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/VSPoll.API.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VSPoll.API.html",
+          "hash": "2Z3dwdIqbRW2pCRjfyRXrWXwertMlsynu++MohkQ+hw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "iqb8i6TbpE7wEuIOy5d1/NBWVSiJ56RzRPLOaj/dh2w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "z9XU+1wld8OQ0+QgXpFEv0bReczA7BSD/L1ZUTauMPw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "wFPHHoxUyROWzb98VphcJD6DbxMPVMKlmDtjblCmIhw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "+FPCLcvmNhVb9VLasYr6Tnep0PZtIA6V/UOJ0u+1RmE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "ICZe9mUq12sNJ+qjMxpQ4CyeSSeqe1H5GitjFSSdTZM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "aVe9U1RxWP3P5E5X/x2rL8jCuFlqix3bHKxtkjZ3zxg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 52,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
