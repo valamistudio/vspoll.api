@@ -11,16 +11,8 @@ using Entity = VSPoll.API.Persistence.Entities;
 
 namespace VSPoll.API.Services;
 
-public class PollService : IPollService
+public class PollService(IPollRepository pollRepository, IOptionRepository optionRepository) : IPollService
 {
-    private readonly IPollRepository pollRepository;
-    private readonly IOptionRepository optionRepository;
-    public PollService(IPollRepository pollRepository, IOptionRepository optionRepository)
-    {
-        this.pollRepository = pollRepository;
-        this.optionRepository = optionRepository;
-    }
-
     public Task<bool> CheckIfPollExistsAsync(Guid id)
         => pollRepository.CheckIfPollExists(id);
 

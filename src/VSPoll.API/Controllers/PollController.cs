@@ -18,18 +18,8 @@ namespace VSPoll.API.Controllers;
 #pragma warning disable IDE0079
 [SuppressMessage("ReSharper", "ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract")]
 #pragma warning restore IDE0079
-public class PollController : Controller
+public class PollController(IPollService pollService, IOptionService optionService, IUserService userService) : ControllerBase
 {
-    private readonly IPollService pollService;
-    private readonly IOptionService optionService;
-    private readonly IUserService userService;
-    public PollController(IPollService pollService, IOptionService optionService, IUserService userService)
-    {
-        this.pollService = pollService;
-        this.optionService = optionService;
-        this.userService = userService;
-    }
-
     /// <summary>
     /// Gets data from a poll
     /// </summary>

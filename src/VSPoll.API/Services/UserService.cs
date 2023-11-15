@@ -10,16 +10,8 @@ using VSPoll.API.Persistence.Repositories;
 
 namespace VSPoll.API.Services;
 
-public class UserService : IUserService
+public class UserService(IUserRepository userRepository, IConfiguration configuration) : IUserService
 {
-    private readonly IUserRepository userRepository;
-    private readonly IConfiguration configuration;
-    public UserService(IUserRepository userRepository, IConfiguration configuration)
-    {
-        this.userRepository = userRepository;
-        this.configuration = configuration;
-    }
-
     public bool Authenticate(Authentication authentication, [NotNullWhen(false)] out string? error)
     {
         var dataCheck = $"auth_date={authentication.AuthDate}\nfirst_name={authentication.FirstName}\nid={authentication.Id}";
@@ -32,7 +24,7 @@ public class UserService : IUserService
         if (authentication.Username is not null)
             dataCheck += $"\nusername={authentication.Username}";
 
-        var token = configuration.GetSection("Secrets").GetValue<string>("BotToken");
+        var token = configuration.GetSection("Secrets").GetValue<string>("BotToken")!;
         var secretKey = SHA256.HashData(Encoding.UTF8.GetBytes(token));
         using HMACSHA256 hmac = new(secretKey);
         var testHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(dataCheck));

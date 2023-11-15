@@ -7,12 +7,8 @@ using Entity = VSPoll.API.Persistence.Entities;
 
 namespace VSPoll.API.Services;
 
-public class OptionService : IOptionService
+public class OptionService(IOptionRepository optionRepository) : IOptionService
 {
-    private readonly IOptionRepository optionRepository;
-    public OptionService(IOptionRepository optionRepository)
-        => this.optionRepository = optionRepository;
-
     public Task<bool> CheckIfOptionExistsAsync(Guid id)
         => optionRepository.CheckIfOptionExists(id);
 

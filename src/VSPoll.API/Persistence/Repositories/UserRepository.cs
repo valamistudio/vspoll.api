@@ -5,11 +5,8 @@ using VSPoll.API.Persistence.Entities;
 
 namespace VSPoll.API.Persistence.Repositories;
 
-public class UserRepository : IUserRepository
+public class UserRepository(PollContext context) : IUserRepository
 {
-    private readonly PollContext context;
-    public UserRepository(PollContext context) => this.context = context;
-
     public async Task AddOrUpdateUserAsync(User user)
     {
         if (await context.Users.AnyAsync(u => u.Id == user.Id))

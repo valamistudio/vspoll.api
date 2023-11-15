@@ -50,14 +50,7 @@ public class MathUtilsTests
             19.161676646706585m,
             22.75449101796407m,
         }.ToList();
-        var expected = new[]
-        {
-            19,
-            21,
-            19,
-            18,
-            23,
-        };
+        int[] expected = [19, 21, 19, 18, 23];
 
         var options = percentages.Select(percentage => new PollOption { Percentage = percentage }).ToList();
         MathUtils.NormalizePercentages(options);

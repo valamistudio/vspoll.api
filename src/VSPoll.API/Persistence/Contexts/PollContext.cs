@@ -3,7 +3,7 @@ using VSPoll.API.Persistence.Entities;
 
 namespace VSPoll.API.Persistence.Contexts;
 
-public class PollContext : DbContext
+public class PollContext(DbContextOptions<PollContext> contextOptions) : DbContext(contextOptions)
 {
     public DbSet<Poll> Polls { get; set; } = null!;
     public DbSet<PollOption> PollOptions { get; set; } = null!;
@@ -12,6 +12,4 @@ public class PollContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
         => modelBuilder.Entity<PollVote>().HasKey(vote => new { vote.OptionId, vote.UserId });
-
-    public PollContext(DbContextOptions<PollContext> contextOptions) : base(contextOptions) { }
 }

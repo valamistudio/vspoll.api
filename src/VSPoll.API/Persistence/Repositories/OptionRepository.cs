@@ -8,11 +8,8 @@ using VSPoll.API.Persistence.Entities;
 
 namespace VSPoll.API.Persistence.Repositories;
 
-public class OptionRepository : IOptionRepository
+public class OptionRepository(PollContext context) : IOptionRepository
 {
-    private readonly PollContext context;
-    public OptionRepository(PollContext context) => this.context = context;
-
     public Task<bool> CheckIfOptionExists(Guid id)
         => context.PollOptions.AnyAsync(option => option.Id == id);
 

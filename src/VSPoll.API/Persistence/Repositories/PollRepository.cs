@@ -8,11 +8,8 @@ using VSPoll.API.Persistence.Entities;
 
 namespace VSPoll.API.Persistence.Repositories;
 
-public class PollRepository : IPollRepository
+public class PollRepository(PollContext context) : IPollRepository
 {
-    private readonly PollContext context;
-    public PollRepository(PollContext context) => this.context = context;
-
     public Task<bool> CheckIfPollExists(Guid id)
         => context.Polls.AnyAsync(poll => poll.Id == id);
 
