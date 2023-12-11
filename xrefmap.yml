@@ -23,15 +23,21 @@ references:
   name: OptionController(IPollService, IOptionService, IUserService)
   href: api/VSPoll.API.Controllers.OptionController.html#VSPoll_API_Controllers_OptionController__ctor_VSPoll_API_Services_IPollService_VSPoll_API_Services_IOptionService_VSPoll_API_Services_IUserService_
   commentId: M:VSPoll.API.Controllers.OptionController.#ctor(VSPoll.API.Services.IPollService,VSPoll.API.Services.IOptionService,VSPoll.API.Services.IUserService)
+  name.vb: New(IPollService, IOptionService, IUserService)
   fullName: VSPoll.API.Controllers.OptionController.OptionController(VSPoll.API.Services.IPollService, VSPoll.API.Services.IOptionService, VSPoll.API.Services.IUserService)
+  fullName.vb: VSPoll.API.Controllers.OptionController.New(VSPoll.API.Services.IPollService, VSPoll.API.Services.IOptionService, VSPoll.API.Services.IUserService)
   nameWithType: OptionController.OptionController(IPollService, IOptionService, IUserService)
+  nameWithType.vb: OptionController.New(IPollService, IOptionService, IUserService)
 - uid: VSPoll.API.Controllers.OptionController.#ctor*
   name: OptionController
   href: api/VSPoll.API.Controllers.OptionController.html#VSPoll_API_Controllers_OptionController__ctor_
   commentId: Overload:VSPoll.API.Controllers.OptionController.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Controllers.OptionController.OptionController
+  fullName.vb: VSPoll.API.Controllers.OptionController.New
   nameWithType: OptionController.OptionController
+  nameWithType.vb: OptionController.New
 - uid: VSPoll.API.Controllers.OptionController.GetVoters(VSPoll.API.Models.Input.VotersQuery)
   name: GetVoters(VotersQuery)
   href: api/VSPoll.API.Controllers.OptionController.html#VSPoll_API_Controllers_OptionController_GetVoters_VSPoll_API_Models_Input_VotersQuery_
@@ -94,15 +100,21 @@ references:
   name: PollController(IPollService, IOptionService, IUserService)
   href: api/VSPoll.API.Controllers.PollController.html#VSPoll_API_Controllers_PollController__ctor_VSPoll_API_Services_IPollService_VSPoll_API_Services_IOptionService_VSPoll_API_Services_IUserService_
   commentId: M:VSPoll.API.Controllers.PollController.#ctor(VSPoll.API.Services.IPollService,VSPoll.API.Services.IOptionService,VSPoll.API.Services.IUserService)
+  name.vb: New(IPollService, IOptionService, IUserService)
   fullName: VSPoll.API.Controllers.PollController.PollController(VSPoll.API.Services.IPollService, VSPoll.API.Services.IOptionService, VSPoll.API.Services.IUserService)
+  fullName.vb: VSPoll.API.Controllers.PollController.New(VSPoll.API.Services.IPollService, VSPoll.API.Services.IOptionService, VSPoll.API.Services.IUserService)
   nameWithType: PollController.PollController(IPollService, IOptionService, IUserService)
+  nameWithType.vb: PollController.New(IPollService, IOptionService, IUserService)
 - uid: VSPoll.API.Controllers.PollController.#ctor*
   name: PollController
   href: api/VSPoll.API.Controllers.PollController.html#VSPoll_API_Controllers_PollController__ctor_
   commentId: Overload:VSPoll.API.Controllers.PollController.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Controllers.PollController.PollController
+  fullName.vb: VSPoll.API.Controllers.PollController.New
   nameWithType: PollController.PollController
+  nameWithType.vb: PollController.New
 - uid: VSPoll.API.Controllers.PollController.Get(System.Guid,VSPoll.API.Models.Input.OptionSorting)
   name: Get(Guid, OptionSorting)
   href: api/VSPoll.API.Controllers.PollController.html#VSPoll_API_Controllers_PollController_Get_System_Guid_VSPoll_API_Models_Input_OptionSorting_
@@ -181,13 +193,13 @@ references:
   fullName: VSPoll.API.Extensions.Collections
   nameWithType: Collections
 - uid: VSPoll.API.Extensions.Collections.AppendAll(System.Collections.Generic.IEnumerable{System.Char})
-  name: AppendAll(IEnumerable<Char>)
+  name: AppendAll(IEnumerable<char>)
   href: api/VSPoll.API.Extensions.Collections.html#VSPoll_API_Extensions_Collections_AppendAll_System_Collections_Generic_IEnumerable_System_Char__
   commentId: M:VSPoll.API.Extensions.Collections.AppendAll(System.Collections.Generic.IEnumerable{System.Char})
   name.vb: AppendAll(IEnumerable(Of Char))
-  fullName: VSPoll.API.Extensions.Collections.AppendAll(System.Collections.Generic.IEnumerable<System.Char>)
-  fullName.vb: VSPoll.API.Extensions.Collections.AppendAll(System.Collections.Generic.IEnumerable(Of System.Char))
-  nameWithType: Collections.AppendAll(IEnumerable<Char>)
+  fullName: VSPoll.API.Extensions.Collections.AppendAll(System.Collections.Generic.IEnumerable<char>)
+  fullName.vb: VSPoll.API.Extensions.Collections.AppendAll(System.Collections.Generic.IEnumerable(Of Char))
+  nameWithType: Collections.AppendAll(IEnumerable<char>)
   nameWithType.vb: Collections.AppendAll(IEnumerable(Of Char))
 - uid: VSPoll.API.Extensions.Collections.AppendAll*
   name: AppendAll
@@ -204,14 +216,14 @@ references:
   fullName: VSPoll.API.Extensions.Collections.AtLeast
   nameWithType: Collections.AtLeast
 - uid: VSPoll.API.Extensions.Collections.AtLeast``1(System.Collections.Generic.IEnumerable{``0},System.Int32)
-  name: AtLeast<T>(IEnumerable<T>, Int32)
+  name: AtLeast<T>(IEnumerable<T>, int)
   href: api/VSPoll.API.Extensions.Collections.html#VSPoll_API_Extensions_Collections_AtLeast__1_System_Collections_Generic_IEnumerable___0__System_Int32_
   commentId: M:VSPoll.API.Extensions.Collections.AtLeast``1(System.Collections.Generic.IEnumerable{``0},System.Int32)
-  name.vb: AtLeast(Of T)(IEnumerable(Of T), Int32)
-  fullName: VSPoll.API.Extensions.Collections.AtLeast<T>(System.Collections.Generic.IEnumerable<T>, System.Int32)
-  fullName.vb: VSPoll.API.Extensions.Collections.AtLeast(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Int32)
-  nameWithType: Collections.AtLeast<T>(IEnumerable<T>, Int32)
-  nameWithType.vb: Collections.AtLeast(Of T)(IEnumerable(Of T), Int32)
+  name.vb: AtLeast(Of T)(IEnumerable(Of T), Integer)
+  fullName: VSPoll.API.Extensions.Collections.AtLeast<T>(System.Collections.Generic.IEnumerable<T>, int)
+  fullName.vb: VSPoll.API.Extensions.Collections.AtLeast(Of T)(System.Collections.Generic.IEnumerable(Of T), Integer)
+  nameWithType: Collections.AtLeast<T>(IEnumerable<T>, int)
+  nameWithType.vb: Collections.AtLeast(Of T)(IEnumerable(Of T), Integer)
 - uid: VSPoll.API.Extensions.Collections.Count*
   name: Count
   href: api/VSPoll.API.Extensions.Collections.html#VSPoll_API_Extensions_Collections_Count_
@@ -220,14 +232,14 @@ references:
   fullName: VSPoll.API.Extensions.Collections.Count
   nameWithType: Collections.Count
 - uid: VSPoll.API.Extensions.Collections.Count``1(System.Collections.Generic.IEnumerable{``0},System.Int32)
-  name: Count<T>(IEnumerable<T>, Int32)
+  name: Count<T>(IEnumerable<T>, int)
   href: api/VSPoll.API.Extensions.Collections.html#VSPoll_API_Extensions_Collections_Count__1_System_Collections_Generic_IEnumerable___0__System_Int32_
   commentId: M:VSPoll.API.Extensions.Collections.Count``1(System.Collections.Generic.IEnumerable{``0},System.Int32)
-  name.vb: Count(Of T)(IEnumerable(Of T), Int32)
-  fullName: VSPoll.API.Extensions.Collections.Count<T>(System.Collections.Generic.IEnumerable<T>, System.Int32)
-  fullName.vb: VSPoll.API.Extensions.Collections.Count(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Int32)
-  nameWithType: Collections.Count<T>(IEnumerable<T>, Int32)
-  nameWithType.vb: Collections.Count(Of T)(IEnumerable(Of T), Int32)
+  name.vb: Count(Of T)(IEnumerable(Of T), Integer)
+  fullName: VSPoll.API.Extensions.Collections.Count<T>(System.Collections.Generic.IEnumerable<T>, int)
+  fullName.vb: VSPoll.API.Extensions.Collections.Count(Of T)(System.Collections.Generic.IEnumerable(Of T), Integer)
+  nameWithType: Collections.Count<T>(IEnumerable<T>, int)
+  nameWithType.vb: Collections.Count(Of T)(IEnumerable(Of T), Integer)
 - uid: VSPoll.API.Extensions.Collections.Page*
   name: Page
   href: api/VSPoll.API.Extensions.Collections.html#VSPoll_API_Extensions_Collections_Page_
@@ -252,14 +264,14 @@ references:
   fullName: VSPoll.API.Extensions.Collections.Repeat
   nameWithType: Collections.Repeat
 - uid: VSPoll.API.Extensions.Collections.Repeat``1(``0,System.Int32)
-  name: Repeat<T>(T, Int32)
+  name: Repeat<T>(T, int)
   href: api/VSPoll.API.Extensions.Collections.html#VSPoll_API_Extensions_Collections_Repeat__1___0_System_Int32_
   commentId: M:VSPoll.API.Extensions.Collections.Repeat``1(``0,System.Int32)
-  name.vb: Repeat(Of T)(T, Int32)
-  fullName: VSPoll.API.Extensions.Collections.Repeat<T>(T, System.Int32)
-  fullName.vb: VSPoll.API.Extensions.Collections.Repeat(Of T)(T, System.Int32)
-  nameWithType: Collections.Repeat<T>(T, Int32)
-  nameWithType.vb: Collections.Repeat(Of T)(T, Int32)
+  name.vb: Repeat(Of T)(T, Integer)
+  fullName: VSPoll.API.Extensions.Collections.Repeat<T>(T, int)
+  fullName.vb: VSPoll.API.Extensions.Collections.Repeat(Of T)(T, Integer)
+  nameWithType: Collections.Repeat<T>(T, int)
+  nameWithType.vb: Collections.Repeat(Of T)(T, Integer)
 - uid: VSPoll.API.Extensions.ServiceCollection
   name: ServiceCollection
   href: api/VSPoll.API.Extensions.ServiceCollection.html
@@ -634,23 +646,24 @@ references:
   nameWithType: Page<TItem>
   nameWithType.vb: Page(Of TItem)
 - uid: VSPoll.API.Models.Output.Page`1.#ctor(System.Int32,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{`0})
-  name: Page(Int32, Int32, Int32, IEnumerable<TItem>)
+  name: Page(int, int, int, IEnumerable<TItem>)
   href: api/VSPoll.API.Models.Output.Page-1.html#VSPoll_API_Models_Output_Page_1__ctor_System_Int32_System_Int32_System_Int32_System_Collections_Generic_IEnumerable__0__
   commentId: M:VSPoll.API.Models.Output.Page`1.#ctor(System.Int32,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{`0})
-  name.vb: Page(Int32, Int32, Int32, IEnumerable(Of TItem))
-  fullName: VSPoll.API.Models.Output.Page<TItem>.Page(System.Int32, System.Int32, System.Int32, System.Collections.Generic.IEnumerable<TItem>)
-  fullName.vb: VSPoll.API.Models.Output.Page(Of TItem).Page(System.Int32, System.Int32, System.Int32, System.Collections.Generic.IEnumerable(Of TItem))
-  nameWithType: Page<TItem>.Page(Int32, Int32, Int32, IEnumerable<TItem>)
-  nameWithType.vb: Page(Of TItem).Page(Int32, Int32, Int32, IEnumerable(Of TItem))
+  name.vb: New(Integer, Integer, Integer, IEnumerable(Of TItem))
+  fullName: VSPoll.API.Models.Output.Page<TItem>.Page(int, int, int, System.Collections.Generic.IEnumerable<TItem>)
+  fullName.vb: VSPoll.API.Models.Output.Page(Of TItem).New(Integer, Integer, Integer, System.Collections.Generic.IEnumerable(Of TItem))
+  nameWithType: Page<TItem>.Page(int, int, int, IEnumerable<TItem>)
+  nameWithType.vb: Page(Of TItem).New(Integer, Integer, Integer, IEnumerable(Of TItem))
 - uid: VSPoll.API.Models.Output.Page`1.#ctor*
   name: Page
   href: api/VSPoll.API.Models.Output.Page-1.html#VSPoll_API_Models_Output_Page_1__ctor_
   commentId: Overload:VSPoll.API.Models.Output.Page`1.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Models.Output.Page<TItem>.Page
-  fullName.vb: VSPoll.API.Models.Output.Page(Of TItem).Page
+  fullName.vb: VSPoll.API.Models.Output.Page(Of TItem).New
   nameWithType: Page<TItem>.Page
-  nameWithType.vb: Page(Of TItem).Page
+  nameWithType.vb: Page(Of TItem).New
 - uid: VSPoll.API.Models.Output.Page`1.Items
   name: Items
   href: api/VSPoll.API.Models.Output.Page-1.html#VSPoll_API_Models_Output_Page_1_Items
@@ -813,11 +826,14 @@ references:
   fullName: VSPoll.API.Models.Output.Poll.Id
   nameWithType: Poll.Id
 - uid: VSPoll.API.Models.Output.Poll.Of(VSPoll.API.Persistence.Entities.Poll)
-  name: Of(Poll)
+  name: Of(Poll?)
   href: api/VSPoll.API.Models.Output.Poll.html#VSPoll_API_Models_Output_Poll_Of_VSPoll_API_Persistence_Entities_Poll_
   commentId: M:VSPoll.API.Models.Output.Poll.Of(VSPoll.API.Persistence.Entities.Poll)
-  fullName: VSPoll.API.Models.Output.Poll.Of(VSPoll.API.Persistence.Entities.Poll)
-  nameWithType: Poll.Of(Poll)
+  name.vb: Of(Poll)
+  fullName: VSPoll.API.Models.Output.Poll.Of(VSPoll.API.Persistence.Entities.Poll?)
+  fullName.vb: VSPoll.API.Models.Output.Poll.Of(VSPoll.API.Persistence.Entities.Poll)
+  nameWithType: Poll.Of(Poll?)
+  nameWithType.vb: Poll.Of(Poll)
 - uid: VSPoll.API.Models.Output.Poll.Of*
   name: Of
   href: api/VSPoll.API.Models.Output.Poll.html#VSPoll_API_Models_Output_Poll_Of_
@@ -897,11 +913,14 @@ references:
   fullName: VSPoll.API.Models.Output.PollOption.Id
   nameWithType: PollOption.Id
 - uid: VSPoll.API.Models.Output.PollOption.Of(VSPoll.API.Persistence.Entities.PollOption)
-  name: Of(PollOption)
+  name: Of(PollOption?)
   href: api/VSPoll.API.Models.Output.PollOption.html#VSPoll_API_Models_Output_PollOption_Of_VSPoll_API_Persistence_Entities_PollOption_
   commentId: M:VSPoll.API.Models.Output.PollOption.Of(VSPoll.API.Persistence.Entities.PollOption)
-  fullName: VSPoll.API.Models.Output.PollOption.Of(VSPoll.API.Persistence.Entities.PollOption)
-  nameWithType: PollOption.Of(PollOption)
+  name.vb: Of(PollOption)
+  fullName: VSPoll.API.Models.Output.PollOption.Of(VSPoll.API.Persistence.Entities.PollOption?)
+  fullName.vb: VSPoll.API.Models.Output.PollOption.Of(VSPoll.API.Persistence.Entities.PollOption)
+  nameWithType: PollOption.Of(PollOption?)
+  nameWithType.vb: PollOption.Of(PollOption)
 - uid: VSPoll.API.Models.Output.PollOption.Of*
   name: Of
   href: api/VSPoll.API.Models.Output.PollOption.html#VSPoll_API_Models_Output_PollOption_Of_
@@ -1007,11 +1026,14 @@ references:
   fullName: VSPoll.API.Models.Output.PollView.Id
   nameWithType: PollView.Id
 - uid: VSPoll.API.Models.Output.PollView.Of(VSPoll.API.Models.Output.Poll)
-  name: Of(Poll)
+  name: Of(Poll?)
   href: api/VSPoll.API.Models.Output.PollView.html#VSPoll_API_Models_Output_PollView_Of_VSPoll_API_Models_Output_Poll_
   commentId: M:VSPoll.API.Models.Output.PollView.Of(VSPoll.API.Models.Output.Poll)
-  fullName: VSPoll.API.Models.Output.PollView.Of(VSPoll.API.Models.Output.Poll)
-  nameWithType: PollView.Of(Poll)
+  name.vb: Of(Poll)
+  fullName: VSPoll.API.Models.Output.PollView.Of(VSPoll.API.Models.Output.Poll?)
+  fullName.vb: VSPoll.API.Models.Output.PollView.Of(VSPoll.API.Models.Output.Poll)
+  nameWithType: PollView.Of(Poll?)
+  nameWithType.vb: PollView.Of(Poll)
 - uid: VSPoll.API.Models.Output.PollView.Of*
   name: Of
   href: api/VSPoll.API.Models.Output.PollView.html#VSPoll_API_Models_Output_PollView_Of_
@@ -1081,21 +1103,30 @@ references:
   name: User()
   href: api/VSPoll.API.Models.Output.User.html#VSPoll_API_Models_Output_User__ctor
   commentId: M:VSPoll.API.Models.Output.User.#ctor
+  name.vb: New()
   fullName: VSPoll.API.Models.Output.User.User()
+  fullName.vb: VSPoll.API.Models.Output.User.New()
   nameWithType: User.User()
+  nameWithType.vb: User.New()
 - uid: VSPoll.API.Models.Output.User.#ctor(VSPoll.API.Persistence.Entities.User)
   name: User(User)
   href: api/VSPoll.API.Models.Output.User.html#VSPoll_API_Models_Output_User__ctor_VSPoll_API_Persistence_Entities_User_
   commentId: M:VSPoll.API.Models.Output.User.#ctor(VSPoll.API.Persistence.Entities.User)
+  name.vb: New(User)
   fullName: VSPoll.API.Models.Output.User.User(VSPoll.API.Persistence.Entities.User)
+  fullName.vb: VSPoll.API.Models.Output.User.New(VSPoll.API.Persistence.Entities.User)
   nameWithType: User.User(User)
+  nameWithType.vb: User.New(User)
 - uid: VSPoll.API.Models.Output.User.#ctor*
   name: User
   href: api/VSPoll.API.Models.Output.User.html#VSPoll_API_Models_Output_User__ctor_
   commentId: Overload:VSPoll.API.Models.Output.User.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Models.Output.User.User
+  fullName.vb: VSPoll.API.Models.Output.User.New
   nameWithType: User.User
+  nameWithType.vb: User.New
 - uid: VSPoll.API.Models.Output.User.FirstName
   name: FirstName
   href: api/VSPoll.API.Models.Output.User.html#VSPoll_API_Models_Output_User_FirstName
@@ -1188,18 +1219,21 @@ references:
   name: PollContext(DbContextOptions<PollContext>)
   href: api/VSPoll.API.Persistence.Contexts.PollContext.html#VSPoll_API_Persistence_Contexts_PollContext__ctor_Microsoft_EntityFrameworkCore_DbContextOptions_VSPoll_API_Persistence_Contexts_PollContext__
   commentId: M:VSPoll.API.Persistence.Contexts.PollContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{VSPoll.API.Persistence.Contexts.PollContext})
-  name.vb: PollContext(DbContextOptions(Of PollContext))
+  name.vb: New(DbContextOptions(Of PollContext))
   fullName: VSPoll.API.Persistence.Contexts.PollContext.PollContext(Microsoft.EntityFrameworkCore.DbContextOptions<VSPoll.API.Persistence.Contexts.PollContext>)
-  fullName.vb: VSPoll.API.Persistence.Contexts.PollContext.PollContext(Microsoft.EntityFrameworkCore.DbContextOptions(Of VSPoll.API.Persistence.Contexts.PollContext))
+  fullName.vb: VSPoll.API.Persistence.Contexts.PollContext.New(Microsoft.EntityFrameworkCore.DbContextOptions(Of VSPoll.API.Persistence.Contexts.PollContext))
   nameWithType: PollContext.PollContext(DbContextOptions<PollContext>)
-  nameWithType.vb: PollContext.PollContext(DbContextOptions(Of PollContext))
+  nameWithType.vb: PollContext.New(DbContextOptions(Of PollContext))
 - uid: VSPoll.API.Persistence.Contexts.PollContext.#ctor*
   name: PollContext
   href: api/VSPoll.API.Persistence.Contexts.PollContext.html#VSPoll_API_Persistence_Contexts_PollContext__ctor_
   commentId: Overload:VSPoll.API.Persistence.Contexts.PollContext.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Persistence.Contexts.PollContext.PollContext
+  fullName.vb: VSPoll.API.Persistence.Contexts.PollContext.New
   nameWithType: PollContext.PollContext
+  nameWithType.vb: PollContext.New
 - uid: VSPoll.API.Persistence.Contexts.PollContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
   name: OnModelCreating(ModelBuilder)
   href: api/VSPoll.API.Persistence.Contexts.PollContext.html#VSPoll_API_Persistence_Contexts_PollContext_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder_
@@ -1226,19 +1260,6 @@ references:
   isSpec: "True"
   fullName: VSPoll.API.Persistence.Contexts.PollContext.PollOptions
   nameWithType: PollContext.PollOptions
-- uid: VSPoll.API.Persistence.Contexts.PollContext.Polls
-  name: Polls
-  href: api/VSPoll.API.Persistence.Contexts.PollContext.html#VSPoll_API_Persistence_Contexts_PollContext_Polls
-  commentId: P:VSPoll.API.Persistence.Contexts.PollContext.Polls
-  fullName: VSPoll.API.Persistence.Contexts.PollContext.Polls
-  nameWithType: PollContext.Polls
-- uid: VSPoll.API.Persistence.Contexts.PollContext.Polls*
-  name: Polls
-  href: api/VSPoll.API.Persistence.Contexts.PollContext.html#VSPoll_API_Persistence_Contexts_PollContext_Polls_
-  commentId: Overload:VSPoll.API.Persistence.Contexts.PollContext.Polls
-  isSpec: "True"
-  fullName: VSPoll.API.Persistence.Contexts.PollContext.Polls
-  nameWithType: PollContext.Polls
 - uid: VSPoll.API.Persistence.Contexts.PollContext.PollVotes
   name: PollVotes
   href: api/VSPoll.API.Persistence.Contexts.PollContext.html#VSPoll_API_Persistence_Contexts_PollContext_PollVotes
@@ -1252,6 +1273,19 @@ references:
   isSpec: "True"
   fullName: VSPoll.API.Persistence.Contexts.PollContext.PollVotes
   nameWithType: PollContext.PollVotes
+- uid: VSPoll.API.Persistence.Contexts.PollContext.Polls
+  name: Polls
+  href: api/VSPoll.API.Persistence.Contexts.PollContext.html#VSPoll_API_Persistence_Contexts_PollContext_Polls
+  commentId: P:VSPoll.API.Persistence.Contexts.PollContext.Polls
+  fullName: VSPoll.API.Persistence.Contexts.PollContext.Polls
+  nameWithType: PollContext.Polls
+- uid: VSPoll.API.Persistence.Contexts.PollContext.Polls*
+  name: Polls
+  href: api/VSPoll.API.Persistence.Contexts.PollContext.html#VSPoll_API_Persistence_Contexts_PollContext_Polls_
+  commentId: Overload:VSPoll.API.Persistence.Contexts.PollContext.Polls
+  isSpec: "True"
+  fullName: VSPoll.API.Persistence.Contexts.PollContext.Polls
+  nameWithType: PollContext.Polls
 - uid: VSPoll.API.Persistence.Contexts.PollContext.Users
   name: Users
   href: api/VSPoll.API.Persistence.Contexts.PollContext.html#VSPoll_API_Persistence_Contexts_PollContext_Users
@@ -1281,21 +1315,30 @@ references:
   name: Poll()
   href: api/VSPoll.API.Persistence.Entities.Poll.html#VSPoll_API_Persistence_Entities_Poll__ctor
   commentId: M:VSPoll.API.Persistence.Entities.Poll.#ctor
+  name.vb: New()
   fullName: VSPoll.API.Persistence.Entities.Poll.Poll()
+  fullName.vb: VSPoll.API.Persistence.Entities.Poll.New()
   nameWithType: Poll.Poll()
+  nameWithType.vb: Poll.New()
 - uid: VSPoll.API.Persistence.Entities.Poll.#ctor(VSPoll.API.Models.Input.PollCreate)
   name: Poll(PollCreate)
   href: api/VSPoll.API.Persistence.Entities.Poll.html#VSPoll_API_Persistence_Entities_Poll__ctor_VSPoll_API_Models_Input_PollCreate_
   commentId: M:VSPoll.API.Persistence.Entities.Poll.#ctor(VSPoll.API.Models.Input.PollCreate)
+  name.vb: New(PollCreate)
   fullName: VSPoll.API.Persistence.Entities.Poll.Poll(VSPoll.API.Models.Input.PollCreate)
+  fullName.vb: VSPoll.API.Persistence.Entities.Poll.New(VSPoll.API.Models.Input.PollCreate)
   nameWithType: Poll.Poll(PollCreate)
+  nameWithType.vb: Poll.New(PollCreate)
 - uid: VSPoll.API.Persistence.Entities.Poll.#ctor*
   name: Poll
   href: api/VSPoll.API.Persistence.Entities.Poll.html#VSPoll_API_Persistence_Entities_Poll__ctor_
   commentId: Overload:VSPoll.API.Persistence.Entities.Poll.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Persistence.Entities.Poll.Poll
+  fullName.vb: VSPoll.API.Persistence.Entities.Poll.New
   nameWithType: Poll.Poll
+  nameWithType.vb: Poll.New
 - uid: VSPoll.API.Persistence.Entities.Poll.AllowAdd
   name: AllowAdd
   href: api/VSPoll.API.Persistence.Entities.Poll.html#VSPoll_API_Persistence_Entities_Poll_AllowAdd
@@ -1397,21 +1440,30 @@ references:
   name: PollOption()
   href: api/VSPoll.API.Persistence.Entities.PollOption.html#VSPoll_API_Persistence_Entities_PollOption__ctor
   commentId: M:VSPoll.API.Persistence.Entities.PollOption.#ctor
+  name.vb: New()
   fullName: VSPoll.API.Persistence.Entities.PollOption.PollOption()
+  fullName.vb: VSPoll.API.Persistence.Entities.PollOption.New()
   nameWithType: PollOption.PollOption()
+  nameWithType.vb: PollOption.New()
 - uid: VSPoll.API.Persistence.Entities.PollOption.#ctor(VSPoll.API.Models.Input.PollOptionCreate)
   name: PollOption(PollOptionCreate)
   href: api/VSPoll.API.Persistence.Entities.PollOption.html#VSPoll_API_Persistence_Entities_PollOption__ctor_VSPoll_API_Models_Input_PollOptionCreate_
   commentId: M:VSPoll.API.Persistence.Entities.PollOption.#ctor(VSPoll.API.Models.Input.PollOptionCreate)
+  name.vb: New(PollOptionCreate)
   fullName: VSPoll.API.Persistence.Entities.PollOption.PollOption(VSPoll.API.Models.Input.PollOptionCreate)
+  fullName.vb: VSPoll.API.Persistence.Entities.PollOption.New(VSPoll.API.Models.Input.PollOptionCreate)
   nameWithType: PollOption.PollOption(PollOptionCreate)
+  nameWithType.vb: PollOption.New(PollOptionCreate)
 - uid: VSPoll.API.Persistence.Entities.PollOption.#ctor*
   name: PollOption
   href: api/VSPoll.API.Persistence.Entities.PollOption.html#VSPoll_API_Persistence_Entities_PollOption__ctor_
   commentId: Overload:VSPoll.API.Persistence.Entities.PollOption.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Persistence.Entities.PollOption.PollOption
+  fullName.vb: VSPoll.API.Persistence.Entities.PollOption.New
   nameWithType: PollOption.PollOption
+  nameWithType.vb: PollOption.New
 - uid: VSPoll.API.Persistence.Entities.PollOption.Description
   name: Description
   href: api/VSPoll.API.Persistence.Entities.PollOption.html#VSPoll_API_Persistence_Entities_PollOption_Description
@@ -1571,21 +1623,30 @@ references:
   name: User()
   href: api/VSPoll.API.Persistence.Entities.User.html#VSPoll_API_Persistence_Entities_User__ctor
   commentId: M:VSPoll.API.Persistence.Entities.User.#ctor
+  name.vb: New()
   fullName: VSPoll.API.Persistence.Entities.User.User()
+  fullName.vb: VSPoll.API.Persistence.Entities.User.New()
   nameWithType: User.User()
+  nameWithType.vb: User.New()
 - uid: VSPoll.API.Persistence.Entities.User.#ctor(VSPoll.API.Models.Input.Authentication)
   name: User(Authentication)
   href: api/VSPoll.API.Persistence.Entities.User.html#VSPoll_API_Persistence_Entities_User__ctor_VSPoll_API_Models_Input_Authentication_
   commentId: M:VSPoll.API.Persistence.Entities.User.#ctor(VSPoll.API.Models.Input.Authentication)
+  name.vb: New(Authentication)
   fullName: VSPoll.API.Persistence.Entities.User.User(VSPoll.API.Models.Input.Authentication)
+  fullName.vb: VSPoll.API.Persistence.Entities.User.New(VSPoll.API.Models.Input.Authentication)
   nameWithType: User.User(Authentication)
+  nameWithType.vb: User.New(Authentication)
 - uid: VSPoll.API.Persistence.Entities.User.#ctor*
   name: User
   href: api/VSPoll.API.Persistence.Entities.User.html#VSPoll_API_Persistence_Entities_User__ctor_
   commentId: Overload:VSPoll.API.Persistence.Entities.User.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Persistence.Entities.User.User
+  fullName.vb: VSPoll.API.Persistence.Entities.User.New
   nameWithType: User.User
+  nameWithType.vb: User.New
 - uid: VSPoll.API.Persistence.Entities.User.FirstName
   name: FirstName
   href: api/VSPoll.API.Persistence.Entities.User.html#VSPoll_API_Persistence_Entities_User_FirstName
@@ -1690,11 +1751,14 @@ references:
   fullName: VSPoll.API.Persistence.Repositories.IOptionRepository.CheckIfOptionExists
   nameWithType: IOptionRepository.CheckIfOptionExists
 - uid: VSPoll.API.Persistence.Repositories.IOptionRepository.ClearVoteAsync(System.Guid,System.Int32)
-  name: ClearVoteAsync(Guid, Int32)
+  name: ClearVoteAsync(Guid, int)
   href: api/VSPoll.API.Persistence.Repositories.IOptionRepository.html#VSPoll_API_Persistence_Repositories_IOptionRepository_ClearVoteAsync_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Persistence.Repositories.IOptionRepository.ClearVoteAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Persistence.Repositories.IOptionRepository.ClearVoteAsync(System.Guid, System.Int32)
-  nameWithType: IOptionRepository.ClearVoteAsync(Guid, Int32)
+  name.vb: ClearVoteAsync(Guid, Integer)
+  fullName: VSPoll.API.Persistence.Repositories.IOptionRepository.ClearVoteAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Persistence.Repositories.IOptionRepository.ClearVoteAsync(System.Guid, Integer)
+  nameWithType: IOptionRepository.ClearVoteAsync(Guid, int)
+  nameWithType.vb: IOptionRepository.ClearVoteAsync(Guid, Integer)
 - uid: VSPoll.API.Persistence.Repositories.IOptionRepository.ClearVoteAsync*
   name: ClearVoteAsync
   href: api/VSPoll.API.Persistence.Repositories.IOptionRepository.html#VSPoll_API_Persistence_Repositories_IOptionRepository_ClearVoteAsync_
@@ -1728,6 +1792,22 @@ references:
   isSpec: "True"
   fullName: VSPoll.API.Persistence.Repositories.IOptionRepository.GetByIdAsync
   nameWithType: IOptionRepository.GetByIdAsync
+- uid: VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync(System.Guid,System.Int32)
+  name: GetVoteStatusAsync(Guid, int)
+  href: api/VSPoll.API.Persistence.Repositories.IOptionRepository.html#VSPoll_API_Persistence_Repositories_IOptionRepository_GetVoteStatusAsync_System_Guid_System_Int32_
+  commentId: M:VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync(System.Guid,System.Int32)
+  name.vb: GetVoteStatusAsync(Guid, Integer)
+  fullName: VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync(System.Guid, Integer)
+  nameWithType: IOptionRepository.GetVoteStatusAsync(Guid, int)
+  nameWithType.vb: IOptionRepository.GetVoteStatusAsync(Guid, Integer)
+- uid: VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync*
+  name: GetVoteStatusAsync
+  href: api/VSPoll.API.Persistence.Repositories.IOptionRepository.html#VSPoll_API_Persistence_Repositories_IOptionRepository_GetVoteStatusAsync_
+  commentId: Overload:VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync
+  isSpec: "True"
+  fullName: VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync
+  nameWithType: IOptionRepository.GetVoteStatusAsync
 - uid: VSPoll.API.Persistence.Repositories.IOptionRepository.GetVotersAsync(VSPoll.API.Models.Input.VotersQuery)
   name: GetVotersAsync(VotersQuery)
   href: api/VSPoll.API.Persistence.Repositories.IOptionRepository.html#VSPoll_API_Persistence_Repositories_IOptionRepository_GetVotersAsync_VSPoll_API_Models_Input_VotersQuery_
@@ -1741,19 +1821,6 @@ references:
   isSpec: "True"
   fullName: VSPoll.API.Persistence.Repositories.IOptionRepository.GetVotersAsync
   nameWithType: IOptionRepository.GetVotersAsync
-- uid: VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync(System.Guid,System.Int32)
-  name: GetVoteStatusAsync(Guid, Int32)
-  href: api/VSPoll.API.Persistence.Repositories.IOptionRepository.html#VSPoll_API_Persistence_Repositories_IOptionRepository_GetVoteStatusAsync_System_Guid_System_Int32_
-  commentId: M:VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync(System.Guid, System.Int32)
-  nameWithType: IOptionRepository.GetVoteStatusAsync(Guid, Int32)
-- uid: VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync*
-  name: GetVoteStatusAsync
-  href: api/VSPoll.API.Persistence.Repositories.IOptionRepository.html#VSPoll_API_Persistence_Repositories_IOptionRepository_GetVoteStatusAsync_
-  commentId: Overload:VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync
-  isSpec: "True"
-  fullName: VSPoll.API.Persistence.Repositories.IOptionRepository.GetVoteStatusAsync
-  nameWithType: IOptionRepository.GetVoteStatusAsync
 - uid: VSPoll.API.Persistence.Repositories.IOptionRepository.InsertOptionAsync(VSPoll.API.Persistence.Entities.PollOption)
   name: InsertOptionAsync(PollOption)
   href: api/VSPoll.API.Persistence.Repositories.IOptionRepository.html#VSPoll_API_Persistence_Repositories_IOptionRepository_InsertOptionAsync_VSPoll_API_Persistence_Entities_PollOption_
@@ -1768,14 +1835,14 @@ references:
   fullName: VSPoll.API.Persistence.Repositories.IOptionRepository.InsertOptionAsync
   nameWithType: IOptionRepository.InsertOptionAsync
 - uid: VSPoll.API.Persistence.Repositories.IOptionRepository.InsertVotesAsync(VSPoll.API.Persistence.Entities.PollVote[])
-  name: InsertVotesAsync(PollVote[])
+  name: InsertVotesAsync(params PollVote[])
   href: api/VSPoll.API.Persistence.Repositories.IOptionRepository.html#VSPoll_API_Persistence_Repositories_IOptionRepository_InsertVotesAsync_VSPoll_API_Persistence_Entities_PollVote___
   commentId: M:VSPoll.API.Persistence.Repositories.IOptionRepository.InsertVotesAsync(VSPoll.API.Persistence.Entities.PollVote[])
-  name.vb: InsertVotesAsync(PollVote())
-  fullName: VSPoll.API.Persistence.Repositories.IOptionRepository.InsertVotesAsync(VSPoll.API.Persistence.Entities.PollVote[])
-  fullName.vb: VSPoll.API.Persistence.Repositories.IOptionRepository.InsertVotesAsync(VSPoll.API.Persistence.Entities.PollVote())
-  nameWithType: IOptionRepository.InsertVotesAsync(PollVote[])
-  nameWithType.vb: IOptionRepository.InsertVotesAsync(PollVote())
+  name.vb: InsertVotesAsync(ParamArray PollVote())
+  fullName: VSPoll.API.Persistence.Repositories.IOptionRepository.InsertVotesAsync(params VSPoll.API.Persistence.Entities.PollVote[])
+  fullName.vb: VSPoll.API.Persistence.Repositories.IOptionRepository.InsertVotesAsync(ParamArray VSPoll.API.Persistence.Entities.PollVote())
+  nameWithType: IOptionRepository.InsertVotesAsync(params PollVote[])
+  nameWithType.vb: IOptionRepository.InsertVotesAsync(ParamArray PollVote())
 - uid: VSPoll.API.Persistence.Repositories.IOptionRepository.InsertVotesAsync*
   name: InsertVotesAsync
   href: api/VSPoll.API.Persistence.Repositories.IOptionRepository.html#VSPoll_API_Persistence_Repositories_IOptionRepository_InsertVotesAsync_
@@ -1829,11 +1896,14 @@ references:
   fullName: VSPoll.API.Persistence.Repositories.IPollRepository.GetVotersCount
   nameWithType: IPollRepository.GetVotersCount
 - uid: VSPoll.API.Persistence.Repositories.IPollRepository.GetVotes(System.Guid,System.Int32)
-  name: GetVotes(Guid, Int32)
+  name: GetVotes(Guid, int)
   href: api/VSPoll.API.Persistence.Repositories.IPollRepository.html#VSPoll_API_Persistence_Repositories_IPollRepository_GetVotes_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Persistence.Repositories.IPollRepository.GetVotes(System.Guid,System.Int32)
-  fullName: VSPoll.API.Persistence.Repositories.IPollRepository.GetVotes(System.Guid, System.Int32)
-  nameWithType: IPollRepository.GetVotes(Guid, Int32)
+  name.vb: GetVotes(Guid, Integer)
+  fullName: VSPoll.API.Persistence.Repositories.IPollRepository.GetVotes(System.Guid, int)
+  fullName.vb: VSPoll.API.Persistence.Repositories.IPollRepository.GetVotes(System.Guid, Integer)
+  nameWithType: IPollRepository.GetVotes(Guid, int)
+  nameWithType.vb: IPollRepository.GetVotes(Guid, Integer)
 - uid: VSPoll.API.Persistence.Repositories.IPollRepository.GetVotes*
   name: GetVotes
   href: api/VSPoll.API.Persistence.Repositories.IPollRepository.html#VSPoll_API_Persistence_Repositories_IPollRepository_GetVotes_
@@ -1855,11 +1925,14 @@ references:
   fullName: VSPoll.API.Persistence.Repositories.IPollRepository.InsertPollAsync
   nameWithType: IPollRepository.InsertPollAsync
 - uid: VSPoll.API.Persistence.Repositories.IPollRepository.UnvoteAsync(System.Guid,System.Int32)
-  name: UnvoteAsync(Guid, Int32)
+  name: UnvoteAsync(Guid, int)
   href: api/VSPoll.API.Persistence.Repositories.IPollRepository.html#VSPoll_API_Persistence_Repositories_IPollRepository_UnvoteAsync_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Persistence.Repositories.IPollRepository.UnvoteAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Persistence.Repositories.IPollRepository.UnvoteAsync(System.Guid, System.Int32)
-  nameWithType: IPollRepository.UnvoteAsync(Guid, Int32)
+  name.vb: UnvoteAsync(Guid, Integer)
+  fullName: VSPoll.API.Persistence.Repositories.IPollRepository.UnvoteAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Persistence.Repositories.IPollRepository.UnvoteAsync(System.Guid, Integer)
+  nameWithType: IPollRepository.UnvoteAsync(Guid, int)
+  nameWithType.vb: IPollRepository.UnvoteAsync(Guid, Integer)
 - uid: VSPoll.API.Persistence.Repositories.IPollRepository.UnvoteAsync*
   name: UnvoteAsync
   href: api/VSPoll.API.Persistence.Repositories.IPollRepository.html#VSPoll_API_Persistence_Repositories_IPollRepository_UnvoteAsync_
@@ -1896,15 +1969,21 @@ references:
   name: OptionRepository(PollContext)
   href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository__ctor_VSPoll_API_Persistence_Contexts_PollContext_
   commentId: M:VSPoll.API.Persistence.Repositories.OptionRepository.#ctor(VSPoll.API.Persistence.Contexts.PollContext)
+  name.vb: New(PollContext)
   fullName: VSPoll.API.Persistence.Repositories.OptionRepository.OptionRepository(VSPoll.API.Persistence.Contexts.PollContext)
+  fullName.vb: VSPoll.API.Persistence.Repositories.OptionRepository.New(VSPoll.API.Persistence.Contexts.PollContext)
   nameWithType: OptionRepository.OptionRepository(PollContext)
+  nameWithType.vb: OptionRepository.New(PollContext)
 - uid: VSPoll.API.Persistence.Repositories.OptionRepository.#ctor*
   name: OptionRepository
   href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository__ctor_
   commentId: Overload:VSPoll.API.Persistence.Repositories.OptionRepository.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Persistence.Repositories.OptionRepository.OptionRepository
+  fullName.vb: VSPoll.API.Persistence.Repositories.OptionRepository.New
   nameWithType: OptionRepository.OptionRepository
+  nameWithType.vb: OptionRepository.New
 - uid: VSPoll.API.Persistence.Repositories.OptionRepository.CheckDuplicateAsync(VSPoll.API.Persistence.Entities.PollOption)
   name: CheckDuplicateAsync(PollOption)
   href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository_CheckDuplicateAsync_VSPoll_API_Persistence_Entities_PollOption_
@@ -1932,11 +2011,14 @@ references:
   fullName: VSPoll.API.Persistence.Repositories.OptionRepository.CheckIfOptionExists
   nameWithType: OptionRepository.CheckIfOptionExists
 - uid: VSPoll.API.Persistence.Repositories.OptionRepository.ClearVoteAsync(System.Guid,System.Int32)
-  name: ClearVoteAsync(Guid, Int32)
+  name: ClearVoteAsync(Guid, int)
   href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository_ClearVoteAsync_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Persistence.Repositories.OptionRepository.ClearVoteAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Persistence.Repositories.OptionRepository.ClearVoteAsync(System.Guid, System.Int32)
-  nameWithType: OptionRepository.ClearVoteAsync(Guid, Int32)
+  name.vb: ClearVoteAsync(Guid, Integer)
+  fullName: VSPoll.API.Persistence.Repositories.OptionRepository.ClearVoteAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Persistence.Repositories.OptionRepository.ClearVoteAsync(System.Guid, Integer)
+  nameWithType: OptionRepository.ClearVoteAsync(Guid, int)
+  nameWithType.vb: OptionRepository.ClearVoteAsync(Guid, Integer)
 - uid: VSPoll.API.Persistence.Repositories.OptionRepository.ClearVoteAsync*
   name: ClearVoteAsync
   href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository_ClearVoteAsync_
@@ -1970,6 +2052,22 @@ references:
   isSpec: "True"
   fullName: VSPoll.API.Persistence.Repositories.OptionRepository.GetByIdAsync
   nameWithType: OptionRepository.GetByIdAsync
+- uid: VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync(System.Guid,System.Int32)
+  name: GetVoteStatusAsync(Guid, int)
+  href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository_GetVoteStatusAsync_System_Guid_System_Int32_
+  commentId: M:VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync(System.Guid,System.Int32)
+  name.vb: GetVoteStatusAsync(Guid, Integer)
+  fullName: VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync(System.Guid, Integer)
+  nameWithType: OptionRepository.GetVoteStatusAsync(Guid, int)
+  nameWithType.vb: OptionRepository.GetVoteStatusAsync(Guid, Integer)
+- uid: VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync*
+  name: GetVoteStatusAsync
+  href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository_GetVoteStatusAsync_
+  commentId: Overload:VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync
+  isSpec: "True"
+  fullName: VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync
+  nameWithType: OptionRepository.GetVoteStatusAsync
 - uid: VSPoll.API.Persistence.Repositories.OptionRepository.GetVotersAsync(VSPoll.API.Models.Input.VotersQuery)
   name: GetVotersAsync(VotersQuery)
   href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository_GetVotersAsync_VSPoll_API_Models_Input_VotersQuery_
@@ -1983,19 +2081,6 @@ references:
   isSpec: "True"
   fullName: VSPoll.API.Persistence.Repositories.OptionRepository.GetVotersAsync
   nameWithType: OptionRepository.GetVotersAsync
-- uid: VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync(System.Guid,System.Int32)
-  name: GetVoteStatusAsync(Guid, Int32)
-  href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository_GetVoteStatusAsync_System_Guid_System_Int32_
-  commentId: M:VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync(System.Guid, System.Int32)
-  nameWithType: OptionRepository.GetVoteStatusAsync(Guid, Int32)
-- uid: VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync*
-  name: GetVoteStatusAsync
-  href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository_GetVoteStatusAsync_
-  commentId: Overload:VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync
-  isSpec: "True"
-  fullName: VSPoll.API.Persistence.Repositories.OptionRepository.GetVoteStatusAsync
-  nameWithType: OptionRepository.GetVoteStatusAsync
 - uid: VSPoll.API.Persistence.Repositories.OptionRepository.InsertOptionAsync(VSPoll.API.Persistence.Entities.PollOption)
   name: InsertOptionAsync(PollOption)
   href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository_InsertOptionAsync_VSPoll_API_Persistence_Entities_PollOption_
@@ -2010,14 +2095,14 @@ references:
   fullName: VSPoll.API.Persistence.Repositories.OptionRepository.InsertOptionAsync
   nameWithType: OptionRepository.InsertOptionAsync
 - uid: VSPoll.API.Persistence.Repositories.OptionRepository.InsertVotesAsync(VSPoll.API.Persistence.Entities.PollVote[])
-  name: InsertVotesAsync(PollVote[])
+  name: InsertVotesAsync(params PollVote[])
   href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository_InsertVotesAsync_VSPoll_API_Persistence_Entities_PollVote___
   commentId: M:VSPoll.API.Persistence.Repositories.OptionRepository.InsertVotesAsync(VSPoll.API.Persistence.Entities.PollVote[])
-  name.vb: InsertVotesAsync(PollVote())
-  fullName: VSPoll.API.Persistence.Repositories.OptionRepository.InsertVotesAsync(VSPoll.API.Persistence.Entities.PollVote[])
-  fullName.vb: VSPoll.API.Persistence.Repositories.OptionRepository.InsertVotesAsync(VSPoll.API.Persistence.Entities.PollVote())
-  nameWithType: OptionRepository.InsertVotesAsync(PollVote[])
-  nameWithType.vb: OptionRepository.InsertVotesAsync(PollVote())
+  name.vb: InsertVotesAsync(ParamArray PollVote())
+  fullName: VSPoll.API.Persistence.Repositories.OptionRepository.InsertVotesAsync(params VSPoll.API.Persistence.Entities.PollVote[])
+  fullName.vb: VSPoll.API.Persistence.Repositories.OptionRepository.InsertVotesAsync(ParamArray VSPoll.API.Persistence.Entities.PollVote())
+  nameWithType: OptionRepository.InsertVotesAsync(params PollVote[])
+  nameWithType.vb: OptionRepository.InsertVotesAsync(ParamArray PollVote())
 - uid: VSPoll.API.Persistence.Repositories.OptionRepository.InsertVotesAsync*
   name: InsertVotesAsync
   href: api/VSPoll.API.Persistence.Repositories.OptionRepository.html#VSPoll_API_Persistence_Repositories_OptionRepository_InsertVotesAsync_
@@ -2035,15 +2120,21 @@ references:
   name: PollRepository(PollContext)
   href: api/VSPoll.API.Persistence.Repositories.PollRepository.html#VSPoll_API_Persistence_Repositories_PollRepository__ctor_VSPoll_API_Persistence_Contexts_PollContext_
   commentId: M:VSPoll.API.Persistence.Repositories.PollRepository.#ctor(VSPoll.API.Persistence.Contexts.PollContext)
+  name.vb: New(PollContext)
   fullName: VSPoll.API.Persistence.Repositories.PollRepository.PollRepository(VSPoll.API.Persistence.Contexts.PollContext)
+  fullName.vb: VSPoll.API.Persistence.Repositories.PollRepository.New(VSPoll.API.Persistence.Contexts.PollContext)
   nameWithType: PollRepository.PollRepository(PollContext)
+  nameWithType.vb: PollRepository.New(PollContext)
 - uid: VSPoll.API.Persistence.Repositories.PollRepository.#ctor*
   name: PollRepository
   href: api/VSPoll.API.Persistence.Repositories.PollRepository.html#VSPoll_API_Persistence_Repositories_PollRepository__ctor_
   commentId: Overload:VSPoll.API.Persistence.Repositories.PollRepository.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Persistence.Repositories.PollRepository.PollRepository
+  fullName.vb: VSPoll.API.Persistence.Repositories.PollRepository.New
   nameWithType: PollRepository.PollRepository
+  nameWithType.vb: PollRepository.New
 - uid: VSPoll.API.Persistence.Repositories.PollRepository.CheckIfPollExists(System.Guid)
   name: CheckIfPollExists(Guid)
   href: api/VSPoll.API.Persistence.Repositories.PollRepository.html#VSPoll_API_Persistence_Repositories_PollRepository_CheckIfPollExists_System_Guid_
@@ -2084,11 +2175,14 @@ references:
   fullName: VSPoll.API.Persistence.Repositories.PollRepository.GetVotersCount
   nameWithType: PollRepository.GetVotersCount
 - uid: VSPoll.API.Persistence.Repositories.PollRepository.GetVotes(System.Guid,System.Int32)
-  name: GetVotes(Guid, Int32)
+  name: GetVotes(Guid, int)
   href: api/VSPoll.API.Persistence.Repositories.PollRepository.html#VSPoll_API_Persistence_Repositories_PollRepository_GetVotes_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Persistence.Repositories.PollRepository.GetVotes(System.Guid,System.Int32)
-  fullName: VSPoll.API.Persistence.Repositories.PollRepository.GetVotes(System.Guid, System.Int32)
-  nameWithType: PollRepository.GetVotes(Guid, Int32)
+  name.vb: GetVotes(Guid, Integer)
+  fullName: VSPoll.API.Persistence.Repositories.PollRepository.GetVotes(System.Guid, int)
+  fullName.vb: VSPoll.API.Persistence.Repositories.PollRepository.GetVotes(System.Guid, Integer)
+  nameWithType: PollRepository.GetVotes(Guid, int)
+  nameWithType.vb: PollRepository.GetVotes(Guid, Integer)
 - uid: VSPoll.API.Persistence.Repositories.PollRepository.GetVotes*
   name: GetVotes
   href: api/VSPoll.API.Persistence.Repositories.PollRepository.html#VSPoll_API_Persistence_Repositories_PollRepository_GetVotes_
@@ -2110,11 +2204,14 @@ references:
   fullName: VSPoll.API.Persistence.Repositories.PollRepository.InsertPollAsync
   nameWithType: PollRepository.InsertPollAsync
 - uid: VSPoll.API.Persistence.Repositories.PollRepository.UnvoteAsync(System.Guid,System.Int32)
-  name: UnvoteAsync(Guid, Int32)
+  name: UnvoteAsync(Guid, int)
   href: api/VSPoll.API.Persistence.Repositories.PollRepository.html#VSPoll_API_Persistence_Repositories_PollRepository_UnvoteAsync_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Persistence.Repositories.PollRepository.UnvoteAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Persistence.Repositories.PollRepository.UnvoteAsync(System.Guid, System.Int32)
-  nameWithType: PollRepository.UnvoteAsync(Guid, Int32)
+  name.vb: UnvoteAsync(Guid, Integer)
+  fullName: VSPoll.API.Persistence.Repositories.PollRepository.UnvoteAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Persistence.Repositories.PollRepository.UnvoteAsync(System.Guid, Integer)
+  nameWithType: PollRepository.UnvoteAsync(Guid, int)
+  nameWithType.vb: PollRepository.UnvoteAsync(Guid, Integer)
 - uid: VSPoll.API.Persistence.Repositories.PollRepository.UnvoteAsync*
   name: UnvoteAsync
   href: api/VSPoll.API.Persistence.Repositories.PollRepository.html#VSPoll_API_Persistence_Repositories_PollRepository_UnvoteAsync_
@@ -2132,15 +2229,21 @@ references:
   name: UserRepository(PollContext)
   href: api/VSPoll.API.Persistence.Repositories.UserRepository.html#VSPoll_API_Persistence_Repositories_UserRepository__ctor_VSPoll_API_Persistence_Contexts_PollContext_
   commentId: M:VSPoll.API.Persistence.Repositories.UserRepository.#ctor(VSPoll.API.Persistence.Contexts.PollContext)
+  name.vb: New(PollContext)
   fullName: VSPoll.API.Persistence.Repositories.UserRepository.UserRepository(VSPoll.API.Persistence.Contexts.PollContext)
+  fullName.vb: VSPoll.API.Persistence.Repositories.UserRepository.New(VSPoll.API.Persistence.Contexts.PollContext)
   nameWithType: UserRepository.UserRepository(PollContext)
+  nameWithType.vb: UserRepository.New(PollContext)
 - uid: VSPoll.API.Persistence.Repositories.UserRepository.#ctor*
   name: UserRepository
   href: api/VSPoll.API.Persistence.Repositories.UserRepository.html#VSPoll_API_Persistence_Repositories_UserRepository__ctor_
   commentId: Overload:VSPoll.API.Persistence.Repositories.UserRepository.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Persistence.Repositories.UserRepository.UserRepository
+  fullName.vb: VSPoll.API.Persistence.Repositories.UserRepository.New
   nameWithType: UserRepository.UserRepository
+  nameWithType.vb: UserRepository.New
 - uid: VSPoll.API.Persistence.Repositories.UserRepository.AddOrUpdateUserAsync(VSPoll.API.Persistence.Entities.User)
   name: AddOrUpdateUserAsync(User)
   href: api/VSPoll.API.Persistence.Repositories.UserRepository.html#VSPoll_API_Persistence_Repositories_UserRepository_AddOrUpdateUserAsync_VSPoll_API_Persistence_Entities_User_
@@ -2161,13 +2264,13 @@ references:
   fullName: VSPoll.API.Program
   nameWithType: Program
 - uid: VSPoll.API.Program.CreateHostBuilder(System.String[])
-  name: CreateHostBuilder(String[])
+  name: CreateHostBuilder(string[])
   href: api/VSPoll.API.Program.html#VSPoll_API_Program_CreateHostBuilder_System_String___
   commentId: M:VSPoll.API.Program.CreateHostBuilder(System.String[])
   name.vb: CreateHostBuilder(String())
-  fullName: VSPoll.API.Program.CreateHostBuilder(System.String[])
-  fullName.vb: VSPoll.API.Program.CreateHostBuilder(System.String())
-  nameWithType: Program.CreateHostBuilder(String[])
+  fullName: VSPoll.API.Program.CreateHostBuilder(string[])
+  fullName.vb: VSPoll.API.Program.CreateHostBuilder(String())
+  nameWithType: Program.CreateHostBuilder(string[])
   nameWithType.vb: Program.CreateHostBuilder(String())
 - uid: VSPoll.API.Program.CreateHostBuilder*
   name: CreateHostBuilder
@@ -2177,13 +2280,13 @@ references:
   fullName: VSPoll.API.Program.CreateHostBuilder
   nameWithType: Program.CreateHostBuilder
 - uid: VSPoll.API.Program.Main(System.String[])
-  name: Main(String[])
+  name: Main(string[])
   href: api/VSPoll.API.Program.html#VSPoll_API_Program_Main_System_String___
   commentId: M:VSPoll.API.Program.Main(System.String[])
   name.vb: Main(String())
-  fullName: VSPoll.API.Program.Main(System.String[])
-  fullName.vb: VSPoll.API.Program.Main(System.String())
-  nameWithType: Program.Main(String[])
+  fullName: VSPoll.API.Program.Main(string[])
+  fullName.vb: VSPoll.API.Program.Main(String())
+  nameWithType: Program.Main(string[])
   nameWithType.vb: Program.Main(String())
 - uid: VSPoll.API.Program.Main*
   name: Main
@@ -2231,11 +2334,14 @@ references:
   fullName: VSPoll.API.Services.IOptionService.CheckIfOptionExistsAsync
   nameWithType: IOptionService.CheckIfOptionExistsAsync
 - uid: VSPoll.API.Services.IOptionService.ClearVoteAsync(System.Guid,System.Int32)
-  name: ClearVoteAsync(Guid, Int32)
+  name: ClearVoteAsync(Guid, int)
   href: api/VSPoll.API.Services.IOptionService.html#VSPoll_API_Services_IOptionService_ClearVoteAsync_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Services.IOptionService.ClearVoteAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Services.IOptionService.ClearVoteAsync(System.Guid, System.Int32)
-  nameWithType: IOptionService.ClearVoteAsync(Guid, Int32)
+  name.vb: ClearVoteAsync(Guid, Integer)
+  fullName: VSPoll.API.Services.IOptionService.ClearVoteAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Services.IOptionService.ClearVoteAsync(System.Guid, Integer)
+  nameWithType: IOptionService.ClearVoteAsync(Guid, int)
+  nameWithType.vb: IOptionService.ClearVoteAsync(Guid, Integer)
 - uid: VSPoll.API.Services.IOptionService.ClearVoteAsync*
   name: ClearVoteAsync
   href: api/VSPoll.API.Services.IOptionService.html#VSPoll_API_Services_IOptionService_ClearVoteAsync_
@@ -2269,6 +2375,22 @@ references:
   isSpec: "True"
   fullName: VSPoll.API.Services.IOptionService.GetPollFromOptionAsync
   nameWithType: IOptionService.GetPollFromOptionAsync
+- uid: VSPoll.API.Services.IOptionService.GetVoteStatusAsync(System.Guid,System.Int32)
+  name: GetVoteStatusAsync(Guid, int)
+  href: api/VSPoll.API.Services.IOptionService.html#VSPoll_API_Services_IOptionService_GetVoteStatusAsync_System_Guid_System_Int32_
+  commentId: M:VSPoll.API.Services.IOptionService.GetVoteStatusAsync(System.Guid,System.Int32)
+  name.vb: GetVoteStatusAsync(Guid, Integer)
+  fullName: VSPoll.API.Services.IOptionService.GetVoteStatusAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Services.IOptionService.GetVoteStatusAsync(System.Guid, Integer)
+  nameWithType: IOptionService.GetVoteStatusAsync(Guid, int)
+  nameWithType.vb: IOptionService.GetVoteStatusAsync(Guid, Integer)
+- uid: VSPoll.API.Services.IOptionService.GetVoteStatusAsync*
+  name: GetVoteStatusAsync
+  href: api/VSPoll.API.Services.IOptionService.html#VSPoll_API_Services_IOptionService_GetVoteStatusAsync_
+  commentId: Overload:VSPoll.API.Services.IOptionService.GetVoteStatusAsync
+  isSpec: "True"
+  fullName: VSPoll.API.Services.IOptionService.GetVoteStatusAsync
+  nameWithType: IOptionService.GetVoteStatusAsync
 - uid: VSPoll.API.Services.IOptionService.GetVotersAsync(VSPoll.API.Models.Input.VotersQuery)
   name: GetVotersAsync(VotersQuery)
   href: api/VSPoll.API.Services.IOptionService.html#VSPoll_API_Services_IOptionService_GetVotersAsync_VSPoll_API_Models_Input_VotersQuery_
@@ -2282,19 +2404,6 @@ references:
   isSpec: "True"
   fullName: VSPoll.API.Services.IOptionService.GetVotersAsync
   nameWithType: IOptionService.GetVotersAsync
-- uid: VSPoll.API.Services.IOptionService.GetVoteStatusAsync(System.Guid,System.Int32)
-  name: GetVoteStatusAsync(Guid, Int32)
-  href: api/VSPoll.API.Services.IOptionService.html#VSPoll_API_Services_IOptionService_GetVoteStatusAsync_System_Guid_System_Int32_
-  commentId: M:VSPoll.API.Services.IOptionService.GetVoteStatusAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Services.IOptionService.GetVoteStatusAsync(System.Guid, System.Int32)
-  nameWithType: IOptionService.GetVoteStatusAsync(Guid, Int32)
-- uid: VSPoll.API.Services.IOptionService.GetVoteStatusAsync*
-  name: GetVoteStatusAsync
-  href: api/VSPoll.API.Services.IOptionService.html#VSPoll_API_Services_IOptionService_GetVoteStatusAsync_
-  commentId: Overload:VSPoll.API.Services.IOptionService.GetVoteStatusAsync
-  isSpec: "True"
-  fullName: VSPoll.API.Services.IOptionService.GetVoteStatusAsync
-  nameWithType: IOptionService.GetVoteStatusAsync
 - uid: VSPoll.API.Services.IOptionService.InsertOptionAsync(VSPoll.API.Models.Input.PollOptionCreate)
   name: InsertOptionAsync(PollOptionCreate)
   href: api/VSPoll.API.Services.IOptionService.html#VSPoll_API_Services_IOptionService_InsertOptionAsync_VSPoll_API_Models_Input_PollOptionCreate_
@@ -2309,11 +2418,14 @@ references:
   fullName: VSPoll.API.Services.IOptionService.InsertOptionAsync
   nameWithType: IOptionService.InsertOptionAsync
 - uid: VSPoll.API.Services.IOptionService.UnvoteAsync(System.Guid,System.Int32)
-  name: UnvoteAsync(Guid, Int32)
+  name: UnvoteAsync(Guid, int)
   href: api/VSPoll.API.Services.IOptionService.html#VSPoll_API_Services_IOptionService_UnvoteAsync_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Services.IOptionService.UnvoteAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Services.IOptionService.UnvoteAsync(System.Guid, System.Int32)
-  nameWithType: IOptionService.UnvoteAsync(Guid, Int32)
+  name.vb: UnvoteAsync(Guid, Integer)
+  fullName: VSPoll.API.Services.IOptionService.UnvoteAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Services.IOptionService.UnvoteAsync(System.Guid, Integer)
+  nameWithType: IOptionService.UnvoteAsync(Guid, int)
+  nameWithType.vb: IOptionService.UnvoteAsync(Guid, Integer)
 - uid: VSPoll.API.Services.IOptionService.UnvoteAsync*
   name: UnvoteAsync
   href: api/VSPoll.API.Services.IOptionService.html#VSPoll_API_Services_IOptionService_UnvoteAsync_
@@ -2322,11 +2434,14 @@ references:
   fullName: VSPoll.API.Services.IOptionService.UnvoteAsync
   nameWithType: IOptionService.UnvoteAsync
 - uid: VSPoll.API.Services.IOptionService.VoteAsync(System.Guid,System.Int32)
-  name: VoteAsync(Guid, Int32)
+  name: VoteAsync(Guid, int)
   href: api/VSPoll.API.Services.IOptionService.html#VSPoll_API_Services_IOptionService_VoteAsync_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Services.IOptionService.VoteAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Services.IOptionService.VoteAsync(System.Guid, System.Int32)
-  nameWithType: IOptionService.VoteAsync(Guid, Int32)
+  name.vb: VoteAsync(Guid, Integer)
+  fullName: VSPoll.API.Services.IOptionService.VoteAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Services.IOptionService.VoteAsync(System.Guid, Integer)
+  nameWithType: IOptionService.VoteAsync(Guid, int)
+  nameWithType.vb: IOptionService.VoteAsync(Guid, Integer)
 - uid: VSPoll.API.Services.IOptionService.VoteAsync*
   name: VoteAsync
   href: api/VSPoll.API.Services.IOptionService.html#VSPoll_API_Services_IOptionService_VoteAsync_
@@ -2380,11 +2495,14 @@ references:
   fullName: VSPoll.API.Services.IPollService.GetPollViewAsync
   nameWithType: IPollService.GetPollViewAsync
 - uid: VSPoll.API.Services.IPollService.GetVotes(System.Guid,System.Int32)
-  name: GetVotes(Guid, Int32)
+  name: GetVotes(Guid, int)
   href: api/VSPoll.API.Services.IPollService.html#VSPoll_API_Services_IPollService_GetVotes_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Services.IPollService.GetVotes(System.Guid,System.Int32)
-  fullName: VSPoll.API.Services.IPollService.GetVotes(System.Guid, System.Int32)
-  nameWithType: IPollService.GetVotes(Guid, Int32)
+  name.vb: GetVotes(Guid, Integer)
+  fullName: VSPoll.API.Services.IPollService.GetVotes(System.Guid, int)
+  fullName.vb: VSPoll.API.Services.IPollService.GetVotes(System.Guid, Integer)
+  nameWithType: IPollService.GetVotes(Guid, int)
+  nameWithType.vb: IPollService.GetVotes(Guid, Integer)
 - uid: VSPoll.API.Services.IPollService.GetVotes*
   name: GetVotes
   href: api/VSPoll.API.Services.IPollService.html#VSPoll_API_Services_IPollService_GetVotes_
@@ -2406,11 +2524,14 @@ references:
   fullName: VSPoll.API.Services.IPollService.InsertPollAsync
   nameWithType: IPollService.InsertPollAsync
 - uid: VSPoll.API.Services.IPollService.UnvoteAsync(System.Guid,System.Int32)
-  name: UnvoteAsync(Guid, Int32)
+  name: UnvoteAsync(Guid, int)
   href: api/VSPoll.API.Services.IPollService.html#VSPoll_API_Services_IPollService_UnvoteAsync_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Services.IPollService.UnvoteAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Services.IPollService.UnvoteAsync(System.Guid, System.Int32)
-  nameWithType: IPollService.UnvoteAsync(Guid, Int32)
+  name.vb: UnvoteAsync(Guid, Integer)
+  fullName: VSPoll.API.Services.IPollService.UnvoteAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Services.IPollService.UnvoteAsync(System.Guid, Integer)
+  nameWithType: IPollService.UnvoteAsync(Guid, int)
+  nameWithType.vb: IPollService.UnvoteAsync(Guid, Integer)
 - uid: VSPoll.API.Services.IPollService.UnvoteAsync*
   name: UnvoteAsync
   href: api/VSPoll.API.Services.IPollService.html#VSPoll_API_Services_IPollService_UnvoteAsync_
@@ -2419,14 +2540,14 @@ references:
   fullName: VSPoll.API.Services.IPollService.UnvoteAsync
   nameWithType: IPollService.UnvoteAsync
 - uid: VSPoll.API.Services.IPollService.VoteAsync(VSPoll.API.Models.Output.Poll,System.Int32,System.Collections.Generic.IEnumerable{System.Guid})
-  name: VoteAsync(Poll, Int32, IEnumerable<Guid>)
+  name: VoteAsync(Poll, int, IEnumerable<Guid>)
   href: api/VSPoll.API.Services.IPollService.html#VSPoll_API_Services_IPollService_VoteAsync_VSPoll_API_Models_Output_Poll_System_Int32_System_Collections_Generic_IEnumerable_System_Guid__
   commentId: M:VSPoll.API.Services.IPollService.VoteAsync(VSPoll.API.Models.Output.Poll,System.Int32,System.Collections.Generic.IEnumerable{System.Guid})
-  name.vb: VoteAsync(Poll, Int32, IEnumerable(Of Guid))
-  fullName: VSPoll.API.Services.IPollService.VoteAsync(VSPoll.API.Models.Output.Poll, System.Int32, System.Collections.Generic.IEnumerable<System.Guid>)
-  fullName.vb: VSPoll.API.Services.IPollService.VoteAsync(VSPoll.API.Models.Output.Poll, System.Int32, System.Collections.Generic.IEnumerable(Of System.Guid))
-  nameWithType: IPollService.VoteAsync(Poll, Int32, IEnumerable<Guid>)
-  nameWithType.vb: IPollService.VoteAsync(Poll, Int32, IEnumerable(Of Guid))
+  name.vb: VoteAsync(Poll, Integer, IEnumerable(Of Guid))
+  fullName: VSPoll.API.Services.IPollService.VoteAsync(VSPoll.API.Models.Output.Poll, int, System.Collections.Generic.IEnumerable<System.Guid>)
+  fullName.vb: VSPoll.API.Services.IPollService.VoteAsync(VSPoll.API.Models.Output.Poll, Integer, System.Collections.Generic.IEnumerable(Of System.Guid))
+  nameWithType: IPollService.VoteAsync(Poll, int, IEnumerable<Guid>)
+  nameWithType.vb: IPollService.VoteAsync(Poll, Integer, IEnumerable(Of Guid))
 - uid: VSPoll.API.Services.IPollService.VoteAsync*
   name: VoteAsync
   href: api/VSPoll.API.Services.IPollService.html#VSPoll_API_Services_IPollService_VoteAsync_
@@ -2454,14 +2575,14 @@ references:
   fullName: VSPoll.API.Services.IUserService.AddOrUpdateUserAsync
   nameWithType: IUserService.AddOrUpdateUserAsync
 - uid: VSPoll.API.Services.IUserService.Authenticate(VSPoll.API.Models.Input.Authentication,System.String@)
-  name: Authenticate(Authentication, out String)
+  name: Authenticate(Authentication, out string?)
   href: api/VSPoll.API.Services.IUserService.html#VSPoll_API_Services_IUserService_Authenticate_VSPoll_API_Models_Input_Authentication_System_String__
   commentId: M:VSPoll.API.Services.IUserService.Authenticate(VSPoll.API.Models.Input.Authentication,System.String@)
-  name.vb: Authenticate(Authentication, ByRef String)
-  fullName: VSPoll.API.Services.IUserService.Authenticate(VSPoll.API.Models.Input.Authentication, out System.String)
-  fullName.vb: VSPoll.API.Services.IUserService.Authenticate(VSPoll.API.Models.Input.Authentication, ByRef System.String)
-  nameWithType: IUserService.Authenticate(Authentication, out String)
-  nameWithType.vb: IUserService.Authenticate(Authentication, ByRef String)
+  name.vb: Authenticate(Authentication, String)
+  fullName: VSPoll.API.Services.IUserService.Authenticate(VSPoll.API.Models.Input.Authentication, out string?)
+  fullName.vb: VSPoll.API.Services.IUserService.Authenticate(VSPoll.API.Models.Input.Authentication, String)
+  nameWithType: IUserService.Authenticate(Authentication, out string?)
+  nameWithType.vb: IUserService.Authenticate(Authentication, String)
 - uid: VSPoll.API.Services.IUserService.Authenticate*
   name: Authenticate
   href: api/VSPoll.API.Services.IUserService.html#VSPoll_API_Services_IUserService_Authenticate_
@@ -2479,15 +2600,21 @@ references:
   name: OptionService(IOptionRepository)
   href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService__ctor_VSPoll_API_Persistence_Repositories_IOptionRepository_
   commentId: M:VSPoll.API.Services.OptionService.#ctor(VSPoll.API.Persistence.Repositories.IOptionRepository)
+  name.vb: New(IOptionRepository)
   fullName: VSPoll.API.Services.OptionService.OptionService(VSPoll.API.Persistence.Repositories.IOptionRepository)
+  fullName.vb: VSPoll.API.Services.OptionService.New(VSPoll.API.Persistence.Repositories.IOptionRepository)
   nameWithType: OptionService.OptionService(IOptionRepository)
+  nameWithType.vb: OptionService.New(IOptionRepository)
 - uid: VSPoll.API.Services.OptionService.#ctor*
   name: OptionService
   href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService__ctor_
   commentId: Overload:VSPoll.API.Services.OptionService.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Services.OptionService.OptionService
+  fullName.vb: VSPoll.API.Services.OptionService.New
   nameWithType: OptionService.OptionService
+  nameWithType.vb: OptionService.New
 - uid: VSPoll.API.Services.OptionService.CheckDuplicateAsync(VSPoll.API.Models.Input.PollOptionCreate)
   name: CheckDuplicateAsync(PollOptionCreate)
   href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_CheckDuplicateAsync_VSPoll_API_Models_Input_PollOptionCreate_
@@ -2515,11 +2642,14 @@ references:
   fullName: VSPoll.API.Services.OptionService.CheckIfOptionExistsAsync
   nameWithType: OptionService.CheckIfOptionExistsAsync
 - uid: VSPoll.API.Services.OptionService.ClearVoteAsync(System.Guid,System.Int32)
-  name: ClearVoteAsync(Guid, Int32)
+  name: ClearVoteAsync(Guid, int)
   href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_ClearVoteAsync_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Services.OptionService.ClearVoteAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Services.OptionService.ClearVoteAsync(System.Guid, System.Int32)
-  nameWithType: OptionService.ClearVoteAsync(Guid, Int32)
+  name.vb: ClearVoteAsync(Guid, Integer)
+  fullName: VSPoll.API.Services.OptionService.ClearVoteAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Services.OptionService.ClearVoteAsync(System.Guid, Integer)
+  nameWithType: OptionService.ClearVoteAsync(Guid, int)
+  nameWithType.vb: OptionService.ClearVoteAsync(Guid, Integer)
 - uid: VSPoll.API.Services.OptionService.ClearVoteAsync*
   name: ClearVoteAsync
   href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_ClearVoteAsync_
@@ -2553,6 +2683,22 @@ references:
   isSpec: "True"
   fullName: VSPoll.API.Services.OptionService.GetPollFromOptionAsync
   nameWithType: OptionService.GetPollFromOptionAsync
+- uid: VSPoll.API.Services.OptionService.GetVoteStatusAsync(System.Guid,System.Int32)
+  name: GetVoteStatusAsync(Guid, int)
+  href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_GetVoteStatusAsync_System_Guid_System_Int32_
+  commentId: M:VSPoll.API.Services.OptionService.GetVoteStatusAsync(System.Guid,System.Int32)
+  name.vb: GetVoteStatusAsync(Guid, Integer)
+  fullName: VSPoll.API.Services.OptionService.GetVoteStatusAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Services.OptionService.GetVoteStatusAsync(System.Guid, Integer)
+  nameWithType: OptionService.GetVoteStatusAsync(Guid, int)
+  nameWithType.vb: OptionService.GetVoteStatusAsync(Guid, Integer)
+- uid: VSPoll.API.Services.OptionService.GetVoteStatusAsync*
+  name: GetVoteStatusAsync
+  href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_GetVoteStatusAsync_
+  commentId: Overload:VSPoll.API.Services.OptionService.GetVoteStatusAsync
+  isSpec: "True"
+  fullName: VSPoll.API.Services.OptionService.GetVoteStatusAsync
+  nameWithType: OptionService.GetVoteStatusAsync
 - uid: VSPoll.API.Services.OptionService.GetVotersAsync(VSPoll.API.Models.Input.VotersQuery)
   name: GetVotersAsync(VotersQuery)
   href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_GetVotersAsync_VSPoll_API_Models_Input_VotersQuery_
@@ -2566,19 +2712,6 @@ references:
   isSpec: "True"
   fullName: VSPoll.API.Services.OptionService.GetVotersAsync
   nameWithType: OptionService.GetVotersAsync
-- uid: VSPoll.API.Services.OptionService.GetVoteStatusAsync(System.Guid,System.Int32)
-  name: GetVoteStatusAsync(Guid, Int32)
-  href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_GetVoteStatusAsync_System_Guid_System_Int32_
-  commentId: M:VSPoll.API.Services.OptionService.GetVoteStatusAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Services.OptionService.GetVoteStatusAsync(System.Guid, System.Int32)
-  nameWithType: OptionService.GetVoteStatusAsync(Guid, Int32)
-- uid: VSPoll.API.Services.OptionService.GetVoteStatusAsync*
-  name: GetVoteStatusAsync
-  href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_GetVoteStatusAsync_
-  commentId: Overload:VSPoll.API.Services.OptionService.GetVoteStatusAsync
-  isSpec: "True"
-  fullName: VSPoll.API.Services.OptionService.GetVoteStatusAsync
-  nameWithType: OptionService.GetVoteStatusAsync
 - uid: VSPoll.API.Services.OptionService.InsertOptionAsync(VSPoll.API.Models.Input.PollOptionCreate)
   name: InsertOptionAsync(PollOptionCreate)
   href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_InsertOptionAsync_VSPoll_API_Models_Input_PollOptionCreate_
@@ -2593,11 +2726,14 @@ references:
   fullName: VSPoll.API.Services.OptionService.InsertOptionAsync
   nameWithType: OptionService.InsertOptionAsync
 - uid: VSPoll.API.Services.OptionService.UnvoteAsync(System.Guid,System.Int32)
-  name: UnvoteAsync(Guid, Int32)
+  name: UnvoteAsync(Guid, int)
   href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_UnvoteAsync_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Services.OptionService.UnvoteAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Services.OptionService.UnvoteAsync(System.Guid, System.Int32)
-  nameWithType: OptionService.UnvoteAsync(Guid, Int32)
+  name.vb: UnvoteAsync(Guid, Integer)
+  fullName: VSPoll.API.Services.OptionService.UnvoteAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Services.OptionService.UnvoteAsync(System.Guid, Integer)
+  nameWithType: OptionService.UnvoteAsync(Guid, int)
+  nameWithType.vb: OptionService.UnvoteAsync(Guid, Integer)
 - uid: VSPoll.API.Services.OptionService.UnvoteAsync*
   name: UnvoteAsync
   href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_UnvoteAsync_
@@ -2606,11 +2742,14 @@ references:
   fullName: VSPoll.API.Services.OptionService.UnvoteAsync
   nameWithType: OptionService.UnvoteAsync
 - uid: VSPoll.API.Services.OptionService.VoteAsync(System.Guid,System.Int32)
-  name: VoteAsync(Guid, Int32)
+  name: VoteAsync(Guid, int)
   href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_VoteAsync_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Services.OptionService.VoteAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Services.OptionService.VoteAsync(System.Guid, System.Int32)
-  nameWithType: OptionService.VoteAsync(Guid, Int32)
+  name.vb: VoteAsync(Guid, Integer)
+  fullName: VSPoll.API.Services.OptionService.VoteAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Services.OptionService.VoteAsync(System.Guid, Integer)
+  nameWithType: OptionService.VoteAsync(Guid, int)
+  nameWithType.vb: OptionService.VoteAsync(Guid, Integer)
 - uid: VSPoll.API.Services.OptionService.VoteAsync*
   name: VoteAsync
   href: api/VSPoll.API.Services.OptionService.html#VSPoll_API_Services_OptionService_VoteAsync_
@@ -2628,15 +2767,21 @@ references:
   name: PollService(IPollRepository, IOptionRepository)
   href: api/VSPoll.API.Services.PollService.html#VSPoll_API_Services_PollService__ctor_VSPoll_API_Persistence_Repositories_IPollRepository_VSPoll_API_Persistence_Repositories_IOptionRepository_
   commentId: M:VSPoll.API.Services.PollService.#ctor(VSPoll.API.Persistence.Repositories.IPollRepository,VSPoll.API.Persistence.Repositories.IOptionRepository)
+  name.vb: New(IPollRepository, IOptionRepository)
   fullName: VSPoll.API.Services.PollService.PollService(VSPoll.API.Persistence.Repositories.IPollRepository, VSPoll.API.Persistence.Repositories.IOptionRepository)
+  fullName.vb: VSPoll.API.Services.PollService.New(VSPoll.API.Persistence.Repositories.IPollRepository, VSPoll.API.Persistence.Repositories.IOptionRepository)
   nameWithType: PollService.PollService(IPollRepository, IOptionRepository)
+  nameWithType.vb: PollService.New(IPollRepository, IOptionRepository)
 - uid: VSPoll.API.Services.PollService.#ctor*
   name: PollService
   href: api/VSPoll.API.Services.PollService.html#VSPoll_API_Services_PollService__ctor_
   commentId: Overload:VSPoll.API.Services.PollService.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Services.PollService.PollService
+  fullName.vb: VSPoll.API.Services.PollService.New
   nameWithType: PollService.PollService
+  nameWithType.vb: PollService.New
 - uid: VSPoll.API.Services.PollService.CheckIfPollExistsAsync(System.Guid)
   name: CheckIfPollExistsAsync(Guid)
   href: api/VSPoll.API.Services.PollService.html#VSPoll_API_Services_PollService_CheckIfPollExistsAsync_System_Guid_
@@ -2677,11 +2822,14 @@ references:
   fullName: VSPoll.API.Services.PollService.GetPollViewAsync
   nameWithType: PollService.GetPollViewAsync
 - uid: VSPoll.API.Services.PollService.GetVotes(System.Guid,System.Int32)
-  name: GetVotes(Guid, Int32)
+  name: GetVotes(Guid, int)
   href: api/VSPoll.API.Services.PollService.html#VSPoll_API_Services_PollService_GetVotes_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Services.PollService.GetVotes(System.Guid,System.Int32)
-  fullName: VSPoll.API.Services.PollService.GetVotes(System.Guid, System.Int32)
-  nameWithType: PollService.GetVotes(Guid, Int32)
+  name.vb: GetVotes(Guid, Integer)
+  fullName: VSPoll.API.Services.PollService.GetVotes(System.Guid, int)
+  fullName.vb: VSPoll.API.Services.PollService.GetVotes(System.Guid, Integer)
+  nameWithType: PollService.GetVotes(Guid, int)
+  nameWithType.vb: PollService.GetVotes(Guid, Integer)
 - uid: VSPoll.API.Services.PollService.GetVotes*
   name: GetVotes
   href: api/VSPoll.API.Services.PollService.html#VSPoll_API_Services_PollService_GetVotes_
@@ -2703,11 +2851,14 @@ references:
   fullName: VSPoll.API.Services.PollService.InsertPollAsync
   nameWithType: PollService.InsertPollAsync
 - uid: VSPoll.API.Services.PollService.UnvoteAsync(System.Guid,System.Int32)
-  name: UnvoteAsync(Guid, Int32)
+  name: UnvoteAsync(Guid, int)
   href: api/VSPoll.API.Services.PollService.html#VSPoll_API_Services_PollService_UnvoteAsync_System_Guid_System_Int32_
   commentId: M:VSPoll.API.Services.PollService.UnvoteAsync(System.Guid,System.Int32)
-  fullName: VSPoll.API.Services.PollService.UnvoteAsync(System.Guid, System.Int32)
-  nameWithType: PollService.UnvoteAsync(Guid, Int32)
+  name.vb: UnvoteAsync(Guid, Integer)
+  fullName: VSPoll.API.Services.PollService.UnvoteAsync(System.Guid, int)
+  fullName.vb: VSPoll.API.Services.PollService.UnvoteAsync(System.Guid, Integer)
+  nameWithType: PollService.UnvoteAsync(Guid, int)
+  nameWithType.vb: PollService.UnvoteAsync(Guid, Integer)
 - uid: VSPoll.API.Services.PollService.UnvoteAsync*
   name: UnvoteAsync
   href: api/VSPoll.API.Services.PollService.html#VSPoll_API_Services_PollService_UnvoteAsync_
@@ -2716,14 +2867,14 @@ references:
   fullName: VSPoll.API.Services.PollService.UnvoteAsync
   nameWithType: PollService.UnvoteAsync
 - uid: VSPoll.API.Services.PollService.VoteAsync(VSPoll.API.Models.Output.Poll,System.Int32,System.Collections.Generic.IEnumerable{System.Guid})
-  name: VoteAsync(Poll, Int32, IEnumerable<Guid>)
+  name: VoteAsync(Poll, int, IEnumerable<Guid>)
   href: api/VSPoll.API.Services.PollService.html#VSPoll_API_Services_PollService_VoteAsync_VSPoll_API_Models_Output_Poll_System_Int32_System_Collections_Generic_IEnumerable_System_Guid__
   commentId: M:VSPoll.API.Services.PollService.VoteAsync(VSPoll.API.Models.Output.Poll,System.Int32,System.Collections.Generic.IEnumerable{System.Guid})
-  name.vb: VoteAsync(Poll, Int32, IEnumerable(Of Guid))
-  fullName: VSPoll.API.Services.PollService.VoteAsync(VSPoll.API.Models.Output.Poll, System.Int32, System.Collections.Generic.IEnumerable<System.Guid>)
-  fullName.vb: VSPoll.API.Services.PollService.VoteAsync(VSPoll.API.Models.Output.Poll, System.Int32, System.Collections.Generic.IEnumerable(Of System.Guid))
-  nameWithType: PollService.VoteAsync(Poll, Int32, IEnumerable<Guid>)
-  nameWithType.vb: PollService.VoteAsync(Poll, Int32, IEnumerable(Of Guid))
+  name.vb: VoteAsync(Poll, Integer, IEnumerable(Of Guid))
+  fullName: VSPoll.API.Services.PollService.VoteAsync(VSPoll.API.Models.Output.Poll, int, System.Collections.Generic.IEnumerable<System.Guid>)
+  fullName.vb: VSPoll.API.Services.PollService.VoteAsync(VSPoll.API.Models.Output.Poll, Integer, System.Collections.Generic.IEnumerable(Of System.Guid))
+  nameWithType: PollService.VoteAsync(Poll, int, IEnumerable<Guid>)
+  nameWithType.vb: PollService.VoteAsync(Poll, Integer, IEnumerable(Of Guid))
 - uid: VSPoll.API.Services.PollService.VoteAsync*
   name: VoteAsync
   href: api/VSPoll.API.Services.PollService.html#VSPoll_API_Services_PollService_VoteAsync_
@@ -2741,15 +2892,21 @@ references:
   name: UserService(IUserRepository, IConfiguration)
   href: api/VSPoll.API.Services.UserService.html#VSPoll_API_Services_UserService__ctor_VSPoll_API_Persistence_Repositories_IUserRepository_Microsoft_Extensions_Configuration_IConfiguration_
   commentId: M:VSPoll.API.Services.UserService.#ctor(VSPoll.API.Persistence.Repositories.IUserRepository,Microsoft.Extensions.Configuration.IConfiguration)
+  name.vb: New(IUserRepository, IConfiguration)
   fullName: VSPoll.API.Services.UserService.UserService(VSPoll.API.Persistence.Repositories.IUserRepository, Microsoft.Extensions.Configuration.IConfiguration)
+  fullName.vb: VSPoll.API.Services.UserService.New(VSPoll.API.Persistence.Repositories.IUserRepository, Microsoft.Extensions.Configuration.IConfiguration)
   nameWithType: UserService.UserService(IUserRepository, IConfiguration)
+  nameWithType.vb: UserService.New(IUserRepository, IConfiguration)
 - uid: VSPoll.API.Services.UserService.#ctor*
   name: UserService
   href: api/VSPoll.API.Services.UserService.html#VSPoll_API_Services_UserService__ctor_
   commentId: Overload:VSPoll.API.Services.UserService.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Services.UserService.UserService
+  fullName.vb: VSPoll.API.Services.UserService.New
   nameWithType: UserService.UserService
+  nameWithType.vb: UserService.New
 - uid: VSPoll.API.Services.UserService.AddOrUpdateUserAsync(VSPoll.API.Models.Input.Authentication)
   name: AddOrUpdateUserAsync(Authentication)
   href: api/VSPoll.API.Services.UserService.html#VSPoll_API_Services_UserService_AddOrUpdateUserAsync_VSPoll_API_Models_Input_Authentication_
@@ -2764,14 +2921,14 @@ references:
   fullName: VSPoll.API.Services.UserService.AddOrUpdateUserAsync
   nameWithType: UserService.AddOrUpdateUserAsync
 - uid: VSPoll.API.Services.UserService.Authenticate(VSPoll.API.Models.Input.Authentication,System.String@)
-  name: Authenticate(Authentication, out String)
+  name: Authenticate(Authentication, out string?)
   href: api/VSPoll.API.Services.UserService.html#VSPoll_API_Services_UserService_Authenticate_VSPoll_API_Models_Input_Authentication_System_String__
   commentId: M:VSPoll.API.Services.UserService.Authenticate(VSPoll.API.Models.Input.Authentication,System.String@)
-  name.vb: Authenticate(Authentication, ByRef String)
-  fullName: VSPoll.API.Services.UserService.Authenticate(VSPoll.API.Models.Input.Authentication, out System.String)
-  fullName.vb: VSPoll.API.Services.UserService.Authenticate(VSPoll.API.Models.Input.Authentication, ByRef System.String)
-  nameWithType: UserService.Authenticate(Authentication, out String)
-  nameWithType.vb: UserService.Authenticate(Authentication, ByRef String)
+  name.vb: Authenticate(Authentication, String)
+  fullName: VSPoll.API.Services.UserService.Authenticate(VSPoll.API.Models.Input.Authentication, out string?)
+  fullName.vb: VSPoll.API.Services.UserService.Authenticate(VSPoll.API.Models.Input.Authentication, String)
+  nameWithType: UserService.Authenticate(Authentication, out string?)
+  nameWithType.vb: UserService.Authenticate(Authentication, String)
 - uid: VSPoll.API.Services.UserService.Authenticate*
   name: Authenticate
   href: api/VSPoll.API.Services.UserService.html#VSPoll_API_Services_UserService_Authenticate_
@@ -2789,15 +2946,21 @@ references:
   name: Startup(IConfiguration)
   href: api/VSPoll.API.Startup.html#VSPoll_API_Startup__ctor_Microsoft_Extensions_Configuration_IConfiguration_
   commentId: M:VSPoll.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)
+  name.vb: New(IConfiguration)
   fullName: VSPoll.API.Startup.Startup(Microsoft.Extensions.Configuration.IConfiguration)
+  fullName.vb: VSPoll.API.Startup.New(Microsoft.Extensions.Configuration.IConfiguration)
   nameWithType: Startup.Startup(IConfiguration)
+  nameWithType.vb: Startup.New(IConfiguration)
 - uid: VSPoll.API.Startup.#ctor*
   name: Startup
   href: api/VSPoll.API.Startup.html#VSPoll_API_Startup__ctor_
   commentId: Overload:VSPoll.API.Startup.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Startup.Startup
+  fullName.vb: VSPoll.API.Startup.New
   nameWithType: Startup.Startup
+  nameWithType.vb: Startup.New
 - uid: VSPoll.API.Startup.ApplyMigrations(Microsoft.AspNetCore.Builder.IApplicationBuilder)
   name: ApplyMigrations(IApplicationBuilder)
   href: api/VSPoll.API.Startup.html#VSPoll_API_Startup_ApplyMigrations_Microsoft_AspNetCore_Builder_IApplicationBuilder_
@@ -2902,14 +3065,14 @@ references:
   fullName: VSPoll.API.Utils.MathUtils.NormalizePercentages
   nameWithType: MathUtils.NormalizePercentages
 - uid: VSPoll.API.Utils.MathUtils.NormalizePercentages``1(System.Collections.Generic.IEnumerable{``0},System.Int32)
-  name: NormalizePercentages<T>(IEnumerable<T>, Int32)
+  name: NormalizePercentages<T>(IEnumerable<T>, int)
   href: api/VSPoll.API.Utils.MathUtils.html#VSPoll_API_Utils_MathUtils_NormalizePercentages__1_System_Collections_Generic_IEnumerable___0__System_Int32_
   commentId: M:VSPoll.API.Utils.MathUtils.NormalizePercentages``1(System.Collections.Generic.IEnumerable{``0},System.Int32)
-  name.vb: NormalizePercentages(Of T)(IEnumerable(Of T), Int32)
-  fullName: VSPoll.API.Utils.MathUtils.NormalizePercentages<T>(System.Collections.Generic.IEnumerable<T>, System.Int32)
-  fullName.vb: VSPoll.API.Utils.MathUtils.NormalizePercentages(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Int32)
-  nameWithType: MathUtils.NormalizePercentages<T>(IEnumerable<T>, Int32)
-  nameWithType.vb: MathUtils.NormalizePercentages(Of T)(IEnumerable(Of T), Int32)
+  name.vb: NormalizePercentages(Of T)(IEnumerable(Of T), Integer)
+  fullName: VSPoll.API.Utils.MathUtils.NormalizePercentages<T>(System.Collections.Generic.IEnumerable<T>, int)
+  fullName.vb: VSPoll.API.Utils.MathUtils.NormalizePercentages(Of T)(System.Collections.Generic.IEnumerable(Of T), Integer)
+  nameWithType: MathUtils.NormalizePercentages<T>(IEnumerable<T>, int)
+  nameWithType.vb: MathUtils.NormalizePercentages(Of T)(IEnumerable(Of T), Integer)
 - uid: VSPoll.API.Utils.NormalizationWrapper`1
   name: NormalizationWrapper<T>
   href: api/VSPoll.API.Utils.NormalizationWrapper-1.html
@@ -2923,19 +3086,21 @@ references:
   name: NormalizationWrapper(T)
   href: api/VSPoll.API.Utils.NormalizationWrapper-1.html#VSPoll_API_Utils_NormalizationWrapper_1__ctor__0_
   commentId: M:VSPoll.API.Utils.NormalizationWrapper`1.#ctor(`0)
+  name.vb: New(T)
   fullName: VSPoll.API.Utils.NormalizationWrapper<T>.NormalizationWrapper(T)
-  fullName.vb: VSPoll.API.Utils.NormalizationWrapper(Of T).NormalizationWrapper(T)
+  fullName.vb: VSPoll.API.Utils.NormalizationWrapper(Of T).New(T)
   nameWithType: NormalizationWrapper<T>.NormalizationWrapper(T)
-  nameWithType.vb: NormalizationWrapper(Of T).NormalizationWrapper(T)
+  nameWithType.vb: NormalizationWrapper(Of T).New(T)
 - uid: VSPoll.API.Utils.NormalizationWrapper`1.#ctor*
   name: NormalizationWrapper
   href: api/VSPoll.API.Utils.NormalizationWrapper-1.html#VSPoll_API_Utils_NormalizationWrapper_1__ctor_
   commentId: Overload:VSPoll.API.Utils.NormalizationWrapper`1.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: VSPoll.API.Utils.NormalizationWrapper<T>.NormalizationWrapper
-  fullName.vb: VSPoll.API.Utils.NormalizationWrapper(Of T).NormalizationWrapper
+  fullName.vb: VSPoll.API.Utils.NormalizationWrapper(Of T).New
   nameWithType: NormalizationWrapper<T>.NormalizationWrapper
-  nameWithType.vb: NormalizationWrapper(Of T).NormalizationWrapper
+  nameWithType.vb: NormalizationWrapper(Of T).New
 - uid: VSPoll.API.Utils.NormalizationWrapper`1.OriginalPercentage
   name: OriginalPercentage
   href: api/VSPoll.API.Utils.NormalizationWrapper-1.html#VSPoll_API_Utils_NormalizationWrapper_1_OriginalPercentage
@@ -2983,11 +3148,14 @@ references:
   fullName: VSPoll.API.Validations.TrimAttribute
   nameWithType: TrimAttribute
 - uid: VSPoll.API.Validations.TrimAttribute.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)
-  name: IsValid(Object, ValidationContext)
+  name: IsValid(object?, ValidationContext)
   href: api/VSPoll.API.Validations.TrimAttribute.html#VSPoll_API_Validations_TrimAttribute_IsValid_System_Object_System_ComponentModel_DataAnnotations_ValidationContext_
   commentId: M:VSPoll.API.Validations.TrimAttribute.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)
-  fullName: VSPoll.API.Validations.TrimAttribute.IsValid(System.Object, System.ComponentModel.DataAnnotations.ValidationContext)
-  nameWithType: TrimAttribute.IsValid(Object, ValidationContext)
+  name.vb: IsValid(Object, ValidationContext)
+  fullName: VSPoll.API.Validations.TrimAttribute.IsValid(object?, System.ComponentModel.DataAnnotations.ValidationContext)
+  fullName.vb: VSPoll.API.Validations.TrimAttribute.IsValid(Object, System.ComponentModel.DataAnnotations.ValidationContext)
+  nameWithType: TrimAttribute.IsValid(object?, ValidationContext)
+  nameWithType.vb: TrimAttribute.IsValid(Object, ValidationContext)
 - uid: VSPoll.API.Validations.TrimAttribute.IsValid*
   name: IsValid
   href: api/VSPoll.API.Validations.TrimAttribute.html#VSPoll_API_Validations_TrimAttribute_IsValid_
